@@ -9,7 +9,7 @@ import {
   TIPI_NODO,
   type TipoArco,
   type TipoNodo,
-} from '../../../lib/schema';
+} from '../../../lib/costanti';
 import { NOMI_PARTE } from '../../../lib/palette';
 import Legenda from './Legenda';
 

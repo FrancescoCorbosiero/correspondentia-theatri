@@ -1,6 +1,6 @@
 import { GLIFI_TIPO } from '../../../lib/icone';
 import { COLORI_ARCO, NOMI_PARTE } from '../../../lib/palette';
-import { ETICHETTE_TIPO_ARCO, ETICHETTE_TIPO_NODO, TIPI_ARCO, TIPI_NODO } from '../../../lib/schema';
+import { ETICHETTE_TIPO_ARCO, ETICHETTE_TIPO_NODO, TIPI_ARCO, TIPI_NODO } from '../../../lib/costanti';
 
 /** Legenda del grafo: colore = parte, glifo = tipo, colore d'arco = relazione. */
 export default function Legenda() {

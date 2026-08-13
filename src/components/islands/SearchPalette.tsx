@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { DocRicerca } from '../../lib/tipi-grafo';
 import { withBase } from '../../lib/percorsi-url';
-import { ETICHETTE_TIPO_NODO } from '../../lib/schema';
+import { ETICHETTE_TIPO_NODO } from '../../lib/costanti';
 import { NOMI_PARTE_BREVI } from '../../lib/palette';
 
 /**

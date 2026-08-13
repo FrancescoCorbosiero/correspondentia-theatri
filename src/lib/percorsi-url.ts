@@ -2,7 +2,7 @@
  * Helper per URL interni (il sito vive sotto una base path su GitHub Pages)
  * e per la serializzazione dello stato del grafo nella query string (§6).
  */
-import { TIPI_ARCO, TIPI_NODO, type TipoArco, type TipoNodo } from './schema';
+import { TIPI_ARCO, TIPI_NODO, type TipoArco, type TipoNodo } from './costanti';
 
 export function withBase(percorso: string): string {
   const base = import.meta.env.BASE_URL.replace(/\/$/, '');

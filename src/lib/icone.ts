@@ -1,4 +1,4 @@
-import type { TipoNodo } from './schema';
+import type { TipoNodo } from './costanti';
 
 /**
  * Glifi per tipo di nodo: path SVG minimi (viewBox 0 0 24 24, stroke o fill

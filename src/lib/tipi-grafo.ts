@@ -1,4 +1,4 @@
-import type { TipoArco, TipoNodo } from './schema';
+import type { TipoArco, TipoNodo } from './costanti';
 
 /** Nodo del grafo serializzato in graph.json (derivato dal frontmatter delle voci). */
 export interface NodoGrafo {

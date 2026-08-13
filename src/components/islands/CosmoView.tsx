@@ -3,7 +3,7 @@ import { adiacenza, caricaGrafo, coloriTema, preferisceMenoMovimento } from '../
 import type { DatiGrafo } from '../../lib/tipi-grafo';
 import { INTERVALLO_TEMPO, withBase } from '../../lib/percorsi-url';
 import { COLORI_ARCO } from '../../lib/palette';
-import { ETICHETTE_TIPO_NODO } from '../../lib/schema';
+import { ETICHETTE_TIPO_NODO } from '../../lib/costanti';
 
 /**
  * /cosmo (§5.3): il grafo in tre dimensioni con l'asse Z = tempo — i nodi

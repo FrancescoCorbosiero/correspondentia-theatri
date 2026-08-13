@@ -26,7 +26,7 @@ import {
   withBase,
   type StatoGrafo,
 } from '../../../lib/percorsi-url';
-import { TIPI_ARCO, TIPI_NODO } from '../../../lib/schema';
+import { TIPI_ARCO, TIPI_NODO } from '../../../lib/costanti';
 import Controlli from './Controlli';
 import PannelloNodo from './PannelloNodo';
 

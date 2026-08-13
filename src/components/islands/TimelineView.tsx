@@ -6,7 +6,7 @@ import { brushX, type D3BrushEvent } from 'd3-brush';
 import { caricaGrafo, preferisceMenoMovimento } from '../../lib/grafo-client';
 import type { DatiGrafo, NodoGrafo } from '../../lib/tipi-grafo';
 import { INTERVALLO_TEMPO, formattaAnno, withBase } from '../../lib/percorsi-url';
-import { ETICHETTE_TIPO_NODO, type TipoNodo } from '../../lib/schema';
+import { ETICHETTE_TIPO_NODO, type TipoNodo } from '../../lib/costanti';
 
 /** Corsie della timeline: solo i tipi con voci datate. */
 const CORSIE: TipoNodo[] = ['evento', 'corrente', 'persona', 'opera', 'luogo'];

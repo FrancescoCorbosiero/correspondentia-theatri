@@ -5,7 +5,7 @@
 import type { ArcoGrafo, DatiGrafo, NodoGrafo } from './tipi-grafo';
 import type { StatoGrafo } from './percorsi-url';
 import { INTERVALLO_TEMPO, withBase } from './percorsi-url';
-import { TIPI_ARCO, TIPI_NODO, type TipoArco, type TipoNodo } from './schema';
+import { TIPI_ARCO, TIPI_NODO, type TipoArco, type TipoNodo } from './costanti';
 
 let cache: Promise<DatiGrafo> | null = null;
 

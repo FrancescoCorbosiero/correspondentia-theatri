@@ -1,7 +1,7 @@
 import type { DatiGrafo, NodoGrafo } from '../../../lib/tipi-grafo';
 import { archiPerTipo, indicePerId } from '../../../lib/grafo-client';
 import { formattaPeriodo, withBase } from '../../../lib/percorsi-url';
-import { ETICHETTE_TIPO_ARCO, ETICHETTE_TIPO_NODO, type TipoArco } from '../../../lib/schema';
+import { ETICHETTE_TIPO_ARCO, ETICHETTE_TIPO_NODO, type TipoArco } from '../../../lib/costanti';
 import { NOMI_PARTE_BREVI } from '../../../lib/palette';
 
 interface Props {

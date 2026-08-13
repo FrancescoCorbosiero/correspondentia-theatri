@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { DocCorpo, DocRicerca } from '../../lib/tipi-grafo';
 import { withBase } from '../../lib/percorsi-url';
-import { ETICHETTE_TIPO_NODO } from '../../lib/schema';
+import { ETICHETTE_TIPO_NODO } from '../../lib/costanti';
 import { NOMI_PARTE_BREVI } from '../../lib/palette';
 
 interface Indici {

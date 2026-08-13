@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { caricaGrafo } from '../../lib/grafo-client';
 import type { ArcoGrafo, DatiGrafo, NodoGrafo } from '../../lib/tipi-grafo';
 import { withBase } from '../../lib/percorsi-url';
-import { ETICHETTE_TIPO_ARCO, ETICHETTE_TIPO_NODO, type TipoNodo } from '../../lib/schema';
+import { ETICHETTE_TIPO_ARCO, ETICHETTE_TIPO_NODO, type TipoNodo } from '../../lib/costanti';
 
 interface PassoCammino {
   nodo: NodoGrafo;
