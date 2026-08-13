@@ -1,0 +1,87 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/percorsi-url';
+
+export async function getStaticPaths() {
+  const capitoli = await getCollection('capitoli');
+  return capitoli.map((capitolo) => ({ params: { capitolo: capitolo.id }, props: { capitolo } }));
+}
+
+const { capitolo } = Astro.props;
+const tutti = (await getCollection('capitoli')).sort((a, b) => a.data.ordine - b.data.ordine);
+const indice = tutti.findIndex((c) => c.id === capitolo.id);
+const precedente = indice > 0 ? tutti[indice - 1] : undefined;
+const successivo = indice < tutti.length - 1 ? tutti[indice + 1] : undefined;
+const { Content, headings } = await render(capitolo);
+const sezioni = headings.filter((h) => h.depth === 2);
+---
+
+<Base
+  titolo={capitolo.data.titolo}
+  descrizione={`${capitolo.data.titolo} — il volume di Theatrum in modalità lineare, capitolo ${indice + 1} di ${tutti.length}.`}
+>
+  <div class="mx-auto max-w-6xl px-4 py-10 grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)]">
+    <nav aria-label="Indice del capitolo" class="hidden lg:block">
+      <div class="sticky top-16 text-sm">
+        <p class="text-xs uppercase tracking-wide font-semibold" style="color: var(--testo-tenue)">
+          Capitolo {indice + 1} di {tutti.length}
+        </p>
+        <p class="mt-1 font-medium">{capitolo.data.titolo}</p>
+        {
+          sezioni.length > 0 && (
+            <ul class="mt-3 space-y-1.5 border-s border-bordo ps-3">
+              {sezioni.map((sezione) => (
+                <li>
+                  <a class="hover:text-accento" href={`#${sezione.slug}`}>
+                    {sezione.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+        <p class="mt-4">
+          <a class="underline" style="color: var(--testo-tenue)" href={withBase('/leggi')}>← Tutti i capitoli</a>
+        </p>
+      </div>
+    </nav>
+
+    <article class="min-w-0">
+      <h1 class="font-serif text-4xl">{capitolo.data.titolo}</h1>
+      <div class="prosa mt-6">
+        <Content />
+      </div>
+
+      <nav aria-label="Navigazione fra capitoli" class="mt-12 flex justify-between gap-4 border-t border-bordo pt-4 text-sm">
+        {
+          precedente ? (
+            <a class="underline text-accento" href={withBase(`/leggi/${precedente.id}`)}>
+              ← {precedente.data.titolo}
+            </a>
+          ) : (
+            <span />
+          )
+        }
+        {
+          successivo ? (
+            <a class="underline text-accento text-end" href={withBase(`/leggi/${successivo.id}`)}>
+              {successivo.data.titolo} →
+            </a>
+          ) : (
+            <span />
+          )
+        }
+      </nav>
+    </article>
+  </div>
+</Base>
+
+<script define:vars={{ idCapitolo: capitolo.id }}>
+  // registra il capitolo nella progressione di lettura
+  try {
+    const letti = new Set(JSON.parse(localStorage.getItem('theatrum-letti') ?? '[]'));
+    letti.add(idCapitolo);
+    localStorage.setItem('theatrum-letti', JSON.stringify([...letti]));
+  } catch {}
+</script>

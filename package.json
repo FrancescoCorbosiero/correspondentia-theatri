@@ -8,7 +8,7 @@
     "node": ">=20"
   },
   "scripts": {
-    "data": "tsx scripts/build-data.ts",
+    "data": "tsx scripts/build-data.ts && tsx scripts/build-capitoli.ts",
     "dev": "npm run data && astro dev",
     "build": "npm run data && astro build",
     "preview": "astro preview",
