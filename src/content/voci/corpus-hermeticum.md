@@ -9,11 +9,12 @@ luoghi: [alessandria]
 alias: ["Pimander", "Poimandres", "Ermetica"]
 peso: 5
 archi:
-  - { verso: ermetismo, tipo: elabora, nota: "È il nucleo testuale dell'ermetismo filosofico" }
-  - { verso: neoplatonismo, tipo: contemporaneo_di, nota: "Stesso ambiente tardoantico, temi affini" }
+  - { verso: ermetismo, tipo: elabora, nota: "Il nucleo testuale dell’ermetismo filosofico" }
+  - { verso: pseudoepigrafia, tipo: pratica, nota: "Datazione dichiarata: età mosaica; datazione reale: età imperiale" }
+  - { verso: macrocosmo-microcosmo, tipo: elabora, nota: "La discesa e risalita attraverso le sfere del Poimandres" }
 fonti:
   - "Copenhaver, Hermetica"
-  - "Yates, Giordano Bruno e la tradizione ermetica"
+  - "Festugière, La Révélation d’Hermès Trismégiste"
 ---
 
 Con il nome di *Corpus Hermeticum* si indica una raccolta di diciassette brevi trattati greci in forma dialogica, composti fra il I e il III secolo d.C. in ambiente alessandrino e attribuiti a Ermete Trismegisto. Il primo trattato, il *Poimandres*, è il più noto: un'esperienza visionaria in cui l'intelletto divino rivela l'origine del cosmo e dell'uomo.

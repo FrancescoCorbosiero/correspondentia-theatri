@@ -3,7 +3,7 @@ id: parte-4-pratiche
 titolo: "IV. Pratiche e vie"
 tipo: parte
 parte: 4
-sommario: "Il piano operativo: iniziazione, opera alchemica, magia e teurgia, astrologia, divinazione, vie contemplative — descritte nella loro struttura e logica, mai istruite — con l'etica della pratica e i suoi rischi reali."
+sommario: "Il piano operativo: iniziazione, opera alchemica, magia e teurgia, astrologia, divinazione, vie contemplative — descritte nella loro struttura e logica, mai istruite — con l’etica della pratica e i suoi rischi reali."
 peso: 5
 fonti:
   - "van Gennep, I riti di passaggio"

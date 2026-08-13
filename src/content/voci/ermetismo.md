@@ -9,10 +9,17 @@ luoghi: [alessandria, firenze]
 alias: ["tradizione ermetica", "hermetica"]
 peso: 5
 archi:
-  - { verso: neoplatonismo, tipo: contemporaneo_di, nota: "Ambiente tardoantico comune" }
+  - { verso: neoplatonismo, tipo: contemporaneo_di, nota: "Stesso ambiente tardoantico, temi affini" }
+  - { verso: corrispondenze, tipo: elabora, nota: "Ciò che è in basso è come ciò che è in alto" }
+  - { verso: macrocosmo-microcosmo, tipo: elabora }
+  - { verso: astrologia, tipo: pratica, nota: "L’ermetismo tecnico: astrologia, alchimia, talismani" }
+  - { verso: talismani, tipo: pratica }
+  - { verso: alchimia, tipo: influenza, nota: "La Tavola di Smeraldo diventa la sintesi proverbiale dell’opera" }
+  - { verso: magia-rinascimentale, tipo: influenza, nota: "Via Ficino, dal 1463" }
 fonti:
-  - "Yates, Giordano Bruno e la tradizione ermetica"
   - "Copenhaver, Hermetica"
+  - "Fowden, The Egyptian Hermes"
+  - "Yates, Giordano Bruno e la tradizione ermetica"
 ---
 
 L'ermetismo è la corrente che si riconosce nei testi attribuiti a Ermete Trismegisto. Va distinto l'ermetismo **filosofico** dei trattati — il *Corpus Hermeticum*, l'*Asclepius* — da quello **tecnico**: astrologia, alchimia e magia dei talismani, che circola dalla tarda antichità nel mondo arabo e poi latino.

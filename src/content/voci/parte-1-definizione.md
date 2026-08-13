@@ -5,10 +5,8 @@ tipo: parte
 parte: 1
 sommario: "Che cosa si sta chiamando «esoterismo», secondo chi e con quali problemi di metodo: le quattro definizioni principali, lo statuto del segreto, gli strumenti e le trappole dello studio."
 peso: 5
-archi:
-  - { verso: parte-2-correnti, tipo: contemporaneo_di, nota: "I criteri della Parte I delimitano il campo storico della Parte II" }
 fonti:
-  - "Faivre, Accès de l'ésotérisme occidental"
+  - "Faivre, Accès de l’ésotérisme occidental"
   - "Hanegraaff, Esotericism and the Academy"
 ---
 

@@ -1,9 +1,9 @@
 ---
 id: alessandria
-titolo: "Alessandria d'Egitto"
+titolo: "Alessandria d’Egitto"
 tipo: luogo
 parte: 2
-sommario: "Il crogiolo tardoantico: qui, fra I e IV secolo, si formano ermetismo, gnosticismo e alchimia greco-egizia, nell'incontro fra grecità, Egitto, ebraismo e cristianesimo nascente."
+sommario: "Il crogiolo tardoantico: qui, fra I e IV secolo, si formano ermetismo, gnosticismo e alchimia greco-egizia, nell’incontro fra grecità, Egitto, ebraismo e cristianesimo nascente."
 periodo: { da: -300, a: 640 }
 alias: ["Alessandria"]
 peso: 5

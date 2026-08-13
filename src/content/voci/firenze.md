@@ -3,7 +3,7 @@ id: firenze
 titolo: "Firenze"
 tipo: luogo
 parte: 2
-sommario: "La città della riscoperta: qui Ficino traduce il Corpus Hermeticum per Cosimo de' Medici, Pico congiunge cabala e magia, e il platonismo torna a essere una filosofia operativa."
+sommario: "La città della riscoperta: qui Ficino traduce il Corpus Hermeticum per Cosimo de’ Medici, Pico congiunge cabala e magia, e il platonismo torna a essere una filosofia operativa."
 periodo: { da: 1439, a: 1600 }
 alias: ["Florentia"]
 peso: 4

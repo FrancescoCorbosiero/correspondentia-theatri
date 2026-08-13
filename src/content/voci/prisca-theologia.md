@@ -3,11 +3,12 @@ id: prisca-theologia
 titolo: "Prisca theologia"
 tipo: concetto
 parte: 3
-sommario: "L'idea rinascimentale di una sapienza originaria trasmessa da una catena di antichi sapienti — Ermete, Orfeo, Zoroastro, Pitagora, Platone — fondata su datazioni poi smentite."
-alias: ["teologia antica", "antica teologia"]
+sommario: "L’idea rinascimentale di una sapienza originaria trasmessa da una catena di antichi sapienti — Ermete, Orfeo, Zoroastro, Pitagora, Platone — fondata su datazioni poi smentite dalla filologia."
+alias: ["teologia antica", "philosophia perennis"]
 peso: 3
 archi:
   - { verso: ermetismo, tipo: deriva_da, nota: "Nasce dalla datazione errata dei testi ermetici" }
+  - { verso: concordanza-delle-tradizioni, tipo: influenza, nota: "Il modello di ogni successiva sapienza unica" }
 fonti:
   - "Yates, Giordano Bruno e la tradizione ermetica"
 ---
