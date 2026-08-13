@@ -1,0 +1,241 @@
+@import 'tailwindcss';
+
+/*
+ * Design token di Theatrum (§7 del BRIEF).
+ * Variabili semantiche in :root con variante scura via [data-theme="dark"];
+ * Tailwind le espone come utility tramite @theme inline.
+ */
+:root {
+  --sfondo: #f7f4ee; /* pergamena */
+  --sfondo-rialzato: #fffdf8;
+  --sfondo-incassato: #efeadf;
+  --testo: #1a1a2e; /* inchiostro */
+  --testo-tenue: #5c5a6b;
+  --accento: #6b2d5c; /* porpora */
+  --accento-caldo: #8a6a2f; /* oro */
+  --bordo: #d9d2c1;
+  --bordo-forte: #b3ab97;
+  --focus: #31639c;
+
+  --parte-1: #31639c;
+  --parte-2: #8c3a2e;
+  --parte-3: #6b2d5c;
+  --parte-4: #b08a3e;
+  --parte-5: #3e7a74;
+  --parte-6: #8b86af;
+}
+
+[data-theme='dark'] {
+  --sfondo: #16161f;
+  --sfondo-rialzato: #1e1e2a;
+  --sfondo-incassato: #101018;
+  --testo: #e8e4d8;
+  --testo-tenue: #a5a1b0;
+  --accento: #c78bb4;
+  --accento-caldo: #cfa95e;
+  --bordo: #34323f;
+  --bordo-forte: #56536a;
+  --focus: #7ba7d9;
+
+  --parte-1: #6f97c6;
+  --parte-2: #c47764;
+  --parte-3: #c78bb4;
+  --parte-4: #cfa95e;
+  --parte-5: #6fb0a8;
+  --parte-6: #9d99c0;
+}
+
+@theme inline {
+  --color-sfondo: var(--sfondo);
+  --color-rialzato: var(--sfondo-rialzato);
+  --color-incassato: var(--sfondo-incassato);
+  --color-testo: var(--testo);
+  --color-tenue: var(--testo-tenue);
+  --color-accento: var(--accento);
+  --color-oro: var(--accento-caldo);
+  --color-bordo: var(--bordo);
+  --color-bordo-forte: var(--bordo-forte);
+  --color-focus: var(--focus);
+  --color-parte-1: var(--parte-1);
+  --color-parte-2: var(--parte-2);
+  --color-parte-3: var(--parte-3);
+  --color-parte-4: var(--parte-4);
+  --color-parte-5: var(--parte-5);
+  --color-parte-6: var(--parte-6);
+
+  --font-serif: 'EB Garamond Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter Variable', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  background-color: var(--sfondo);
+  color: var(--testo);
+  font-family: var(--font-sans);
+  scrollbar-gutter: stable;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+/* Focus visibile ovunque (WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accento) 25%, transparent);
+}
+
+/* Prosa lunga in serif, da edizione critica */
+.prosa {
+  font-family: var(--font-serif);
+  font-size: 1.14rem;
+  line-height: 1.72;
+  max-width: 42rem;
+}
+.prosa p {
+  margin-block: 0.9em;
+}
+.prosa p:first-child {
+  margin-top: 0;
+}
+.prosa h2 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  margin-top: 2.2em;
+  margin-bottom: 0.6em;
+  color: var(--accento);
+}
+.prosa h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+}
+.prosa a {
+  color: var(--accento);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accento) 45%, transparent);
+  text-underline-offset: 2px;
+}
+.prosa a:hover {
+  text-decoration-color: var(--accento);
+}
+.prosa blockquote {
+  border-left: 3px solid var(--bordo-forte);
+  padding-left: 1rem;
+  margin-block: 1.2em;
+  color: var(--testo-tenue);
+}
+.prosa ul,
+.prosa ol {
+  padding-left: 1.4rem;
+  margin-block: 0.9em;
+}
+.prosa ul {
+  list-style: disc;
+}
+.prosa ol {
+  list-style: decimal;
+}
+.prosa li {
+  margin-block: 0.35em;
+}
+.prosa strong {
+  font-weight: 600;
+}
+.prosa hr {
+  border: none;
+  border-top: 1px solid var(--bordo);
+  margin-block: 2em;
+}
+.prosa table {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  border-collapse: collapse;
+  margin-block: 1.2em;
+  display: block;
+  overflow-x: auto;
+}
+.prosa th,
+.prosa td {
+  border: 1px solid var(--bordo);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+.prosa th {
+  background: var(--sfondo-incassato);
+  font-weight: 600;
+}
+.prosa dl dt {
+  font-weight: 600;
+  margin-top: 0.9em;
+}
+.prosa dl dd {
+  margin-left: 1.2rem;
+  color: var(--testo);
+}
+
+/* Callout "nota" (dagli ambienti \begin{nota} del volume) */
+.nota {
+  border: 1px solid var(--bordo);
+  border-left: 3px solid var(--accento-caldo);
+  background: var(--sfondo-rialzato);
+  padding: 0.9rem 1.1rem;
+  margin-block: 1.4em;
+  border-radius: 4px;
+  font-size: 0.98em;
+}
+.nota .nota-titolo {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accento-caldo);
+  margin-bottom: 0.4em;
+}
+
+/* Avvertenza forte (tossicità, rischi): mai nascosta, mai footer */
+.avvertenza {
+  border: 1px solid color-mix(in srgb, #a04a3c 45%, var(--bordo));
+  border-left: 4px solid #a04a3c;
+  background: color-mix(in srgb, #a04a3c 7%, var(--sfondo-rialzato));
+  padding: 0.9rem 1.1rem;
+  margin-block: 1.4em;
+  border-radius: 4px;
+}
+
+/* Riduzione del movimento: nessuna transizione decorativa comunque,
+   ma qui azzeriamo anche quelle di stato per chi lo richiede */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Skip link */
+.salta-al-contenuto {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--accento);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 4px 0;
+}
+.salta-al-contenuto:focus {
+  left: 0;
+}
