@@ -1,0 +1,60 @@
+---
+import '@fontsource-variable/eb-garamond';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import Intestazione from '../components/Intestazione.astro';
+import PiePagina from '../components/PiePagina.astro';
+import SearchPalette from '../components/islands/SearchPalette';
+import { withBase } from '../lib/percorsi-url';
+
+interface Props {
+  titolo: string;
+  descrizione: string;
+  /** JSON-LD opzionale già serializzato */
+  jsonLd?: string;
+  /** classe extra per il main (es. per viste a tutta pagina) */
+  classeMain?: string;
+  /** se true il main occupa tutta l'altezza senza scroll della pagina */
+  pienaAltezza?: boolean;
+}
+
+const { titolo, descrizione, jsonLd, classeMain = '', pienaAltezza = false } = Astro.props;
+const titoloCompleto = titolo === 'Theatrum' ? 'Theatrum — atlante dell’esoterismo occidentale' : `${titolo} · Theatrum`;
+---
+
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titoloCompleto}</title>
+    <meta name="description" content={descrizione} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <meta property="og:title" content={titoloCompleto} />
+    <meta property="og:description" content={descrizione} />
+    <meta property="og:type" content="website" />
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+    <script is:inline>
+      // Tema: variante scura solo su scelta esplicita (default: chiaro, §7).
+      (() => {
+        try {
+          const salvato = localStorage.getItem('theatrum-tema');
+          if (salvato === 'dark') document.documentElement.dataset.theme = 'dark';
+        } catch {}
+      })();
+    </script>
+  </head>
+  <body class:list={[pienaAltezza && 'h-dvh overflow-hidden flex flex-col']}>
+    <a href="#contenuto" class="salta-al-contenuto">Salta al contenuto</a>
+    <Intestazione />
+    <main
+      id="contenuto"
+      class:list={[classeMain, pienaAltezza ? 'flex-1 min-h-0' : 'min-h-[70dvh]']}
+    >
+      <slot />
+    </main>
+    {!pienaAltezza && <PiePagina />}
+    <SearchPalette client:idle />
+  </body>
+</html>

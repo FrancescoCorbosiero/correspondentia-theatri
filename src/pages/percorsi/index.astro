@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/percorsi-url';
+
+const percorsi = (await getCollection('percorsi')).sort((a, b) => a.data.ordine - b.data.ordine);
+---
+
+<Base
+  titolo="Percorsi"
+  descrizione="Percorsi curati d'autore attraverso l'atlante: sequenze narrate di voci con il grafo che evidenzia il cammino, e la ricerca di cammini fra due voci qualsiasi."
+>
+  <div class="mx-auto max-w-4xl px-4 py-12">
+    <h1 class="font-serif text-3xl">Percorsi</h1>
+    <p class="mt-2 max-w-2xl" style="color: var(--testo-tenue)">
+      Quattro attraversamenti d’autore, più uno strumento: il cammino minimo fra due voci qualsiasi
+      del grafo.
+    </p>
+
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {
+        percorsi.map((p) => (
+          <a
+            href={withBase(`/percorso/${p.data.slug}`)}
+            class="group rounded-lg border border-bordo bg-rialzato p-5 hover:border-bordo-forte"
+          >
+            <h2 class="font-serif text-xl text-accento group-hover:underline underline-offset-4">
+              {p.data.titolo}
+            </h2>
+            <p class="mt-1 text-sm" style="color: var(--testo-tenue)">
+              {p.data.sottotitolo}
+            </p>
+            <p class="mt-3 text-xs">{p.data.tappe.length} tappe</p>
+          </a>
+        ))
+      }
+    </div>
+
+    <a
+      href={withBase('/percorsi/trova')}
+      class="mt-6 block rounded-lg border border-dashed border-bordo-forte p-5 hover:bg-incassato"
+    >
+      <h2 class="font-serif text-xl text-accento">Trova un cammino →</h2>
+      <p class="mt-1 text-sm" style="color: var(--testo-tenue)">
+        Scegli due voci: l’atlante calcola il cammino più breve che le collega e lo racconta come
+        catena di relazioni.
+      </p>
+    </a>
+  </div>
+</Base>

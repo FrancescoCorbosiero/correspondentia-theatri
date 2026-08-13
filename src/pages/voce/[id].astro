@@ -1,0 +1,230 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import EgoGraph from '../../components/islands/EgoGraph';
+import grafo from '../../generated/graph.json';
+import type { ArcoGrafo, DatiGrafo, NodoGrafo } from '../../lib/tipi-grafo';
+import { formattaPeriodo, withBase } from '../../lib/percorsi-url';
+import {
+  ETICHETTE_TIPO_ARCO,
+  ETICHETTE_TIPO_NODO,
+  type TipoArco,
+} from '../../lib/schema';
+import { NOMI_PARTE } from '../../lib/palette';
+
+export async function getStaticPaths() {
+  const voci = await getCollection('voci');
+  return voci.map((voce) => ({ params: { id: voce.data.id }, props: { voce } }));
+}
+
+const { voce } = Astro.props;
+const dati = grafo as unknown as DatiGrafo;
+const { Content } = await render(voce);
+
+const nodo = dati.nodi.find((n) => n.id === voce.data.id)!;
+const perId = new Map(dati.nodi.map((n) => [n.id, n]));
+
+const uscenti = new Map<TipoArco, ArcoGrafo[]>();
+const entranti = new Map<TipoArco, ArcoGrafo[]>();
+for (const arco of dati.archi) {
+  if (arco.tipo === 'contiene') continue;
+  if (arco.da === nodo.id) {
+    if (!uscenti.has(arco.tipo)) uscenti.set(arco.tipo, []);
+    uscenti.get(arco.tipo)!.push(arco);
+  } else if (arco.a === nodo.id) {
+    if (!entranti.has(arco.tipo)) entranti.set(arco.tipo, []);
+    entranti.get(arco.tipo)!.push(arco);
+  }
+}
+
+// voci vicine: vicini diretti ordinati per peso, max 8
+const viciniId = new Set<string>();
+for (const arco of dati.archi) {
+  if (arco.tipo === 'contiene') continue;
+  if (arco.da === nodo.id) viciniId.add(arco.a);
+  if (arco.a === nodo.id) viciniId.add(arco.da);
+}
+const vicine: NodoGrafo[] = [...viciniId]
+  .map((id) => perId.get(id)!)
+  .sort((a, b) => b.peso - a.peso || a.titolo.localeCompare(b.titolo))
+  .slice(0, 8);
+
+const luoghi = nodo.luoghi.map((id) => perId.get(id)).filter(Boolean) as NodoGrafo[];
+
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'DefinedTerm',
+  name: nodo.titolo,
+  description: nodo.sommario,
+  url: new URL(withBase(`/voce/${nodo.id}`), Astro.site).toString(),
+  inDefinedTermSet: {
+    '@type': 'DefinedTermSet',
+    name: 'Theatrum — atlante dell’esoterismo occidentale',
+    url: new URL(withBase('/'), Astro.site).toString(),
+  },
+});
+
+const gruppi = (mappa: Map<TipoArco, ArcoGrafo[]>) =>
+  [...mappa.entries()].sort(([a], [b]) => a.localeCompare(b));
+---
+
+<Base titolo={nodo.titolo} descrizione={nodo.sommario} jsonLd={jsonLd}>
+  <article class="mx-auto max-w-6xl px-4 py-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
+    <div class="min-w-0">
+      <header>
+        <p class="text-xs uppercase tracking-wide font-medium" style={`color: var(--parte-${nodo.parte})`}>
+          {ETICHETTE_TIPO_NODO[nodo.tipo]} · {NOMI_PARTE[nodo.parte]}
+        </p>
+        <h1 class="font-serif text-4xl mt-1 leading-tight">{nodo.titolo}</h1>
+        <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm" style="color: var(--testo-tenue)">
+          {nodo.periodo && <span>{formattaPeriodo(nodo.periodo)}</span>}
+          {
+            luoghi.length > 0 && (
+              <span>
+                {luoghi.map((l, i) => (
+                  <>
+                    {i > 0 && ', '}
+                    <a class="underline decoration-dotted hover:text-accento" href={withBase(`/voce/${l.id}`)}>
+                      {l.titolo}
+                    </a>
+                  </>
+                ))}
+              </span>
+            )
+          }
+          {nodo.alias.length > 0 && <span>anche: {nodo.alias.join(' · ')}</span>}
+        </p>
+        <p class="prosa mt-5 text-lg" style="font-style: italic">{nodo.sommario}</p>
+      </header>
+
+      <div class="prosa mt-6">
+        <Content />
+      </div>
+
+      {
+        voce.data.fonti.length > 0 && (
+          <section class="mt-8" aria-labelledby="titolo-fonti">
+            <h2 id="titolo-fonti" class="text-sm font-semibold text-accento">
+              Fonti
+            </h2>
+            <ul class="mt-2 text-sm space-y-1" style="color: var(--testo-tenue)">
+              {voce.data.fonti.map((f) => (
+                <li>{f}</li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+    </div>
+
+    <aside class="min-w-0 space-y-6" aria-label="Relazioni e voci vicine">
+      <EgoGraph centro={nodo.id} client:visible />
+
+      <section aria-labelledby="titolo-relazioni">
+        <h2 id="titolo-relazioni" class="text-sm font-semibold text-accento">Relazioni</h2>
+        {
+          gruppi(uscenti).map(([tipo, archi]) => (
+            <div>
+              <h3 class="mt-3 text-[0.7rem] uppercase tracking-wide font-semibold" style="color: var(--testo-tenue)">
+                {ETICHETTE_TIPO_ARCO[tipo]}
+                {tipo === 'attribuzione_infondata' && ' (genealogia leggendaria)'}
+              </h3>
+              <ul class="mt-1 space-y-1.5">
+                {archi.map((arco) => (
+                  <li class="text-sm leading-snug">
+                    <a class="underline decoration-dotted underline-offset-2 hover:text-accento" href={withBase(`/voce/${arco.a}`)}>
+                      {perId.get(arco.a)?.titolo}
+                    </a>
+                    {arco.nota && (
+                      <span class="block text-xs" style="color: var(--testo-tenue)">
+                        {arco.nota}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+        {
+          gruppi(entranti).map(([tipo, archi]) => (
+            <div>
+              <h3 class="mt-3 text-[0.7rem] uppercase tracking-wide font-semibold" style="color: var(--testo-tenue)">
+                ← {ETICHETTE_TIPO_ARCO[tipo]}
+                {tipo === 'attribuzione_infondata' && ' (genealogia leggendaria)'}
+              </h3>
+              <ul class="mt-1 space-y-1.5">
+                {archi.map((arco) => (
+                  <li class="text-sm leading-snug">
+                    <a class="underline decoration-dotted underline-offset-2 hover:text-accento" href={withBase(`/voce/${arco.da}`)}>
+                      {perId.get(arco.da)?.titolo}
+                    </a>
+                    {arco.nota && (
+                      <span class="block text-xs" style="color: var(--testo-tenue)">
+                        {arco.nota}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </section>
+
+      {
+        vicine.length > 0 && (
+          <nav aria-labelledby="titolo-vicine" id="voci-vicine">
+            <h2 id="titolo-vicine" class="text-sm font-semibold text-accento">
+              Voci vicine
+            </h2>
+            <ul class="mt-2 space-y-1">
+              {vicine.map((v) => (
+                <li>
+                  <a
+                    class="voce-vicina block rounded border border-bordo px-2.5 py-1.5 text-sm hover:bg-incassato focus-visible:bg-incassato"
+                    href={withBase(`/voce/${v.id}`)}
+                  >
+                    <span class="font-medium">{v.titolo}</span>
+                    <span class="block text-xs" style="color: var(--testo-tenue)">
+                      {ETICHETTE_TIPO_NODO[v.tipo]}
+                      {v.periodo ? ` · ${formattaPeriodo(v.periodo)}` : ''}
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <p class="mt-2 text-xs" style="color: var(--testo-tenue)">
+              Scorciatoie: <kbd>[</kbd> e <kbd>]</kbd> scorrono le voci vicine, <kbd>Invio</kbd> apre.
+            </p>
+          </nav>
+        )
+      }
+
+      <p class="text-sm">
+        <a class="underline text-accento" href={withBase(`/grafo?nodo=${nodo.id}`)}>
+          Vedi questa voce nel grafo →
+        </a>
+      </p>
+    </aside>
+  </article>
+</Base>
+
+<script>
+  // Navigazione a tastiera fra voci correlate: [ e ] spostano il fuoco
+  // lungo l'elenco delle voci vicine, Invio apre (comportamento nativo dei link).
+  const vicine = Array.from(document.querySelectorAll<HTMLAnchorElement>('.voce-vicina'));
+  if (vicine.length > 0) {
+    let indice = -1;
+    document.addEventListener('keydown', (evento) => {
+      if (evento.target instanceof HTMLInputElement || evento.target instanceof HTMLTextAreaElement) return;
+      if (evento.key === ']') {
+        indice = (indice + 1) % vicine.length;
+        vicine[indice]?.focus();
+      } else if (evento.key === '[') {
+        indice = indice <= 0 ? vicine.length - 1 : indice - 1;
+        vicine[indice]?.focus();
+      }
+    });
+  }
+</script>

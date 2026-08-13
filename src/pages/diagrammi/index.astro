@@ -1,0 +1,57 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/percorsi-url';
+
+const DIAGRAMMI = [
+  {
+    slug: 'albero-sefirotico',
+    titolo: 'L’albero sefirotico',
+    testo: 'Dieci sefirot e ventidue sentieri nelle coordinate canoniche, con il pannello delle corrispondenze — e l’avvertenza sul loro statuto tardo.',
+  },
+  {
+    slug: 'opera-alchemica',
+    titolo: 'Le fasi dell’opera',
+    testo: 'Nigredo, albedo, citrinitas, rubedo in scrollytelling, con la sequenza degli uccelli e il solve et coagula.',
+  },
+  {
+    slug: 'tre-mondi',
+    titolo: 'I tre mondi di Agrippa',
+    testo: 'Elementare, celeste, intellettuale: la struttura del De occulta philosophia con le voci collegate a ciascun livello.',
+  },
+  {
+    slug: 'ruota-corrispondenze',
+    titolo: 'La ruota delle corrispondenze',
+    testo: 'Pianeti, metalli, giorni, organi: il sistema storico della medicina astrologica — dichiarato come storico, non come medicina.',
+  },
+];
+---
+
+<Base
+  titolo="Diagrammi"
+  descrizione="I diagrammi su misura dell'atlante: albero sefirotico, fasi dell'opera alchemica, tre mondi di Agrippa, ruota delle corrispondenze."
+>
+  <div class="mx-auto max-w-4xl px-4 py-12">
+    <h1 class="font-serif text-3xl">Diagrammi</h1>
+    <p class="mt-2 max-w-2xl text-sm" style="color: var(--testo-tenue)">
+      Quattro strutture che il grafo non può rendere: disegnate a mano nelle loro coordinate
+      tradizionali, non generate da un layout automatico.
+    </p>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2">
+      {
+        DIAGRAMMI.map((diagramma) => (
+          <a
+            href={withBase(`/diagrammi/${diagramma.slug}`)}
+            class="group rounded-lg border border-bordo bg-rialzato p-5 hover:border-bordo-forte"
+          >
+            <h2 class="font-serif text-xl text-accento group-hover:underline underline-offset-4">
+              {diagramma.titolo} →
+            </h2>
+            <p class="mt-2 text-sm" style="color: var(--testo-tenue)">
+              {diagramma.testo}
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Base>

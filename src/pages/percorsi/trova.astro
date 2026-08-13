@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import PathFinder from '../../components/islands/PathFinder';
+import { withBase } from '../../lib/percorsi-url';
+---
+
+<Base
+  titolo="Trova un cammino"
+  descrizione="Scegli due voci dell'atlante: il cammino più breve che le collega, reso come catena di relazioni — con le genealogie leggendarie escluse di default."
+>
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="font-serif text-3xl">Trova un cammino</h1>
+    <p class="mt-2 max-w-2xl text-sm" style="color: var(--testo-tenue)">
+      Il cammino minimo fra due voci qualsiasi, raccontato come catena di relazioni («Ficino
+      <em>deriva da</em> Neoplatonismo, che <em>influenza</em>…»). Se un cammino non esiste, è
+      un’informazione sul grafo, non un errore.
+    </p>
+    <div class="mt-6">
+      <PathFinder client:load />
+    </div>
+    <noscript>
+      <p class="mt-4">
+        Questo strumento richiede JavaScript. Le relazioni di ogni voce sono elencate nelle
+        <a class="underline text-accento" href={withBase('/grafo/elenco')}>pagine delle voci</a>.
+      </p>
+    </noscript>
+  </div>
+</Base>

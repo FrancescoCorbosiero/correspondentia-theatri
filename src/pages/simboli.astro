@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import grafo from '../generated/graph.json';
+import type { DatiGrafo } from '../lib/tipi-grafo';
+import { withBase } from '../lib/percorsi-url';
+import { GLIFI_TIPO } from '../lib/icone';
+import { ETICHETTE_TIPO_NODO } from '../lib/schema';
+
+const dati = grafo as unknown as DatiGrafo;
+const perId = new Map(dati.nodi.map((n) => [n.id, n]));
+const simboli = dati.nodi
+  .filter((n) => n.tipo === 'simbolo')
+  .sort((a, b) => b.peso - a.peso || a.titolo.localeCompare(b.titolo, 'it'));
+
+// per ogni simbolo: chi lo impiega (archi usa_simbolo in entrata) e i legami fra simboli
+const impieghi = new Map<string, { id: string; titolo: string; tipo: string; nota?: string }[]>();
+for (const arco of dati.archi) {
+  if (arco.tipo !== 'usa_simbolo') continue;
+  const bersaglio = perId.get(arco.a);
+  const sorgente = perId.get(arco.da);
+  if (!bersaglio || bersaglio.tipo !== 'simbolo' || !sorgente) continue;
+  if (!impieghi.has(arco.a)) impieghi.set(arco.a, []);
+  const voce: { id: string; titolo: string; tipo: string; nota?: string } = {
+    id: sorgente.id,
+    titolo: sorgente.titolo,
+    tipo: ETICHETTE_TIPO_NODO[sorgente.tipo],
+  };
+  if (arco.nota) voce.nota = arco.nota;
+  impieghi.get(arco.a)!.push(voce);
+}
+---
+
+<Base
+  titolo="Atlante dei simboli"
+  descrizione="I simboli ricorrenti dell'esoterismo occidentale — albero, serpente, labirinto, morte e rinascita — con le correnti e le opere che li impiegano."
+>
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <h1 class="font-serif text-3xl">Atlante dei simboli</h1>
+    <p class="mt-2 max-w-2xl text-sm" style="color: var(--testo-tenue)">
+      {simboli.length} simboli, ciascuno con il sottografo di chi lo impiega. La regola della Parte
+      V vale anche qui: repertorio di occorrenze, mai tavola di equivalenze — un simbolo non
+      «significa», lavora.
+    </p>
+
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        simboli.map((simbolo) => {
+          const usato = (impieghi.get(simbolo.id) ?? []).sort((x, y) => x.titolo.localeCompare(y.titolo, 'it'));
+          return (
+            <article class="rounded-lg border border-bordo bg-rialzato p-4 flex flex-col">
+              <h2 class="font-serif text-xl flex items-center gap-2">
+                <svg viewBox="0 0 24 24" class="size-5 shrink-0" aria-hidden="true" style={`color: var(--parte-${simbolo.parte})`}>
+                  <path d={GLIFI_TIPO.simbolo} fill="currentColor" fill-rule="evenodd" />
+                </svg>
+                <a class="hover:text-accento underline-offset-4 hover:underline" href={withBase(`/voce/${simbolo.id}`)}>
+                  {simbolo.titolo}
+                </a>
+              </h2>
+              <p class="mt-2 text-sm leading-relaxed">{simbolo.sommario}</p>
+              {usato.length > 0 && (
+                <div class="mt-3 pt-3 border-t border-bordo text-xs">
+                  <h3 class="font-semibold uppercase tracking-wide" style="color: var(--testo-tenue)">
+                    Lo impiegano
+                  </h3>
+                  <ul class="mt-1.5 flex flex-wrap gap-1.5">
+                    {usato.map((chi) => (
+                      <li>
+                        <a
+                          class="inline-block rounded-full border border-bordo px-2 py-0.5 hover:bg-incassato"
+                          href={withBase(`/voce/${chi.id}`)}
+                          title={chi.nota}
+                        >
+                          {chi.titolo}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</Base>

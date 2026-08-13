@@ -1,0 +1,59 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/percorsi-url';
+
+const capitoli = (await getCollection('capitoli')).sort((a, b) => a.data.ordine - b.data.ordine);
+---
+
+<Base
+  titolo="Leggi il volume"
+  descrizione="Il volume in modalità lineare: le sei parti nell'ordine originale, con cronologia, glossario e appendici. Parità di contenuto con il grafo."
+>
+  <div class="mx-auto max-w-3xl px-4 py-12">
+    <h1 class="font-serif text-3xl">Leggi il volume</h1>
+    <p class="mt-2 text-sm max-w-xl" style="color: var(--testo-tenue)">
+      L’ordine di lettura originale. Nulla esiste solo nel grafo: ciò che l’atlante smonta in voci,
+      qui si legge di seguito. La progressione è salvata sul tuo dispositivo.
+    </p>
+
+    <ol class="mt-8 space-y-2" id="indice-capitoli">
+      {
+        capitoli.map((capitolo) => (
+          <li>
+            <a
+              href={withBase(`/leggi/${capitolo.id}`)}
+              data-capitolo={capitolo.id}
+              class="capitolo-link flex items-baseline gap-3 rounded border border-bordo bg-rialzato px-4 py-3 hover:border-bordo-forte"
+            >
+              <span class="segno-lettura text-sm" aria-hidden="true" style="color: var(--testo-tenue)">
+                ○
+              </span>
+              <span class="font-serif text-lg">{capitolo.data.titolo}</span>
+              <span class="visita-sr sr-only" />
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+    <p class="mt-4 text-xs" role="status" id="progresso-lettura" style="color: var(--testo-tenue)"></p>
+  </div>
+</Base>
+
+<script>
+  // Progressione di lettura: capitoli aperti, salvati in localStorage.
+  const letti = new Set<string>(JSON.parse(localStorage.getItem('theatrum-letti') ?? '[]'));
+  const collegamenti = document.querySelectorAll<HTMLAnchorElement>('.capitolo-link');
+  let contati = 0;
+  for (const collegamento of collegamenti) {
+    const id = collegamento.dataset.capitolo!;
+    if (letti.has(id)) {
+      contati++;
+      collegamento.querySelector('.segno-lettura')!.textContent = '●';
+      (collegamento.querySelector('.segno-lettura') as HTMLElement).style.color = 'var(--accento)';
+      collegamento.querySelector('.visita-sr')!.textContent = '(già aperto)';
+    }
+  }
+  document.getElementById('progresso-lettura')!.textContent =
+    contati > 0 ? `${contati} di ${collegamenti.length} capitoli aperti.` : '';
+</script>

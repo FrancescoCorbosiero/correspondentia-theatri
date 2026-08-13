@@ -1,0 +1,78 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PercorsoScroller from '../../components/islands/PercorsoScroller';
+import grafo from '../../generated/graph.json';
+import type { DatiGrafo } from '../../lib/tipi-grafo';
+import { formattaPeriodo, withBase } from '../../lib/percorsi-url';
+import { ETICHETTE_TIPO_NODO } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  const percorsi = await getCollection('percorsi');
+  return percorsi.map((p) => ({ params: { slug: p.data.slug }, props: { percorso: p } }));
+}
+
+const { percorso } = Astro.props;
+const dati = grafo as unknown as DatiGrafo;
+const perId = new Map(dati.nodi.map((n) => [n.id, n]));
+const { titolo, sottotitolo, tappe } = percorso.data;
+const idsTappe = tappe.map((t) => t.voce);
+const { Content } = await render(percorso);
+---
+
+<Base titolo={titolo} descrizione={`Percorso d'autore: ${sottotitolo}. ${tappe.length} tappe attraverso l'atlante.`}>
+  <div class="percorso-layout mx-auto max-w-6xl px-4 py-10">
+    <header class="max-w-2xl">
+      <p class="text-xs uppercase tracking-wide font-medium" style="color: var(--testo-tenue)">
+        Percorso d’autore · {tappe.length} tappe
+      </p>
+      <h1 class="font-serif text-4xl mt-1">{titolo}</h1>
+      <p class="mt-1 font-serif text-xl" style="color: var(--testo-tenue)">{sottotitolo}</p>
+      <div class="prosa mt-4">
+        <Content />
+      </div>
+    </header>
+
+    <div class="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px]">
+      <ol class="space-y-10 max-w-2xl" id="tappe-percorso">
+        {
+          tappe.map((tappa, i) => {
+            const nodo = perId.get(tappa.voce)!;
+            return (
+              <li class="tappa-percorso" data-voce={tappa.voce} id={`tappa-${i + 1}`}>
+                <p class="text-xs font-medium" style={`color: var(--parte-${nodo.parte})`}>
+                  Tappa {i + 1} · {ETICHETTE_TIPO_NODO[nodo.tipo]}
+                  {nodo.periodo ? ` · ${formattaPeriodo(nodo.periodo)}` : ''}
+                </p>
+                <h2 class="font-serif text-2xl mt-0.5">
+                  <a class="hover:text-accento" href={withBase(`/voce/${tappa.voce}`)}>
+                    {tappa.titolo ?? nodo.titolo}
+                  </a>
+                </h2>
+                <p class="prosa mt-2">{tappa.testo}</p>
+                <p class="mt-2 text-sm">
+                  <a class="underline decoration-dotted text-accento" href={withBase(`/voce/${tappa.voce}`)}>
+                    Apri la voce →
+                  </a>
+                </p>
+              </li>
+            );
+          })
+        }
+      </ol>
+
+      <div class="percorso-grafo hidden lg:block" aria-hidden="true">
+        <div class="sticky top-16">
+          <PercorsoScroller tappe={idsTappe} client:only="react" />
+          <p class="mt-2 text-xs" style="color: var(--testo-tenue)">
+            Il grafo evidenzia il cammino man mano che si scorre il testo.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="mt-12 border-t border-bordo pt-4 text-sm" aria-label="Altri percorsi">
+      <a class="underline text-accento" href={withBase('/percorsi')}>← Tutti i percorsi</a>
+    </nav>
+  </div>
+</Base>

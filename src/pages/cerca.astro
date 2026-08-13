@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import CercaFullText from '../components/islands/CercaFullText';
+---
+
+<Base
+  titolo="Cerca"
+  descrizione="Ricerca su titoli, alias, sommari e testo completo delle voci dell'atlante. Indice pre-generato, nessuna chiamata a servizi esterni."
+>
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <h1 class="font-serif text-3xl">Cerca</h1>
+    <p class="mt-1 mb-6 text-sm" style="color: var(--testo-tenue)">
+      Da qualunque pagina: <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>K</kbd> apre la ricerca rapida.
+    </p>
+    <CercaFullText client:load />
+    <noscript>
+      <p class="mt-4">
+        La ricerca richiede JavaScript. In alternativa, l’<a
+          class="underline text-accento"
+          href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/grafo/elenco`}>elenco delle voci</a
+        > è filtrabile e completo.
+      </p>
+    </noscript>
+  </div>
+</Base>

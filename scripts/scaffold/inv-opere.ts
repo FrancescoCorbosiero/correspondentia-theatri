@@ -1,0 +1,395 @@
+import { type DefVoce } from './tipi';
+
+/** Opere: per le pseudoepigrafe, datazione reale nel periodo e datazione dichiarata nel corpo (§4.2). */
+export const OPERE: DefVoce[] = [
+  {
+    id: 'lamine-auree',
+    titolo: 'Lamine auree orfiche',
+    tipo: 'opera',
+    parte: 2,
+    peso: 2,
+    periodo: [-400, -200],
+    alias: ['lamine orfiche', 'laminette auree'],
+    sommario:
+      'Sottili fogli d’oro deposti nelle tombe di Magna Grecia e Creta con istruzioni per il defunto: quale fonte evitare nell’aldilà, che cosa rispondere ai guardiani. Letteratura di viaggio ultraterreno con formule di riconoscimento.',
+    archi: [['orfismo', 'deriva_da', 'Il documento materiale più diretto della corrente']],
+  },
+  {
+    id: 'corpus-hermeticum',
+    titolo: 'Corpus Hermeticum',
+    tipo: 'opera',
+    parte: 2,
+    peso: 5,
+    periodo: [100, 300],
+    luoghi: ['alessandria'],
+    alias: ['Pimander', 'Poimandres', 'Ermetica'],
+    sommario:
+      'Diciassette trattati greci composti fra I e III secolo in ambiente alessandrino e attribuiti a Ermete Trismegisto; creduti antichissimi fino alla datazione di Casaubon del 1614.',
+    archi: [
+      ['ermetismo', 'elabora', 'Il nucleo testuale dell’ermetismo filosofico'],
+      ['pseudoepigrafia', 'pratica', 'Datazione dichiarata: età mosaica; datazione reale: età imperiale'],
+      ['macrocosmo-microcosmo', 'elabora', 'La discesa e risalita attraverso le sfere del Poimandres'],
+    ],
+    fonti: ['Copenhaver, Hermetica', 'Festugière, La Révélation d’Hermès Trismégiste'],
+  },
+  {
+    id: 'tavola-di-smeraldo',
+    titolo: 'Tavola di Smeraldo',
+    tipo: 'opera',
+    parte: 2,
+    peso: 4,
+    periodo: [750, 850],
+    alias: ['Tabula Smaragdina'],
+    sommario:
+      'Il breve testo la cui redazione più antica compare in un’opera araba fra VIII e IX secolo: «ciò che è in basso è come ciò che è in alto» diventerà la sintesi proverbiale dell’intero campo. Attribuita a Ermete: pseudoepigrafia esemplare.',
+    archi: [
+      ['corrispondenze', 'elabora', 'La formula-sintesi del principio'],
+      ['alchimia', 'influenza', 'Il testo di riferimento citato da tutta la tradizione'],
+      ['pseudoepigrafia', 'pratica', 'Datazione dichiarata: primordiale; reale: VIII-IX secolo'],
+    ],
+    fonti: ['Principe, The Secrets of Alchemy'],
+  },
+  {
+    id: 'oracoli-caldaici',
+    titolo: 'Oracoli Caldaici',
+    tipo: 'opera',
+    parte: 2,
+    peso: 2,
+    periodo: [150, 200],
+    sommario:
+      'La raccolta oracolare in esametri del II secolo che i neoplatonici trattarono come scrittura rivelata: la fonte della teurgia, attribuita a una rivelazione «caldaica» ricevuta dai due Giuliani.',
+    archi: [
+      ['teurgia', 'influenza', 'Il testo sacro della pratica teurgica'],
+      ['neoplatonismo', 'influenza'],
+    ],
+  },
+  {
+    id: 'enneadi',
+    titolo: 'Enneadi',
+    tipo: 'opera',
+    parte: 2,
+    peso: 4,
+    periodo: [250, 301],
+    alias: ['Enneades'],
+    sommario:
+      'I cinquantaquattro trattati di Plotino ordinati da Porfirio in sei gruppi di nove: la summa dell’emanazionismo, il testo metafisico più influente sull’esoterismo occidentale dopo il Timeo.',
+    archi: [
+      ['neoplatonismo', 'elabora'],
+      ['emanazione', 'elabora'],
+    ],
+  },
+  {
+    id: 'de-mysteriis',
+    titolo: 'De mysteriis',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [295, 305],
+    alias: ['De mysteriis Aegyptiorum', 'Sui misteri'],
+    sommario:
+      'La risposta di Giamblico alle obiezioni di Porfirio: la difesa filosofica del rito. Il libro che fonda la teurgia e, con essa, il modello di tutta la magia cerimoniale occidentale come liturgia di ascesa.',
+    archi: [
+      ['teurgia', 'elabora'],
+      ['magia-cerimoniale', 'influenza', 'Il modello: il rito non costringe il divino, lo rende operante'],
+    ],
+    fonti: ['Giamblico, De mysteriis'],
+  },
+  {
+    id: 'sefer-yetzirah',
+    titolo: 'Sefer Yetzirah',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [200, 600],
+    alias: ['Libro della Formazione'],
+    sommario:
+      'Il breve trattato di datazione discussa (III-VI secolo) che descrive la creazione mediante le dieci sefirot e le ventidue lettere: la radice remota su cui la cabala medievale costruirà tutto.',
+    archi: [
+      ['cabala', 'influenza', 'Il testo-seme della speculazione sulle sefirot'],
+      ['numeri-e-geometria', 'usa_simbolo', 'Numeri e lettere come strumenti della creazione'],
+    ],
+    fonti: ['Scholem, La Cabala'],
+  },
+  {
+    id: 'zohar',
+    titolo: 'Zohar',
+    tipo: 'opera',
+    parte: 2,
+    peso: 5,
+    periodo: [1280, 1290],
+    alias: ['Libro dello Splendore', 'Sefer ha-Zohar'],
+    sommario:
+      'Il testo canonico della cabala: vasto commento midrashico alla Torah in aramaico artificiale, composto in Castiglia negli anni Ottanta del Duecento e attribuito a Shimon bar Yochai. Datazione dichiarata: II secolo; reale: XIII.',
+    archi: [
+      ['cabala', 'elabora', 'Il canone della corrente'],
+      ['pseudoepigrafia', 'pratica', 'L’attribuzione al tannaita come collocazione nel tempo originario'],
+      ['emanazione', 'elabora'],
+      ['albero-sefirotico', 'usa_simbolo'],
+    ],
+    fonti: ['Scholem, Le grandi correnti della mistica ebraica'],
+  },
+  {
+    id: 'picatrix',
+    titolo: 'Picatrix',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [950, 1000],
+    alias: ['Ghayat al-Hakim', 'Il fine del saggio'],
+    sommario:
+      'La versione latina (via castigliano, 1256) di un trattato arabo del X secolo: il manuale di magia astrale più influente del Medioevo, fonte diretta del De vita di Ficino.',
+    archi: [
+      ['magia-medievale', 'elabora', 'Il manuale-simbolo della magia astrale colta'],
+      ['talismani', 'elabora', 'Le immagini astrologiche e i tempi elettivi'],
+    ],
+  },
+  {
+    id: 'de-vita',
+    titolo: 'De vita libri tres',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [1489, 1489],
+    luoghi: ['firenze'],
+    alias: ['De vita coelitus comparanda'],
+    sommario:
+      'Il trattato di Ficino su come «attirare la vita dal cielo»: insieme igiene per studiosi malinconici e manuale di talismani — al punto che l’autore, imbarazzato, vi premise un’apologia.',
+    archi: [
+      ['magia-rinascimentale', 'elabora'],
+      ['talismani', 'elabora'],
+      ['astrologia', 'elabora', 'La medicina astrale per i malinconici saturnini'],
+    ],
+    fonti: ['Walker, Spiritual and Demonic Magic'],
+  },
+  {
+    id: 'oratio-de-hominis-dignitate',
+    titolo: 'Oratio de hominis dignitate',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [1486, 1486],
+    alias: ['Discorso sulla dignità dell’uomo'],
+    sommario:
+      'Il discorso mai pronunciato di Pico per la disputa proibita delle novecento tesi: l’uomo camaleonte senza natura fissa, libero di degradarsi o ascendere — l’antropologia che tutta la magia rinascimentale presuppone.',
+    archi: [
+      ['magia-rinascimentale', 'influenza', 'La giustificazione antropologica dell’operare magico'],
+    ],
+  },
+  {
+    id: 'de-occulta-philosophia',
+    titolo: 'De occulta philosophia',
+    tipo: 'opera',
+    parte: 2,
+    peso: 4,
+    periodo: [1510, 1533],
+    alias: ['Filosofia occulta'],
+    sommario:
+      'Il manuale di Agrippa in tre libri — mondo elementare, celeste, intellettuale — che l’Europa leggerà per tre secoli: lo schema dei tre mondi resterà lo standard della magia occidentale fino alla Golden Dawn.',
+    archi: [
+      ['magia-rinascimentale', 'elabora'],
+      ['magia-naturale', 'elabora', 'Il primo libro: le virtù occulte delle cose'],
+      ['magia-cerimoniale', 'elabora', 'Il terzo libro: nomi, angeli, cerimoniale'],
+      ['golden-dawn', 'influenza', 'Lo schema dei tre mondi arriva fino ai rituali vittoriani'],
+    ],
+  },
+  {
+    id: 'fama-fraternitatis',
+    titolo: 'Fama Fraternitatis',
+    tipo: 'opera',
+    parte: 2,
+    peso: 4,
+    periodo: [1614, 1615],
+    alias: ['Fama', 'Confessio Fraternitatis'],
+    sommario:
+      'Il primo manifesto rosacrociano (con la Confessio del 1615): annuncia una confraternita segreta fondata da Christian Rosenkreutz e una riforma universale del sapere. Della fraternità non esiste alcuna prova.',
+    archi: [
+      ['rosacrocianesimo', 'elabora', 'L’atto di nascita — testuale — della corrente'],
+      ['invenzione-di-tradizione', 'elabora', 'Un mito fondativo che genera la realtà che rivendica'],
+    ],
+    fonti: ['Yates, L’illuminismo dei Rosacroce'],
+  },
+  {
+    id: 'nozze-chimiche',
+    titolo: 'Le nozze chimiche di Christian Rosenkreutz',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [1616, 1616],
+    alias: ['Chymische Hochzeit'],
+    sommario:
+      'Il romanzo allegorico in sette giornate: un itinerario alchemico e nuziale che Johann Valentin Andreae riconoscerà come opera propria giovanile, un ludibrium — un gioco che mezza Europa prese sul serio.',
+    archi: [
+      ['rosacrocianesimo', 'elabora'],
+      ['coniunctio', 'usa_simbolo', 'Le nozze regali come coniunctio narrata'],
+      ['opera-alchemica', 'usa_simbolo', 'Le sette giornate come fasi dell’opera'],
+    ],
+    fonti: ['Yates, L’illuminismo dei Rosacroce'],
+  },
+  {
+    id: 'atalanta-fugiens',
+    titolo: 'Atalanta fugiens',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [1617, 1617],
+    sommario:
+      'Il libro di emblemi di Michael Maier: cinquanta incisioni, epigrammi e fughe musicali a tre voci. Il processo di laboratorio ormai indistinguibile da un itinerario dell’anima — e un’opera d’arte totale ante litteram.',
+    archi: [
+      ['alchimia', 'elabora', 'Il vertice dell’alchimia emblematica'],
+      ['esoterismo-e-musica', 'elabora', 'Le fughe come terza voce dell’emblema'],
+    ],
+    fonti: ['Principe, The Secrets of Alchemy'],
+  },
+  {
+    id: 'rosarium-philosophorum',
+    titolo: 'Rosarium philosophorum',
+    tipo: 'opera',
+    parte: 2,
+    peso: 2,
+    periodo: [1550, 1550],
+    sommario:
+      'Il trattato con la celebre serie di incisioni della coppia regale: incontro, bagno, congiunzione, morte, resurrezione dell’androgino. La sequenza che Jung porrà al centro della sua lettura psicologica.',
+    archi: [
+      ['coniunctio', 'usa_simbolo', 'La versione figurativa canonica dello schema nuziale'],
+      ['alchimia-e-psicologia', 'influenza', 'La base iconografica della Psicologia del transfert junghiana'],
+    ],
+  },
+  {
+    id: 'clavicula-salomonis',
+    titolo: 'Clavicula Salomonis',
+    tipo: 'opera',
+    parte: 4,
+    peso: 2,
+    periodo: [1500, 1700],
+    alias: ['Chiave di Salomone', 'Goetia', 'Lemegeton'],
+    sommario:
+      'Il più celebre dei grimori, attribuito a Salomone e composto in età moderna su materiali stratificati; con il Lemegeton e la sua Goetia dai settantadue spiriti. Pseudoepigrafia regale al servizio della magia cerimoniale.',
+    archi: [
+      ['magia-cerimoniale', 'elabora', 'Il modello del genere: cerchi, nomi, tempi, strumenti'],
+      ['pseudoepigrafia', 'pratica', 'Datazione dichiarata: salomonica; reale: XVI-XVII secolo'],
+    ],
+  },
+  {
+    id: 'dogme-et-rituel',
+    titolo: 'Dogme et rituel de la haute magie',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [1854, 1856],
+    luoghi: ['parigi'],
+    sommario:
+      'L’opera con cui Éliphas Lévi fonda l’occultismo moderno: magia cerimoniale, cabala, alchimia e tarocchi unificati in un solo sistema. L’invenzione più efficace dell’Ottocento esoterico.',
+    archi: [
+      ['occultismo', 'elabora'],
+      ['tarocchi', 'elabora', 'La corrispondenza fra arcani e lettere ebraiche'],
+    ],
+  },
+  {
+    id: 'dottrina-segreta',
+    titolo: 'La dottrina segreta',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [1888, 1888],
+    alias: ['The Secret Doctrine'],
+    sommario:
+      'La sintesi cosmica di Blavatsky: cicli di manifestazione, gerarchie di Maestri, evoluzione spirituale per «razze-radici» — impianto che ha fornito materiale a elaborazioni razziste successive e va nominato per ciò che è.',
+    archi: [
+      ['teosofia', 'elabora'],
+      ['concordanza-delle-tradizioni', 'elabora', 'Tutte le tradizioni come frammenti di una dottrina unica'],
+    ],
+  },
+  {
+    id: 'liber-al',
+    titolo: 'Liber AL vel Legis',
+    tipo: 'opera',
+    parte: 2,
+    peso: 3,
+    periodo: [1904, 1904],
+    luoghi: ['il-cairo'],
+    alias: ['Il libro della Legge'],
+    sommario:
+      'Il testo fondativo di Thelema, ricevuto secondo il racconto di Crowley al Cairo nel 1904: la Volontà vera come legge, intesa come vocazione essenziale cui l’io ordinario deve subordinarsi — e sistematicamente fraintesa.',
+    archi: [['thelema', 'elabora']],
+  },
+  {
+    id: 'psicologia-e-alchimia',
+    titolo: 'Psicologia e alchimia',
+    tipo: 'opera',
+    parte: 6,
+    peso: 3,
+    periodo: [1944, 1944],
+    sommario:
+      'L’opera in cui Jung sistematizza la tesi della proiezione: i testi alchemici come documenti di processi interiori. Ha reso leggibile un corpus che sembrava delirante — al prezzo, dicono gli storici, di cancellare ciò che gli alchimisti facevano.',
+    archi: [
+      ['alchimia-e-psicologia', 'elabora'],
+      ['alchimia', 'rilegge'],
+    ],
+    fonti: ['Jung, Psicologia e alchimia'],
+  },
+  {
+    id: 'rider-waite-smith',
+    titolo: 'Mazzo Rider-Waite-Smith',
+    tipo: 'opera',
+    parte: 4,
+    peso: 2,
+    periodo: [1909, 1909],
+    luoghi: ['londra'],
+    alias: ['tarocchi Rider-Waite', 'Pamela Colman Smith'],
+    sommario:
+      'Il mazzo del 1909, disegnato da Pamela Colman Smith su progetto di A.E. Waite: la prima serie con scene figurate anche nei minori. Ha fissato l’immaginario visivo dei tarocchi ancora corrente.',
+    archi: [
+      ['tarocchi', 'elabora', 'Lo standard iconografico del Novecento'],
+      ['golden-dawn', 'deriva_da', 'Entrambi gli autori ne furono membri'],
+      ['donne-ed-esoterismo', 'elabora', 'La mano che tutti conoscono e il nome che pochi citano'],
+    ],
+    fonti: ['Decker–Depaulis–Dummett, A Wicked Pack of Cards'],
+  },
+  {
+    id: 'flauto-magico',
+    titolo: 'Il flauto magico',
+    tipo: 'opera',
+    parte: 6,
+    peso: 2,
+    periodo: [1791, 1791],
+    alias: ['Die Zauberflöte'],
+    sommario:
+      'Il singspiel di Mozart e Schikaneder: un percorso iniziatico di derivazione massonica — prove per elementi, tempio della sapienza, luce contro notte — trasparente per il pubblico dell’epoca.',
+    archi: [
+      ['massoneria', 'deriva_da', 'Entrambi gli autori erano fratelli di loggia'],
+      ['iniziazione', 'usa_simbolo', 'Le prove di Tamino e Pamina'],
+      ['esoterismo-e-musica', 'elabora'],
+    ],
+  },
+  {
+    id: 'melencolia-i',
+    titolo: 'Melencolia I',
+    tipo: 'opera',
+    parte: 6,
+    peso: 2,
+    periodo: [1514, 1514],
+    alias: ['Dürer, Melencolia'],
+    sommario:
+      'L’incisione di Dürer con il quadrato magico, il poliedro e gli strumenti abbandonati: probabilmente l’immagine più commentata della storia dell’arte europea, proprio perché resiste alla decifrazione.',
+    archi: [
+      ['esoterismo-e-arte', 'elabora', 'Il caso-limite dell’opera che eccede ogni interpretazione'],
+      ['numeri-e-geometria', 'usa_simbolo', 'Il quadrato magico di Giove'],
+      ['astrologia', 'usa_simbolo', 'Il temperamento saturnino e la malinconia dell’artista'],
+    ],
+  },
+  {
+    id: 'pendolo-di-foucault',
+    titolo: 'Il pendolo di Foucault',
+    tipo: 'opera',
+    parte: 6,
+    peso: 2,
+    periodo: [1988, 1988],
+    sommario:
+      'Il romanzo-diagnosi di Eco: tre redattori inventano per gioco il Piano che li divorerà. La migliore satira mai scritta dello scivolamento dall’esoterismo al complotto — il sospetto che si autoalimenta fino a generare ciò che teme.',
+    archi: [
+      ['esoterismo-e-complottismo', 'elabora', 'La macchina critica del romanzo'],
+      ['esoterismo-e-letteratura', 'elabora', 'L’esoterismo come oggetto, non come fonte'],
+      ['leggenda-templare', 'rilegge', 'Il Piano templare come parodia delle genealogie leggendarie'],
+    ],
+  },
+];

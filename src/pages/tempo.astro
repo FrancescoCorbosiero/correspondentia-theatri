@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import TimelineView from '../components/islands/TimelineView';
+import { withBase } from '../lib/percorsi-url';
+import grafo from '../generated/graph.json';
+
+const datati = grafo.nodi.filter((n) => 'periodo' in n && n.periodo).length;
+---
+
+<Base
+  titolo="Tempo"
+  descrizione="La timeline dell'atlante: le voci datate su corsie per tipo, dallo zoom dei millenni a quello dei decenni, sincronizzata con la vista a grafo."
+>
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="font-serif text-3xl">Tempo</h1>
+    <p class="mt-2 max-w-2xl text-sm" style="color: var(--testo-tenue)">
+      {datati} voci datate su cinque corsie. Selezionando un intervallo puoi riaprire il
+      <a class="underline text-accento" href={withBase('/grafo')}>grafo</a> con lo stesso filtro
+      temporale. Le voci senza data (concetti, simboli, pratiche) sono
+      nell’<a class="underline text-accento" href={withBase('/grafo/elenco')}>elenco completo</a>.
+    </p>
+    <div class="mt-6">
+      <TimelineView client:only="react" />
+    </div>
+    <noscript>
+      <p class="mt-4">
+        La timeline richiede JavaScript. L’<a class="underline text-accento" href={withBase('/grafo/elenco')}
+          >elenco delle voci</a
+        > riporta i periodi di tutte le voci ed è ordinabile per data.
+      </p>
+    </noscript>
+  </div>
+</Base>

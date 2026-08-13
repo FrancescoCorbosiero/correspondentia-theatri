@@ -1,0 +1,83 @@
+---
+import { withBase } from '../lib/percorsi-url';
+
+const attuale = Astro.url.pathname;
+const vociMenu = [
+  { href: '/grafo', etichetta: 'Grafo' },
+  { href: '/cosmo', etichetta: 'Cosmo' },
+  { href: '/tempo', etichetta: 'Tempo' },
+  { href: '/simboli', etichetta: 'Simboli' },
+  { href: '/diagrammi', etichetta: 'Diagrammi' },
+  { href: '/percorsi', etichetta: 'Percorsi' },
+  { href: '/leggi', etichetta: 'Leggi' },
+  { href: '/cerca', etichetta: 'Cerca' },
+];
+
+const eAttivo = (href: string) => attuale.startsWith(withBase(href));
+---
+
+<header class="border-b border-bordo bg-rialzato/80 backdrop-blur-sm sticky top-0 z-40">
+  <nav aria-label="Navigazione principale" class="mx-auto max-w-6xl px-4 flex items-center gap-4 h-12">
+    <a href={withBase('/')} class="font-serif text-lg font-semibold tracking-wide text-accento shrink-0">
+      Theatrum
+    </a>
+    <ul class="flex items-center gap-1 overflow-x-auto text-sm min-w-0">
+      {
+        vociMenu.map((v) => (
+          <li>
+            <a
+              href={withBase(v.href)}
+              aria-current={eAttivo(v.href) ? 'page' : undefined}
+              class:list={[
+                'px-2.5 py-1.5 rounded whitespace-nowrap hover:bg-incassato',
+                eAttivo(v.href) ? 'text-accento font-medium' : 'text-testo',
+              ]}
+            >
+              {v.etichetta}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="ms-auto flex items-center gap-2 shrink-0">
+      <button
+        id="apri-ricerca"
+        type="button"
+        class="hidden sm:flex items-center gap-2 text-xs text-tenue border border-bordo rounded px-2 py-1 hover:bg-incassato"
+        aria-label="Apri la ricerca rapida (Ctrl+K)"
+      >
+        <span aria-hidden="true">⌘K</span>
+        <span>cerca</span>
+      </button>
+      <button
+        id="commuta-tema"
+        type="button"
+        class="text-tenue border border-bordo rounded p-1.5 hover:bg-incassato"
+        aria-label="Attiva o disattiva il tema scuro"
+      >
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path>
+        </svg>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const bottone = document.getElementById('commuta-tema');
+  bottone?.addEventListener('click', () => {
+    const radice = document.documentElement;
+    const scuro = radice.dataset.theme === 'dark';
+    if (scuro) {
+      delete radice.dataset.theme;
+      try {
+        localStorage.setItem('theatrum-tema', 'light');
+      } catch {}
+    } else {
+      radice.dataset.theme = 'dark';
+      try {
+        localStorage.setItem('theatrum-tema', 'dark');
+      } catch {}
+    }
+  });
+</script>

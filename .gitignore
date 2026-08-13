@@ -1,0 +1,17 @@
+# dipendenze e build
+node_modules/
+dist/
+.astro/
+
+# dati generati dalla pipeline (fonte unica: src/content/voci)
+public/data/
+src/generated/
+
+# test
+test-results/
+playwright-report/
+coverage/
+
+# vari
+.DS_Store
+*.log

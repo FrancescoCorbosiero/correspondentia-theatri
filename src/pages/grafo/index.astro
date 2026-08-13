@@ -1,0 +1,95 @@
+---
+import Base from '../../layouts/Base.astro';
+import GraphView from '../../components/islands/grafo/GraphView';
+import { withBase } from '../../lib/percorsi-url';
+---
+
+<Base
+  titolo="Grafo"
+  descrizione="La vista principale dell'atlante: 234 voci dell'esoterismo occidentale collegate da filiazioni documentate e — su richiesta — dalle genealogie leggendarie."
+  pienaAltezza
+  classeMain="relative"
+>
+  <p class="sr-only" id="descrizione-grafo">
+    Vista a grafo interattiva. Tutte le informazioni del grafo sono disponibili anche in forma di
+    tabella nell'elenco delle voci.
+  </p>
+  <div class="flex items-center gap-3 border-b border-bordo bg-rialzato px-4 py-1.5 text-xs">
+    <h1 class="font-medium">Il grafo dell’atlante</h1>
+    <a class="underline text-accento hover:no-underline" href={withBase('/grafo/elenco')}>
+      Versione accessibile: elenco delle voci
+    </a>
+    <a class="underline hover:no-underline ms-auto" href={withBase('/cosmo')}>Vista 3D →</a>
+  </div>
+  <GraphView client:only="react" />
+</Base>
+
+<script>
+  // Avviso di ripiego dalla vista 3D (§5.3): mostrato una volta, congedabile.
+  if (new URLSearchParams(location.search).get('avviso') === 'cosmo') {
+    const barra = document.createElement('div');
+    barra.setAttribute('role', 'status');
+    barra.className = 'fixed top-14 inset-x-0 z-50 mx-auto max-w-lg rounded border border-bordo bg-rialzato px-4 py-2 text-sm shadow';
+    barra.innerHTML =
+      'La vista 3D non era disponibile (WebGL assente o movimento ridotto): questa vista 2D contiene le stesse informazioni. <button class="underline ms-2" type="button">Chiudi</button>';
+    barra.querySelector('button')!.addEventListener('click', () => barra.remove());
+    document.body.append(barra);
+    const url = new URL(location.href);
+    url.searchParams.delete('avviso');
+    history.replaceState(null, '', url);
+  }
+</script>
+
+<style is:global>
+  .vista-grafo {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    height: calc(100% - 2rem);
+    min-height: 0;
+  }
+  .vista-grafo-controlli {
+    overflow-y: auto;
+    padding: 0.75rem;
+    border-right: 1px solid var(--bordo);
+    background: var(--sfondo);
+  }
+  .vista-grafo-canvas {
+    position: relative;
+    min-height: 0;
+    background: var(--sfondo);
+  }
+  .pannello-nodo {
+    position: absolute;
+    top: 2rem;
+    right: 0;
+    bottom: 0;
+    width: min(360px, 90vw);
+    border-left: 1px solid var(--bordo);
+    z-index: 20;
+    max-height: 100%;
+  }
+  @media (max-width: 900px) {
+    .vista-grafo {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: minmax(0, 1fr) auto;
+    }
+    .vista-grafo-controlli {
+      order: 2;
+      border-right: none;
+      border-top: 1px solid var(--bordo);
+      max-height: 38vh;
+    }
+    .pannello-nodo {
+      /* bottom sheet su mobile */
+      top: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: auto;
+      max-height: 65vh;
+      border-left: none;
+      border-top: 2px solid var(--bordo-forte);
+      border-radius: 12px 12px 0 0;
+    }
+  }
+</style>

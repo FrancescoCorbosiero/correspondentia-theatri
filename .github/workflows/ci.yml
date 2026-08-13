@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: ['main', 'claude/**']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verifica:
+    name: Build, test unitari, e2e, budget
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Installa dipendenze
+        run: npm ci
+
+      - name: Pipeline dati + test unitari (schema, grafo, palette deuteranopia, URL)
+        run: npm test
+
+      - name: Build del sito
+        run: npm run build
+
+      - name: Budget bundle della home (< 200 KB gzip)
+        run: node scripts/verifica-bundle.mjs
+
+      - name: Installa Chromium per Playwright
+        run: npx playwright install chromium --with-deps
+
+      - name: Percorsi utente critici (Playwright)
+        run: npx playwright test
+        env:
+          CI: 'true'
+
+      - name: Carica il report Playwright in caso di errore
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

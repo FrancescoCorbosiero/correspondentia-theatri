@@ -1,0 +1,168 @@
+---
+import Base from '../../layouts/Base.astro';
+import grafo from '../../generated/graph.json';
+import type { DatiGrafo } from '../../lib/tipi-grafo';
+import { formattaPeriodo, withBase } from '../../lib/percorsi-url';
+import { ETICHETTE_TIPO_NODO, TIPI_NODO } from '../../lib/schema';
+import { NOMI_PARTE, NOMI_PARTE_BREVI } from '../../lib/palette';
+
+const dati = grafo as unknown as DatiGrafo;
+const nodi = [...dati.nodi].sort((a, b) => a.titolo.localeCompare(b.titolo, 'it'));
+---
+
+<Base
+  titolo="Elenco delle voci"
+  descrizione="Tutte le voci dell'atlante in forma di tabella ordinabile e filtrabile: l'equivalente accessibile della vista a grafo."
+>
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="font-serif text-3xl">Elenco delle voci</h1>
+    <p class="mt-2 max-w-2xl text-sm" style="color: var(--testo-tenue)">
+      La stessa informazione della <a class="underline text-accento" href={withBase('/grafo')}>vista a grafo</a>,
+      in forma di tabella: {dati.nodi.length} voci, ordinabili e filtrabili da tastiera. Le relazioni
+      di ogni voce sono elencate nella sua pagina.
+    </p>
+
+    <form class="mt-6 flex flex-wrap items-end gap-3 text-sm" id="filtri-elenco">
+      <div>
+        <label for="filtro-testo" class="block text-xs font-medium mb-1">Filtra per testo</label>
+        <input
+          id="filtro-testo"
+          type="search"
+          placeholder="titolo, alias, sommario…"
+          class="rounded border border-bordo bg-rialzato px-2 py-1.5 w-64"
+          autocomplete="off"
+        />
+      </div>
+      <div>
+        <label for="filtro-tipo" class="block text-xs font-medium mb-1">Tipo</label>
+        <select id="filtro-tipo" class="rounded border border-bordo bg-rialzato px-2 py-1.5">
+          <option value="">Tutti</option>
+          {TIPI_NODO.map((t) => <option value={t}>{ETICHETTE_TIPO_NODO[t]}</option>)}
+        </select>
+      </div>
+      <div>
+        <label for="filtro-parte" class="block text-xs font-medium mb-1">Parte</label>
+        <select id="filtro-parte" class="rounded border border-bordo bg-rialzato px-2 py-1.5">
+          <option value="">Tutte</option>
+          {[1, 2, 3, 4, 5, 6].map((n) => <option value={String(n)}>{NOMI_PARTE[n]}</option>)}
+        </select>
+      </div>
+      <p class="text-xs" style="color: var(--testo-tenue)" role="status" id="conteggio-elenco"></p>
+    </form>
+
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-sm border-collapse" id="tabella-elenco">
+        <caption class="sr-only">
+          Voci dell'atlante: titolo, tipo, parte, peso, periodo e sommario. Le intestazioni ordinano.
+        </caption>
+        <thead>
+          <tr class="border-b-2 border-bordo-forte text-start">
+            <th scope="col" aria-sort="ascending"><button type="button" data-ordina="titolo">Titolo</button></th>
+            <th scope="col"><button type="button" data-ordina="tipo">Tipo</button></th>
+            <th scope="col"><button type="button" data-ordina="parte">Parte</button></th>
+            <th scope="col"><button type="button" data-ordina="peso">Peso</button></th>
+            <th scope="col"><button type="button" data-ordina="periodo">Periodo</button></th>
+            <th scope="col">Sommario</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            nodi.map((n) => (
+              <tr
+                class="border-b border-bordo align-top"
+                data-titolo={n.titolo.toLowerCase()}
+                data-testo={`${n.titolo} ${n.alias.join(' ')} ${n.sommario}`.toLowerCase()}
+                data-tipo={n.tipo}
+                data-parte={String(n.parte)}
+                data-peso={String(n.peso)}
+                data-periodo={String(n.periodo?.da ?? 9999)}
+              >
+                <th scope="row" class="py-2 pe-3 text-start font-medium">
+                  <a class="underline decoration-dotted underline-offset-2 hover:text-accento" href={withBase(`/voce/${n.id}`)}>
+                    {n.titolo}
+                  </a>
+                </th>
+                <td class="py-2 pe-3 whitespace-nowrap">{ETICHETTE_TIPO_NODO[n.tipo]}</td>
+                <td class="py-2 pe-3 whitespace-nowrap">
+                  <span aria-hidden="true" class="inline-block size-2 rounded-full me-1" style={`background: var(--parte-${n.parte})`} />
+                  {NOMI_PARTE_BREVI[n.parte]}
+                </td>
+                <td class="py-2 pe-3">{n.peso}</td>
+                <td class="py-2 pe-3 whitespace-nowrap">{n.periodo ? formattaPeriodo(n.periodo) : '—'}</td>
+                <td class="py-2" style="color: var(--testo-tenue)">{n.sommario}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Base>
+
+<style>
+  th button {
+    font-weight: 600;
+    text-align: start;
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+  }
+  th[aria-sort='ascending'] button::after {
+    content: ' ↑';
+  }
+  th[aria-sort='descending'] button::after {
+    content: ' ↓';
+  }
+</style>
+
+<script>
+  // Ordinamento e filtro progressivi: senza JavaScript la tabella completa
+  // resta consultabile (è già ordinata per titolo).
+  const tabella = document.getElementById('tabella-elenco') as HTMLTableElement;
+  const corpo = tabella.tBodies[0]!;
+  const righe = () => Array.from(corpo.rows);
+  const testo = document.getElementById('filtro-testo') as HTMLInputElement;
+  const tipo = document.getElementById('filtro-tipo') as HTMLSelectElement;
+  const parte = document.getElementById('filtro-parte') as HTMLSelectElement;
+  const conteggio = document.getElementById('conteggio-elenco')!;
+
+  function applicaFiltri() {
+    const q = testo.value.trim().toLowerCase();
+    const t = tipo.value;
+    const p = parte.value;
+    let visibili = 0;
+    for (const riga of righe()) {
+      const visibile =
+        (!q || riga.dataset.testo!.includes(q)) &&
+        (!t || riga.dataset.tipo === t) &&
+        (!p || riga.dataset.parte === p);
+      riga.hidden = !visibile;
+      if (visibile) visibili++;
+    }
+    conteggio.textContent = `${visibili} voci mostrate`;
+  }
+  testo.addEventListener('input', applicaFiltri);
+  tipo.addEventListener('change', applicaFiltri);
+  parte.addEventListener('change', applicaFiltri);
+  applicaFiltri();
+
+  for (const bottone of tabella.querySelectorAll<HTMLButtonElement>('[data-ordina]')) {
+    bottone.addEventListener('click', () => {
+      const chiave = bottone.dataset.ordina!;
+      const th = bottone.closest('th')!;
+      const discendente = th.getAttribute('aria-sort') === 'ascending';
+      for (const altro of tabella.querySelectorAll('th[aria-sort]')) altro.removeAttribute('aria-sort');
+      th.setAttribute('aria-sort', discendente ? 'descending' : 'ascending');
+      const numerico = chiave === 'peso' || chiave === 'periodo' || chiave === 'parte';
+      const ordinate = righe().sort((a, b) => {
+        const va = a.dataset[chiave === 'titolo' ? 'titolo' : chiave]!;
+        const vb = b.dataset[chiave === 'titolo' ? 'titolo' : chiave]!;
+        const esito = numerico ? Number(va) - Number(vb) : va.localeCompare(vb, 'it');
+        return discendente ? -esito : esito;
+      });
+      for (const riga of ordinate) corpo.appendChild(riga);
+    });
+  }
+</script>
