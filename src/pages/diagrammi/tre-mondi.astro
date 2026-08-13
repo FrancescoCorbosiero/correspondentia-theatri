@@ -1,0 +1,90 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/percorsi-url';
+
+/** I tre mondi di Agrippa (§5.9): elementare, celeste, intellettuale, con le voci collegate. */
+const MONDI = [
+  {
+    id: 'intellettuale',
+    nome: 'Mondo intellettuale',
+    libro: 'Libro III',
+    descrizione:
+      'Il livello delle intelligenze: nomi divini, angeli, cerimoniale, purificazione dell’operatore. La magia che vi corrisponde è quella religiosa e cerimoniale, e culmina nella teurgia: non costringere il divino, renderlo operante.',
+    voci: ['magia-cerimoniale', 'teurgia', 'gnosi', 'emanazione'],
+  },
+  {
+    id: 'celeste',
+    nome: 'Mondo celeste',
+    libro: 'Libro II',
+    descrizione:
+      'Il livello degli astri: numeri, quadrati magici, sigilli planetari, musica, astrologia. La matematica come lingua di mezzo fra gli dèi e le pietre: qui operano i talismani e l’elezione dei tempi.',
+    voci: ['astrologia', 'talismani', 'numeri-e-geometria', 'tempo-ciclico', 'esoterismo-e-musica'],
+  },
+  {
+    id: 'elementare',
+    nome: 'Mondo elementare',
+    libro: 'Libro I',
+    descrizione:
+      'Il livello delle cose: piante, pietre, animali, temperamenti, veleni. La magia naturale opera sulle virtù occulte delle sostanze — nascoste ai sensi, non alla ragione — applicando le simpatie del cosmo come fa l’agricoltore.',
+    voci: ['magia-naturale', 'segnature', 'anima-mundi', 'corrispondenze'],
+  },
+];
+---
+
+<Base
+  titolo="I tre mondi di Agrippa"
+  descrizione="Lo schema del De occulta philosophia: mondo elementare, celeste e intellettuale, con le voci dell'atlante collegate a ciascun livello."
+>
+  <div class="mx-auto max-w-4xl px-4 py-10">
+    <h1 class="font-serif text-3xl">I tre mondi di Agrippa</h1>
+    <p class="mt-2 max-w-2xl text-sm" style="color: var(--testo-tenue)">
+      La struttura del <a class="underline" href={withBase('/voce/de-occulta-philosophia')}>De occulta philosophia</a> (1533):
+      tre libri per tre mondi, e per ciascuno la magia che gli corrisponde. Lo schema resterà lo
+      standard della magia occidentale fino alla <a class="underline" href={withBase('/voce/golden-dawn')}>Golden Dawn</a>.
+      L’operatore — dice <a class="underline" href={withBase('/voce/agrippa')}>Agrippa</a> — risale
+      di mondo in mondo: dalla virtù delle cose alla matematica dei cieli, dalla matematica alla
+      contemplazione.
+    </p>
+
+    <div class="mt-8 space-y-1" role="list" aria-label="I tre mondi, dall'alto verso il basso">
+      {
+        MONDI.map((mondo, i) => (
+          <section
+            role="listitem"
+            aria-labelledby={`titolo-${mondo.id}`}
+            class="rounded-lg border border-bordo bg-rialzato p-5 relative overflow-hidden"
+            style={`margin-inline: ${i * 1.25}rem`}
+          >
+            <div
+              aria-hidden="true"
+              class="absolute inset-y-0 start-0 w-1.5"
+              style={`background: var(--parte-${i === 0 ? 3 : i === 1 ? 4 : 5})`}
+            />
+            <p class="text-xs uppercase tracking-wide font-semibold" style="color: var(--testo-tenue)">
+              {mondo.libro}
+            </p>
+            <h2 id={`titolo-${mondo.id}`} class="font-serif text-2xl mt-0.5">
+              {mondo.nome}
+            </h2>
+            <p class="mt-2 text-sm leading-relaxed max-w-xl">{mondo.descrizione}</p>
+            <ul class="mt-3 flex flex-wrap gap-1.5 text-xs" aria-label={`Voci collegate al ${mondo.nome}`}>
+              {mondo.voci.map((id) => (
+                <li>
+                  <a class="inline-block rounded-full border border-bordo px-2.5 py-1 hover:bg-incassato" href={withBase(`/voce/${id}`)}>
+                    {id.replace(/-/g, ' ')}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+
+    <p class="mt-6 text-xs max-w-2xl" style="color: var(--testo-tenue)">
+      La disposizione a gradoni rende l’ascesa: il mondo elementare è il più largo e il più basso,
+      l’intellettuale il più raccolto e il più alto. Ogni livello opera per mezzo di quello
+      superiore: è la scala delle <a class="underline" href={withBase('/voce/corrispondenze')}>corrispondenze</a> resa architettura.
+    </p>
+  </div>
+</Base>

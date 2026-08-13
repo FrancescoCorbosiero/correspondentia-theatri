@@ -24,6 +24,22 @@ import { withBase } from '../../lib/percorsi-url';
   <GraphView client:only="react" />
 </Base>
 
+<script>
+  // Avviso di ripiego dalla vista 3D (§5.3): mostrato una volta, congedabile.
+  if (new URLSearchParams(location.search).get('avviso') === 'cosmo') {
+    const barra = document.createElement('div');
+    barra.setAttribute('role', 'status');
+    barra.className = 'fixed top-14 inset-x-0 z-50 mx-auto max-w-lg rounded border border-bordo bg-rialzato px-4 py-2 text-sm shadow';
+    barra.innerHTML =
+      'La vista 3D non era disponibile (WebGL assente o movimento ridotto): questa vista 2D contiene le stesse informazioni. <button class="underline ms-2" type="button">Chiudi</button>';
+    barra.querySelector('button')!.addEventListener('click', () => barra.remove());
+    document.body.append(barra);
+    const url = new URL(location.href);
+    url.searchParams.delete('avviso');
+    history.replaceState(null, '', url);
+  }
+</script>
+
 <style is:global>
   .vista-grafo {
     display: grid;

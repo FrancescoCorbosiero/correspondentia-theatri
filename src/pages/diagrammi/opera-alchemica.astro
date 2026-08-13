@@ -1,0 +1,141 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/percorsi-url';
+
+/** Fasi dell'opera (§5.9): scrollytelling nigredo → albedo → citrinitas → rubedo. */
+const FASI = [
+  {
+    id: 'nigredo',
+    nome: 'Nigredo',
+    etichetta: 'L’opera al nero',
+    colore: '#1c1b22',
+    coloreTesto: '#f5f2ea',
+    uccello: 'Il corvo',
+    testo:
+      'Putrefazione, dissoluzione, morte della sostanza: la fase più lunga e la più temuta, quella in cui tutto sembra guastarsi. I testi la dicono necessaria: non si migliora una forma esistente, la si disfa fino al fondo indifferenziato. Il suo uccello è il corvo; il suo verbo è solve.',
+  },
+  {
+    id: 'albedo',
+    nome: 'Albedo',
+    etichetta: 'L’opera al bianco',
+    colore: '#efece2',
+    coloreTesto: '#1a1a2e',
+    uccello: 'Il cigno, la colomba',
+    testo:
+      'Purificazione e lavacro: dopo il nero, la comparsa della bianchezza. Si parla di luna, di argento, di colomba. La logica è quella dell’acqua: si torna all’indifferenziato per cancellare la forma precedente e riceverne un’altra.',
+  },
+  {
+    id: 'citrinitas',
+    nome: 'Citrinitas',
+    etichetta: 'Il giallore',
+    colore: '#c9a227',
+    coloreTesto: '#1a1a2e',
+    uccello: '—',
+    testo:
+      'La fase gialla, spesso omessa nelle sistemazioni tarde che riducono l’opera a tre tempi: un’alba fra il bianco lunare e il rosso solare. La sua instabilità nella tradizione è essa stessa un dato: le liste delle operazioni variano da autore ad autore, e la variabilità è significativa.',
+  },
+  {
+    id: 'rubedo',
+    nome: 'Rubedo',
+    etichetta: 'L’opera al rosso',
+    colore: '#8c2f2e',
+    coloreTesto: '#f5f2ea',
+    uccello: 'La fenice',
+    testo:
+      'La coagulazione finale: la comparsa della pietra, il sole, la fenice che risorge dalle proprie ceneri. In termini di metodo: ciò che è stato disciolto si ricompone a un livello diverso. Coagula chiude ciò che solve aveva aperto — e nella sequenza nuziale ogni sintesi resta provvisoria.',
+  },
+];
+---
+
+<Base
+  titolo="Le fasi dell’opera"
+  descrizione="Scrollytelling delle fasi dell'opera alchemica — nigredo, albedo, citrinitas, rubedo — con la sequenza degli uccelli e il solve et coagula. Struttura simbolica e storia della chimica, non un procedimento."
+>
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="font-serif text-3xl">Le fasi dell’opera alchemica</h1>
+    <p class="mt-2 max-w-2xl text-sm" style="color: var(--testo-tenue)">
+      La successione dei colori nel vaso sigillato, con la sequenza degli uccelli. Voce completa:
+      <a class="underline" href={withBase('/voce/opera-alchemica')}>l’opera alchemica</a> ·
+      <a class="underline" href={withBase('/voce/uccelli-alchemici')}>gli uccelli</a> ·
+      <a class="underline" href={withBase('/voce/uovo')}>l’uovo filosofico</a>.
+    </p>
+
+    <div class="avvertenza mt-6 max-w-2xl">
+      <p class="text-sm">
+        <strong>Nota di realtà.</strong> Le fasi sono qui una struttura simbolica e un capitolo di
+        storia della chimica, non un procedimento: la trasmutazione dei metalli non è realizzabile
+        con mezzi chimici, e i laboratori storici lavoravano con mercurio, antimonio, arsenico e
+        piombo in condizioni oggi note come gravemente tossiche.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-10 lg:grid-cols-[300px_minmax(0,1fr)]">
+      <div class="hidden lg:block" aria-hidden="true">
+        <div class="sticky top-20">
+          <svg viewBox="0 0 200 260" class="w-full max-w-[240px]">
+            <ellipse cx="100" cy="170" rx="70" ry="80" id="vaso" fill={FASI[0]!.colore} stroke="var(--bordo-forte)" stroke-width="2.5" style="transition: fill 500ms"></ellipse>
+            <rect x="86" y="52" width="28" height="52" fill="none" stroke="var(--bordo-forte)" stroke-width="2.5" rx="8"></rect>
+            <path d="M 78 52 Q 100 38 122 52" fill="none" stroke="var(--bordo-forte)" stroke-width="2.5"></path>
+            <text id="vaso-nome" x="100" y="165" text-anchor="middle" font-size="18" font-weight="600" fill={FASI[0]!.coloreTesto} style="transition: fill 500ms">Nigredo</text>
+            <text id="vaso-uccello" x="100" y="188" text-anchor="middle" font-size="10" fill={FASI[0]!.coloreTesto} style="transition: fill 500ms">Il corvo</text>
+          </svg>
+          <p class="mt-2 text-xs text-center font-serif italic" style="color: var(--testo-tenue)">solve et coagula</p>
+        </div>
+      </div>
+
+      <div class="max-w-2xl space-y-16" id="fasi-opera">
+        {
+          FASI.map((fase, i) => (
+            <section
+              class="fase-opera scroll-mt-24"
+              id={fase.id}
+              data-colore={fase.colore}
+              data-colore-testo={fase.coloreTesto}
+              data-nome={fase.nome}
+              data-uccello={fase.uccello}
+              aria-labelledby={`titolo-${fase.id}`}
+            >
+              <p class="text-xs uppercase tracking-wide font-semibold" style="color: var(--testo-tenue)">
+                Fase {i + 1} di 4 {fase.uccello !== '—' && `· ${fase.uccello}`}
+              </p>
+              <h2 id={`titolo-${fase.id}`} class="font-serif text-2xl mt-1 flex items-center gap-3">
+                <span aria-hidden="true" class="inline-block size-5 rounded-full border border-bordo-forte" style={`background: ${fase.colore}`} />
+                {fase.nome} · {fase.etichetta}
+              </h2>
+              <p class="prosa mt-3">{fase.testo}</p>
+            </section>
+          ))
+        }
+        <p class="prosa">
+          Che questa sequenza descriva un processo materiale, un itinerario interiore o entrambe le
+          cose insieme è precisamente la domanda che ha reso l’alchimia così adatta alle
+          <a class="underline" href={withBase('/voce/alchimia-e-psicologia')}>riletture novecentesche</a> —
+          e la posizione oggi prevalente è che per un autore del Seicento i due piani non fossero
+          separabili.
+        </p>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<script>
+  // il vaso segue la fase attiva durante lo scorrimento
+  const vaso = document.getElementById('vaso');
+  const nome = document.getElementById('vaso-nome');
+  const uccello = document.getElementById('vaso-uccello');
+  const osservatore = new IntersectionObserver(
+    (voci) => {
+      for (const voce of voci) {
+        if (!voce.isIntersecting) continue;
+        const sezione = voce.target as HTMLElement;
+        vaso?.setAttribute('fill', sezione.dataset.colore!);
+        nome?.setAttribute('fill', sezione.dataset.coloreTesto!);
+        uccello?.setAttribute('fill', sezione.dataset.coloreTesto!);
+        if (nome) nome.textContent = sezione.dataset.nome!;
+        if (uccello) uccello.textContent = sezione.dataset.uccello === '—' ? '' : sezione.dataset.uccello!;
+      }
+    },
+    { rootMargin: '-40% 0px -50% 0px' }
+  );
+  for (const sezione of document.querySelectorAll('.fase-opera')) osservatore.observe(sezione);
+</script>

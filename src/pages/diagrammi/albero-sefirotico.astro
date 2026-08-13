@@ -1,0 +1,164 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/percorsi-url';
+
+/**
+ * Albero sefirotico (§5.9): 10 sefirot + 22 sentieri, disegnato a mano nelle
+ * coordinate canoniche delle tre colonne — non un layout automatico.
+ */
+interface Sefirah {
+  id: string;
+  nome: string;
+  traduzione: string;
+  colonna: 'destra' | 'sinistra' | 'centrale';
+  attribuzione: string;
+  x: number;
+  y: number;
+  nota: string;
+}
+
+const SEFIROT: Sefirah[] = [
+  { id: 'keter', nome: 'Keter', traduzione: 'Corona', colonna: 'centrale', attribuzione: 'Primo moto', x: 200, y: 60, nota: 'Il punto sorgivo dell’emanazione, al di sopra di ogni distinzione.' },
+  { id: 'chokhmah', nome: 'Chokhmah', traduzione: 'Sapienza', colonna: 'destra', attribuzione: 'Le stelle fisse / lo zodiaco', x: 300, y: 140, nota: 'Il lampo germinale, principio attivo della colonna della misericordia.' },
+  { id: 'binah', nome: 'Binah', traduzione: 'Intelligenza', colonna: 'sinistra', attribuzione: 'Saturno', x: 100, y: 140, nota: 'La matrice che dà forma, principio della colonna del rigore.' },
+  { id: 'chesed', nome: 'Chesed', traduzione: 'Misericordia', colonna: 'destra', attribuzione: 'Giove', x: 300, y: 255, nota: 'L’espansione, la grazia che dona senza misura.' },
+  { id: 'gevurah', nome: 'Gevurah', traduzione: 'Rigore', colonna: 'sinistra', attribuzione: 'Marte', x: 100, y: 255, nota: 'La contrazione, il giudizio che delimita: senza di essa la grazia dilagherebbe.' },
+  { id: 'tiferet', nome: 'Tiferet', traduzione: 'Bellezza', colonna: 'centrale', attribuzione: 'Sole', x: 200, y: 330, nota: 'L’equilibrio del cuore, dove misericordia e rigore si compongono.' },
+  { id: 'netzach', nome: 'Netzach', traduzione: 'Vittoria', colonna: 'destra', attribuzione: 'Venere', x: 300, y: 425, nota: 'La persistenza del desiderio e della vita naturale.' },
+  { id: 'hod', nome: 'Hod', traduzione: 'Splendore', colonna: 'sinistra', attribuzione: 'Mercurio', x: 100, y: 425, nota: 'La riverberazione della forma: linguaggio, intelletto, misura.' },
+  { id: 'yesod', nome: 'Yesod', traduzione: 'Fondamento', colonna: 'centrale', attribuzione: 'Luna', x: 200, y: 495, nota: 'Il canale che raccoglie i flussi superiori e li trasmette al mondo.' },
+  { id: 'malkhut', nome: 'Malkhut', traduzione: 'Regno', colonna: 'centrale', attribuzione: 'La Terra', x: 200, y: 575, nota: 'La presenza nel mondo manifestato: dove l’albero tocca la realtà.' },
+];
+
+const SENTIERI: Array<[string, string]> = [
+  ['keter', 'chokhmah'], ['keter', 'binah'], ['keter', 'tiferet'],
+  ['chokhmah', 'binah'], ['chokhmah', 'tiferet'], ['chokhmah', 'chesed'],
+  ['binah', 'tiferet'], ['binah', 'gevurah'],
+  ['chesed', 'gevurah'], ['chesed', 'tiferet'], ['chesed', 'netzach'],
+  ['gevurah', 'tiferet'], ['gevurah', 'hod'],
+  ['tiferet', 'netzach'], ['tiferet', 'yesod'], ['tiferet', 'hod'],
+  ['netzach', 'hod'], ['netzach', 'yesod'], ['netzach', 'malkhut'],
+  ['hod', 'yesod'], ['hod', 'malkhut'],
+  ['yesod', 'malkhut'],
+];
+
+const perId = new Map(SEFIROT.map((s) => [s.id, s]));
+---
+
+<Base
+  titolo="Albero sefirotico"
+  descrizione="Le dieci sefirot e i ventidue sentieri nelle coordinate canoniche delle tre colonne, con il pannello delle corrispondenze e l'avvertenza sul loro statuto storico."
+>
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="font-serif text-3xl">L’albero sefirotico</h1>
+    <p class="mt-2 max-w-2xl text-sm" style="color: var(--testo-tenue)">
+      Dieci sefirot in tre colonne, ventidue sentieri: insieme teoria dell’<a class="underline" href={withBase('/voce/emanazione')}>emanazione</a>,
+      mappa dell’anima e schema di corrispondenze. Un click su una sefirah apre il pannello.
+      Approfondimenti: <a class="underline" href={withBase('/voce/albero-sefirotico')}>la voce dell’atlante</a> ·
+      <a class="underline" href={withBase('/voce/cabala')}>cabala</a>.
+    </p>
+
+    <div class="mt-8 grid gap-8 lg:grid-cols-[420px_minmax(0,1fr)]">
+      <svg
+        viewBox="0 0 400 640"
+        class="w-full max-w-md rounded border border-bordo"
+        style="background: var(--sfondo-rialzato)"
+        role="group"
+        aria-label="Diagramma dell'albero sefirotico: dieci sefirot collegate da ventidue sentieri. I dettagli di ogni sefirah sono nel pannello accanto."
+      >
+        {
+          SENTIERI.map(([a, b]) => {
+            const s1 = perId.get(a)!;
+            const s2 = perId.get(b)!;
+            return (
+              <line
+                x1={s1.x}
+                y1={s1.y}
+                x2={s2.x}
+                y2={s2.y}
+                stroke="var(--bordo-forte)"
+                stroke-width="2"
+                data-sentiero={`${a}-${b}`}
+              />
+            );
+          })
+        }
+        {
+          SEFIROT.map((sefirah) => (
+            <g
+              class="sefirah"
+              data-sefirah={sefirah.id}
+              tabindex="0"
+              role="button"
+              aria-label={`${sefirah.nome}, ${sefirah.traduzione}, colonna ${sefirah.colonna}`}
+              style="cursor: pointer"
+            >
+              <circle cx={sefirah.x} cy={sefirah.y} r="34" fill="var(--sfondo)" stroke="var(--accento)" stroke-width="2" />
+              <text x={sefirah.x} y={sefirah.y - 4} text-anchor="middle" font-size="13" font-weight="600" fill="var(--testo)">
+                {sefirah.nome}
+              </text>
+              <text x={sefirah.x} y={sefirah.y + 12} text-anchor="middle" font-size="9.5" fill="var(--testo-tenue)">
+                {sefirah.traduzione}
+              </text>
+            </g>
+          ))
+        }
+      </svg>
+
+      <div>
+        <div id="pannello-sefirah" class="rounded border border-bordo bg-rialzato p-5" aria-live="polite">
+          <p class="text-sm" style="color: var(--testo-tenue)">
+            Scegli una sefirah (click o Invio) per vederne il profilo e le corrispondenze.
+          </p>
+        </div>
+
+        <div class="nota mt-6">
+          <p class="nota-titolo">Avvertenza sulle corrispondenze</p>
+          <p class="text-sm">
+            Le attribuzioni planetarie qui mostrate appartengono agli schemi di corrispondenza
+            sviluppati dalla <a class="underline" href={withBase('/voce/cabala-cristiana')}>cabala cristiana</a>
+            e sistematizzati dall’occultismo ottocentesco (<a class="underline" href={withBase('/voce/golden-dawn')}>Golden Dawn</a>):
+            non sono un dato originario della <a class="underline" href={withBase('/voce/cabala')}>qabbalah</a> medievale,
+            che conosce schemi diversi e concorrenti. Anche l’associazione con i
+            <a class="underline" href={withBase('/voce/tarocchi')}>tarocchi</a> è un’invenzione ottocentesca.
+          </p>
+        </div>
+
+        <template id="modello-sefirah">
+          <p class="text-xs uppercase tracking-wide font-semibold" style="color: var(--accento)"></p>
+          <h2 class="font-serif text-2xl mt-1"></h2>
+          <dl class="mt-3 text-sm space-y-1"></dl>
+          <p class="mt-3 text-sm"></p>
+        </template>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<script define:vars={{ SEFIROT }}>
+  const pannello = document.getElementById('pannello-sefirah');
+  const attiva = (id) => {
+    const dati = SEFIROT.find((s) => s.id === id);
+    if (!dati || !pannello) return;
+    for (const g of document.querySelectorAll('.sefirah circle')) {
+      g.setAttribute('stroke-width', g.closest('.sefirah')?.dataset.sefirah === id ? '4' : '2');
+    }
+    pannello.innerHTML = `
+      <p class="text-xs uppercase tracking-wide font-semibold" style="color: var(--accento)">Sefirah · colonna ${dati.colonna}</p>
+      <h2 class="font-serif text-2xl mt-1">${dati.nome} <span class="text-base" style="color: var(--testo-tenue)">· ${dati.traduzione}</span></h2>
+      <dl class="mt-3 text-sm">
+        <div class="flex gap-2"><dt class="font-semibold">Attribuzione tarda:</dt><dd>${dati.attribuzione}</dd></div>
+      </dl>
+      <p class="mt-3 text-sm leading-relaxed">${dati.nota}</p>
+    `;
+  };
+  for (const g of document.querySelectorAll('.sefirah')) {
+    g.addEventListener('click', () => attiva(g.dataset.sefirah));
+    g.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        attiva(g.dataset.sefirah);
+      }
+    });
+  }
+</script>

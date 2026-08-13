@@ -1,0 +1,182 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/percorsi-url';
+
+/**
+ * Ruota delle corrispondenze (§5.9): pianeti / metalli / giorni / organi.
+ * Sistema storico dichiarato come tale — non medicina.
+ */
+const SETTORI = [
+  { pianeta: 'Sole', metallo: 'oro', giorno: 'domenica', organo: 'cuore' },
+  { pianeta: 'Venere', metallo: 'rame', giorno: 'venerdì', organo: 'reni' },
+  { pianeta: 'Mercurio', metallo: 'argento vivo', giorno: 'mercoledì', organo: 'polmoni' },
+  { pianeta: 'Luna', metallo: 'argento', giorno: 'lunedì', organo: 'cervello' },
+  { pianeta: 'Saturno', metallo: 'piombo', giorno: 'sabato', organo: 'milza' },
+  { pianeta: 'Giove', metallo: 'stagno', giorno: 'giovedì', organo: 'fegato' },
+  { pianeta: 'Marte', metallo: 'ferro', giorno: 'martedì', organo: 'fiele' },
+];
+
+const CENTRO = 260;
+const ANELLI = [
+  { chiave: 'pianeta', r1: 70, r2 : 130, etichetta: 'Pianeta' },
+  { chiave: 'metallo', r1: 130, r2: 180, etichetta: 'Metallo' },
+  { chiave: 'giorno', r1: 180, r2: 222, etichetta: 'Giorno' },
+  { chiave: 'organo', r1: 222, r2: 258, etichetta: 'Organo' },
+] as const;
+
+function polare(r: number, angolo: number): [number, number] {
+  const rad = ((angolo - 90) * Math.PI) / 180;
+  return [CENTRO + r * Math.cos(rad), CENTRO + r * Math.sin(rad)];
+}
+
+function settoreAnulare(r1: number, r2: number, a1: number, a2: number): string {
+  const [x1, y1] = polare(r2, a1);
+  const [x2, y2] = polare(r2, a2);
+  const [x3, y3] = polare(r1, a2);
+  const [x4, y4] = polare(r1, a1);
+  const ampio = a2 - a1 > 180 ? 1 : 0;
+  return `M ${x1.toFixed(1)} ${y1.toFixed(1)} A ${r2} ${r2} 0 ${ampio} 1 ${x2.toFixed(1)} ${y2.toFixed(1)} L ${x3.toFixed(1)} ${y3.toFixed(1)} A ${r1} ${r1} 0 ${ampio} 0 ${x4.toFixed(1)} ${y4.toFixed(1)} Z`;
+}
+
+const AMPIEZZA = 360 / SETTORI.length;
+---
+
+<Base
+  titolo="Ruota delle corrispondenze"
+  descrizione="Il sistema storico delle corrispondenze fra pianeti, metalli, giorni e organi — presentato come documento della medicina astrologica premoderna, non come medicina."
+>
+  <div class="mx-auto max-w-5xl px-4 py-10">
+    <h1 class="font-serif text-3xl">La ruota delle corrispondenze</h1>
+    <p class="mt-2 max-w-2xl text-sm" style="color: var(--testo-tenue)">
+      Sette pianeti tradizionali, ciascuno con il suo metallo, il suo giorno e il suo organo: lo
+      schema che per secoli ha governato la <a class="underline" href={withBase('/voce/astrologia')}>medicina astrologica</a>
+      e la scelta dei tempi. Passa sopra un settore (o navigalo con Tab) per seguire l’allineamento.
+    </p>
+
+    <div class="avvertenza mt-5 max-w-2xl">
+      <p class="text-sm">
+        <strong>Questo è un sistema storico, non medicina.</strong> La corrispondenza
+        pianeti-organi appartiene alla fisica delle qualità del cosmo premoderno: si documenta qui
+        come si documenta una carta antica. Non descrive il corpo umano e non fonda alcuna terapia.
+        Contesto: <a class="underline" href={withBase('/voce/macrocosmo-microcosmo')}>macrocosmo e microcosmo</a> ·
+        <a class="underline" href={withBase('/voce/corrispondenze')}>corrispondenze</a>.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-8 lg:grid-cols-[520px_minmax(0,1fr)] items-start">
+      <svg
+        viewBox="0 0 520 520"
+        class="w-full max-w-lg rounded border border-bordo"
+        style="background: var(--sfondo-rialzato)"
+        role="group"
+        aria-label="Ruota a sette settori: ogni settore allinea un pianeta con metallo, giorno e organo. Gli stessi dati sono nella tabella accanto."
+      >
+        {
+          SETTORI.map((settore, i) => {
+            const a1 = i * AMPIEZZA;
+            const a2 = (i + 1) * AMPIEZZA;
+            const am = (a1 + a2) / 2;
+            return (
+              <g
+                class="settore-ruota"
+                data-indice={i}
+                tabindex="0"
+                role="img"
+                aria-label={`${settore.pianeta}: metallo ${settore.metallo}, giorno ${settore.giorno}, organo ${settore.organo} (sistema storico)`}
+              >
+                {ANELLI.map((anello, j) => {
+                  const [tx, ty] = polare((anello.r1 + anello.r2) / 2, am);
+                  return (
+                    <>
+                      <path
+                        d={settoreAnulare(anello.r1, anello.r2, a1 + 1, a2 - 1)}
+                        fill={j === 0 ? `var(--parte-4)` : j % 2 === 0 ? 'var(--sfondo-incassato)' : 'var(--sfondo)'}
+                        opacity={j === 0 ? 0.85 : 1}
+                        stroke="var(--bordo)"
+                        stroke-width="1"
+                      />
+                      <text
+                        x={tx}
+                        y={ty}
+                        text-anchor="middle"
+                        dominant-baseline="middle"
+                        font-size={j === 0 ? 14 : 10}
+                        font-weight={j === 0 ? 600 : 400}
+                        fill={j === 0 ? '#ffffff' : 'var(--testo)'}
+                        transform={`rotate(${am > 180 ? am + 90 : am - 90} ${tx.toFixed(1)} ${ty.toFixed(1)})`}
+                        style="pointer-events: none"
+                      >
+                        {settore[anello.chiave]}
+                      </text>
+                    </>
+                  );
+                })}
+              </g>
+            );
+          })
+        }
+        <circle cx={CENTRO} cy={CENTRO} r="68" fill="var(--sfondo)" stroke="var(--bordo-forte)" stroke-width="1.5" />
+        <text x={CENTRO} y={CENTRO - 8} text-anchor="middle" font-size="12" font-weight="600" fill="var(--testo)">7 pianeti</text>
+        <text x={CENTRO} y={CENTRO + 10} text-anchor="middle" font-size="9" fill="var(--testo-tenue)">sistema tolemaico</text>
+      </svg>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border-collapse" id="tabella-ruota">
+          <caption class="text-start text-xs mb-2" style="color: var(--testo-tenue)">
+            Le stesse corrispondenze in forma di tabella (equivalente accessibile).
+          </caption>
+          <thead>
+            <tr class="border-b-2 border-bordo-forte">
+              <th scope="col" class="py-1.5 pe-3 text-start">Pianeta</th>
+              <th scope="col" class="py-1.5 pe-3 text-start">Metallo</th>
+              <th scope="col" class="py-1.5 pe-3 text-start">Giorno</th>
+              <th scope="col" class="py-1.5 text-start">Organo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              SETTORI.map((settore, i) => (
+                <tr class="border-b border-bordo riga-ruota" data-indice={i}>
+                  <th scope="row" class="py-1.5 pe-3 text-start font-medium">{settore.pianeta}</th>
+                  <td class="py-1.5 pe-3">{settore.metallo}</td>
+                  <td class="py-1.5 pe-3">{settore.giorno}</td>
+                  <td class="py-1.5">{settore.organo}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+        <p class="mt-3 text-xs" style="color: var(--testo-tenue)">
+          L’ordine dei giorni della settimana deriva proprio da questa ruota: le ore planetarie
+          assegnano a ciascun giorno il pianeta della sua prima ora — uno dei casi in cui il sistema
+          delle corrispondenze è ancora inciso nel calendario che usiamo.
+        </p>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .settore-ruota:hover path,
+  .settore-ruota:focus-visible path {
+    stroke: var(--accento);
+    stroke-width: 2;
+  }
+  .riga-ruota[data-attiva='1'] {
+    background: var(--sfondo-incassato);
+  }
+</style>
+
+<script>
+  // l'evidenziazione della ruota si riflette sulla tabella (e viceversa)
+  const settori = document.querySelectorAll<SVGGElement>('.settore-ruota');
+  const righe = document.querySelectorAll<HTMLTableRowElement>('.riga-ruota');
+  const evidenzia = (indice: string | undefined) => {
+    for (const riga of righe) riga.dataset.attiva = riga.dataset.indice === indice ? '1' : '0';
+  };
+  for (const settore of settori) {
+    settore.addEventListener('mouseenter', () => evidenzia(settore.dataset.indice));
+    settore.addEventListener('focus', () => evidenzia(settore.dataset.indice));
+    settore.addEventListener('mouseleave', () => evidenzia(undefined));
+  }
+</script>
