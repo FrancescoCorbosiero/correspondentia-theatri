@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/percorsi-url';
+---
+<Base titolo="Trova un cammino" descrizione="Il cammino minimo fra due voci del grafo.">
+  <div class="mx-auto max-w-4xl px-4 py-16">
+    <h1 class="font-serif text-3xl">Trova un cammino</h1>
+    <p class="mt-3" style="color: var(--testo-tenue)">Questa vista è in preparazione. Nel frattempo:</p>
+    <ul class="mt-4 space-y-2 text-sm">
+      <li><a class="underline text-accento" href={withBase('/grafo')}>Il grafo 2D</a></li>
+      <li><a class="underline text-accento" href={withBase('/grafo/elenco')}>L'elenco delle voci</a></li>
+    </ul>
+  </div>
+</Base>

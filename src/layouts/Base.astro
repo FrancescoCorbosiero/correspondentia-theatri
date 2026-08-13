@@ -4,6 +4,7 @@ import '@fontsource-variable/inter';
 import '../styles/global.css';
 import Intestazione from '../components/Intestazione.astro';
 import PiePagina from '../components/PiePagina.astro';
+import SearchPalette from '../components/islands/SearchPalette';
 import { withBase } from '../lib/percorsi-url';
 
 interface Props {
@@ -54,5 +55,6 @@ const titoloCompleto = titolo === 'Theatrum' ? 'Theatrum — atlante dell’esot
       <slot />
     </main>
     {!pienaAltezza && <PiePagina />}
+    <SearchPalette client:idle />
   </body>
 </html>

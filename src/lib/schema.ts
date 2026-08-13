@@ -118,6 +118,8 @@ export type VoceFrontmatter = z.infer<typeof voceSchema>;
 export const passoPercorsoSchema = z.object({
   voce: kebabId,
   titolo: z.string().min(1).optional(),
+  /** narrazione della tappa: il testo che accompagna il cammino sul grafo */
+  testo: z.string().min(40),
 });
 
 export const percorsoSchema = z.object({
