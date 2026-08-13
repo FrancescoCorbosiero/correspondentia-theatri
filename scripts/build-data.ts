@@ -295,8 +295,36 @@ export function serializza(costruito: GrafoCostruito): {
   return { dati, ricerca, corpi };
 }
 
+/**
+ * Verifica i collegamenti interni nei corpi: ogni link markdown a /voce/<id>
+ * deve puntare a una voce esistente, e nessun link deve incorporare la base
+ * del sito (la base viene applicata da un plugin rehype a build time).
+ */
+export function validaCollegamenti(voci: VoceLetta[]): void {
+  const ids = new Set(voci.map((v) => v.fm.id));
+  const problemi: string[] = [];
+  const schema = /\]\((\/[^)#\s]*)(?:#[^)\s]*)?\)/g;
+  for (const v of voci) {
+    for (const confronto of v.corpo.matchAll(schema)) {
+      const href = confronto[1]!;
+      if (href.startsWith('/correspondentia-theatri')) {
+        problemi.push(`${v.file}: link con base hardcoded "${href}" (usare percorsi radice)`);
+        continue;
+      }
+      const voce = href.match(/^\/voce\/([a-z0-9-]+)\/?$/);
+      if (voce) {
+        if (!ids.has(voce[1]!)) problemi.push(`${v.file}: link a voce inesistente "${voce[1]}"`);
+      } else if (!/^\/(grafo|cosmo|tempo|voce|percorso|percorsi|simboli|diagrammi|leggi|cerca)(\/|$)/.test(href)) {
+        problemi.push(`${v.file}: link interno non riconosciuto "${href}"`);
+      }
+    }
+  }
+  if (problemi.length > 0) throw new ErroreValidazione(problemi);
+}
+
 export function eseguiPipeline(dirVoci: string = DIR_VOCI): DatiGrafo {
   const voci = leggiVoci(dirVoci);
+  validaCollegamenti(voci);
   const costruito = costruisciGrafo(voci);
   calcolaLayout(costruito.grafo);
   const { dati, ricerca, corpi } = serializza(costruito);
