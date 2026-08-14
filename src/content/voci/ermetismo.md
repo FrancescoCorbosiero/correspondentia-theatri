@@ -22,6 +22,16 @@ fonti:
   - "Yates, Giordano Bruno e la tradizione ermetica"
 ---
 
-L'ermetismo è la corrente che si riconosce nei testi attribuiti a Ermete Trismegisto. Va distinto l'ermetismo **filosofico** dei trattati — il *Corpus Hermeticum*, l'*Asclepius* — da quello **tecnico**: astrologia, alchimia e magia dei talismani, che circola dalla tarda antichità nel mondo arabo e poi latino.
+L'ermetismo è la corrente che si riconosce nei testi attribuiti a [Ermete Trismegisto](/voce/ermete-trismegisto) — figura sincretica che fonde il greco Ermes e l'egizio Thoth: un autore che non è mai esistito, e la cui autorità ha retto per questo millecinquecento anni.
 
-La corrente conosce due momenti di fortuna opposti. Nel 1463 la traduzione di Ficino, fondata su un errore di datazione, ne fa la rivelazione più antica dell'umanità; nel 1614 la filologia di Casaubon la ricolloca in età imperiale, e l'ermetismo esce dalla filosofia per passare nel «sapere rifiutato» che l'Ottocento chiamerà esoterismo.
+## I testi
+
+Il [Corpus Hermeticum](/voce/corpus-hermeticum) raccoglie diciassette brevi trattati greci in forma dialogica, composti fra I e III secolo d.C. in ambiente [alessandrino](/voce/alessandria); vi si aggiungono l'*Asclepius* conservato in latino, estratti nell'antologia di Stobeo e trattati copti riemersi a [Nag Hammadi](/voce/scoperta-di-nag-hammadi). Il primo trattato, il *Poimandres*, è il più noto: una visione in cui l'intelletto divino rivela l'origine del cosmo e dell'uomo — essere doppio, mortale per il corpo e immortale per l'intelletto, disceso attraverso le sfere planetarie e destinato a risalirle deponendo a ciascuna il vizio corrispondente. Questo schema di discesa e risalita per sfere, con una qualità morale per pianeta, diventerà uno dei più duraturi dell'intera letteratura esoterica.
+
+Va distinto l'ermetismo **filosofico** dei trattati da quello **tecnico**: una vasta letteratura di [astrologia](/voce/astrologia), alchimia e [talismani](/voce/talismani), altrettanto attribuita a Ermete, che circola dalla tarda antichità nel mondo arabo e poi latino. Le due tradizioni si intrecciano senza coincidere; il testo tecnico più influente è la [Tavola di Smeraldo](/voce/tavola-di-smeraldo), la cui formula sulla corrispondenza fra alto e basso diventerà la sintesi proverbiale del principio delle [corrispondenze](/voce/corrispondenze).
+
+## Le due riscoperte
+
+La fortuna dell'ermetismo si gioca in due date speculari. **1463**: Cosimo de' Medici ordina a [Ficino](/voce/ficino) di interrompere Platone per tradurre prima Ermete — l'episodio della [traduzione del Corpus](/voce/traduzione-del-corpus-hermeticum). L'effetto sulla cultura europea è enorme e dipende da un errore di datazione: ritenendo Ermete contemporaneo di Mosè, [Firenze](/voce/firenze) legge i trattati come rivelazione pre-cristiana convergente con la Scrittura. Nasce la [prisca theologia](/voce/prisca-theologia), la catena dei sapienti — Ermete, Orfeo, Zoroastro, Pitagora, Platone — depositari di un'unica sapienza originaria, e su quella catena si costruisce la [magia rinascimentale](/voce/magia-rinascimentale).
+
+**1614**: [Isaac Casaubon](/voce/datazione-di-casaubon), con argomenti puramente filologici — il greco, i riferimenti interni, le citazioni —, dimostra che i testi sono di età imperiale. Per la cultura dotta il colpo è definitivo: l'ermetismo esce dalla filosofia e passa nel sottosuolo, dove diventa parte di quel [sapere rifiutato](/voce/sapere-rifiutato) che l'Ottocento riesumerà sotto il nome di esoterismo. La parabola è esemplare per l'intero atlante: **una corrente può fondarsi su una datazione sbagliata, produrre effetti culturali immensi, e sopravvivere alla propria confutazione** — cambiando statuto, non contenuto.
