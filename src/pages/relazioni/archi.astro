@@ -1,0 +1,180 @@
+---
+import Base from '../../layouts/Base.astro';
+import grafo from '../../generated/graph.json';
+import type { DatiGrafo } from '../../lib/tipi-grafo';
+import { withBase } from '../../lib/percorsi-url';
+import { ETICHETTE_TIPO_ARCO, TIPI_ARCO } from '../../lib/schema';
+
+/**
+ * Tutti gli archi del grafo in una tavola ordinabile e filtrabile: la vista
+ * complementare alle liste di adiacenza (/relazioni) e all'anagrafica delle
+ * voci (/grafo/elenco). Esclusa l'appartenenza alle parti ("contiene"),
+ * derivata e ridondante rispetto alla colonna Parte dell'elenco.
+ */
+const dati = grafo as unknown as DatiGrafo;
+const perId = new Map(dati.nodi.map((n) => [n.id, n]));
+const titoloDi = (id: string) => perId.get(id)?.titolo ?? id;
+
+const archi = dati.archi
+  .filter((a) => a.tipo !== 'contiene')
+  .sort(
+    (x, y) =>
+      titoloDi(x.da).localeCompare(titoloDi(y.da), 'it') ||
+      x.tipo.localeCompare(y.tipo) ||
+      titoloDi(x.a).localeCompare(titoloDi(y.a), 'it')
+  );
+---
+
+<Base
+  titolo="Tutti gli archi"
+  descrizione="La tavola completa delle relazioni dell'atlante: da, tipo, verso e nota per ciascun arco, ordinabile e filtrabile, con le genealogie leggendarie contrassegnate."
+>
+  <div class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="font-serif text-3xl">Tutti gli archi</h1>
+    <p class="mt-2 max-w-2xl text-sm text-tenue">
+      {archi.length} relazioni, una per riga, esclusa l'appartenenza alle parti. Le
+      <strong>genealogie leggendarie</strong> sono contrassegnate e portano la nota che spiega
+      perché non reggono. Le stesse relazioni, voce per voce, sono nelle
+      <a class="underline text-accento" href={withBase('/relazioni')}>liste di adiacenza</a>.
+    </p>
+
+    <form class="mt-6 flex flex-wrap items-end gap-3 text-sm" id="filtri-archi">
+      <div>
+        <label for="filtro-testo" class="block text-xs font-medium mb-1">Filtra per testo</label>
+        <input
+          id="filtro-testo"
+          type="search"
+          placeholder="voce, nota…"
+          class="rounded-sm border border-bordo bg-rialzato px-2 py-1.5 w-64"
+          autocomplete="off"
+        />
+      </div>
+      <div>
+        <label for="filtro-arco" class="block text-xs font-medium mb-1">Tipo di relazione</label>
+        <select id="filtro-arco" class="rounded-sm border border-bordo bg-rialzato px-2 py-1.5">
+          <option value="">Tutte</option>
+          {TIPI_ARCO.filter((t) => t !== 'contiene').map((t) => <option value={t}>{ETICHETTE_TIPO_ARCO[t]}</option>)}
+        </select>
+      </div>
+      <label class="flex items-center gap-1.5 pb-1.5">
+        <input type="checkbox" id="filtro-documentate" />
+        solo relazioni documentate
+      </label>
+      <p class="text-xs text-tenue" role="status" id="conteggio-archi"></p>
+    </form>
+
+    <div class="mt-4 overflow-x-auto">
+      <table class="w-full text-sm border-collapse" id="tabella-archi">
+        <caption class="sr-only">
+          Archi del grafo: voce di partenza, tipo della relazione, voce di arrivo e nota. Le
+          intestazioni ordinano.
+        </caption>
+        <thead>
+          <tr class="border-b-2 border-bordo-forte text-start">
+            <th scope="col" aria-sort="ascending"><button type="button" data-ordina="da">Da</button></th>
+            <th scope="col"><button type="button" data-ordina="tipo">Relazione</button></th>
+            <th scope="col"><button type="button" data-ordina="a">Verso</button></th>
+            <th scope="col">Nota</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            archi.map((arco) => (
+              <tr
+                class="border-b border-bordo align-top"
+                data-da={titoloDi(arco.da).toLowerCase()}
+                data-tipo={arco.tipo}
+                data-a={titoloDi(arco.a).toLowerCase()}
+                data-testo={`${titoloDi(arco.da)} ${ETICHETTE_TIPO_ARCO[arco.tipo]} ${titoloDi(arco.a)} ${arco.nota ?? ''}`.toLowerCase()}
+                data-leggendaria={arco.tipo === 'attribuzione_infondata' ? '1' : undefined}
+              >
+                <th scope="row" class="py-2 pe-3 text-start font-medium">
+                  <a class="underline decoration-dotted underline-offset-2 hover:text-accento" href={withBase(`/voce/${arco.da}`)}>
+                    {titoloDi(arco.da)}
+                  </a>
+                </th>
+                <td class="py-2 pe-3 whitespace-nowrap">
+                  {ETICHETTE_TIPO_ARCO[arco.tipo]}
+                  {arco.tipo === 'attribuzione_infondata' && (
+                    <span class="etichetta ms-1 border border-bordo bg-incassato px-1 py-0.5 text-tenue">leggendaria</span>
+                  )}
+                </td>
+                <td class="py-2 pe-3">
+                  <a class="underline decoration-dotted underline-offset-2 hover:text-accento" href={withBase(`/voce/${arco.a}`)}>
+                    {titoloDi(arco.a)}
+                  </a>
+                </td>
+                <td class="py-2 text-tenue">{arco.nota ?? '—'}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</Base>
+
+<style>
+  th button {
+    font-weight: 600;
+    text-align: start;
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+  }
+  th[aria-sort='ascending'] button::after {
+    content: ' ↑';
+  }
+  th[aria-sort='descending'] button::after {
+    content: ' ↓';
+  }
+</style>
+
+<script>
+  // Ordinamento e filtro progressivi: senza JavaScript la tavola completa
+  // resta consultabile (è già ordinata per voce di partenza).
+  const tabella = document.getElementById('tabella-archi') as HTMLTableElement;
+  const corpo = tabella.tBodies[0]!;
+  const righe = () => Array.from(corpo.rows);
+  const testo = document.getElementById('filtro-testo') as HTMLInputElement;
+  const arco = document.getElementById('filtro-arco') as HTMLSelectElement;
+  const documentate = document.getElementById('filtro-documentate') as HTMLInputElement;
+  const conteggio = document.getElementById('conteggio-archi')!;
+
+  function applicaFiltri() {
+    const q = testo.value.trim().toLowerCase();
+    const ta = arco.value;
+    const soloDoc = documentate.checked;
+    let visibili = 0;
+    for (const riga of righe()) {
+      const visibile =
+        (!q || riga.dataset.testo!.includes(q)) &&
+        (!ta || riga.dataset.tipo === ta) &&
+        (!soloDoc || riga.dataset.leggendaria !== '1');
+      riga.hidden = !visibile;
+      if (visibile) visibili++;
+    }
+    conteggio.textContent = `${visibili} archi mostrati`;
+  }
+  testo.addEventListener('input', applicaFiltri);
+  arco.addEventListener('change', applicaFiltri);
+  documentate.addEventListener('change', applicaFiltri);
+  applicaFiltri();
+
+  for (const bottone of tabella.querySelectorAll<HTMLButtonElement>('[data-ordina]')) {
+    bottone.addEventListener('click', () => {
+      const chiave = bottone.dataset.ordina!;
+      const th = bottone.closest('th')!;
+      const discendente = th.getAttribute('aria-sort') === 'ascending';
+      for (const altro of tabella.querySelectorAll('th[aria-sort]')) altro.removeAttribute('aria-sort');
+      th.setAttribute('aria-sort', discendente ? 'descending' : 'ascending');
+      const ordinate = righe().sort((a, b) => {
+        const esito = a.dataset[chiave]!.localeCompare(b.dataset[chiave]!, 'it');
+        return discendente ? -esito : esito;
+      });
+      for (const riga of ordinate) corpo.appendChild(riga);
+    });
+  }
+</script>

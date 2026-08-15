@@ -6,7 +6,7 @@
 > questo file. Tutto ciò che segue è rivolto a Claude Code.
 
 Questo repository è il **motore** di un atlante ipermediale a grafo: pipeline
-dati con validazione Zod, viste (grafo 2D, cosmo 3D, timeline, percorsi,
+dati con validazione Zod, viste (grafo 2D, relazioni testuali, timeline, percorsi,
 volume lineare, ricerca, atlante dei simboli, blog), tema "strumento
 cartografico", test unitari ed e2e, CI e deploy su GitHub Pages. Il contenuto
 attuale (esoterismo occidentale) è **il caso di riferimento da sostituire**

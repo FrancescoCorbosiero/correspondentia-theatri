@@ -84,3 +84,30 @@ test('gli archi leggendari sono spenti di default e dichiarati in legenda', asyn
   await page.getByText('Legenda').click();
   await expect(page.getByText(/spenti per impostazione predefinita/)).toBeVisible();
 });
+
+test('le relazioni in forma testuale: filtro e salto al dossier', async ({ page }) => {
+  await page.goto('relazioni');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('relazioni');
+
+  // filtro progressivo: restringe alle voci che citano Ficino
+  await page.getByLabel('Filtra per testo').fill('ficino');
+  await expect(page.getByRole('status').filter({ hasText: 'voci mostrate' })).not.toHaveText(
+    /^0 voci/
+  );
+
+  // le genealogie leggendarie sono contrassegnate nella tavola degli archi
+  await page.goto('relazioni/archi');
+  await page.getByLabel('Tipo di relazione').selectOption('attribuzione_infondata');
+  await expect(page.getByRole('status')).toContainText('archi mostrati');
+  await expect(page.locator('tbody tr:not([hidden])').first()).toContainText('leggendaria');
+
+  // dalla lista al dossier
+  await page.goto('relazioni');
+  await page
+    .locator('article[data-testo]', { hasText: 'Marsilio Ficino' })
+    .first()
+    .getByRole('link', { name: 'Marsilio Ficino' })
+    .click();
+  await expect(page).toHaveURL(/\/voce\/ficino/);
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('Ficino');
+});
