@@ -5,6 +5,8 @@ tipo: simbolo
 parte: 5
 sommario: "Il luogo della privazione e della prova, dove si va per essere spogliati. Non è vuoto ma tentazione: nella tradizione monastica è affollato di demoni proprio perché nulla distrae da se stessi."
 peso: 2
+archi:
+  - { verso: iniziazione, tipo: elabora, nota: "La prova per privazione: il passaggio nel luogo vuoto come figura iniziatica" }
 ---
 
 Il deserto è **il luogo della privazione e della prova, dove si va per essere spogliati**: l'Esodo vi tiene Israele quarant'anni fra l'uscita e la promessa, i profeti vi tornano per ritrovare la voce, Gesù vi digiuna quaranta giorni, e i monaci del IV secolo vi fondano — nell'Egitto di Antonio e nelle Tebaidi — la vita contemplativa organizzata d'Occidente.
