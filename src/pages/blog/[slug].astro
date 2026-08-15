@@ -40,7 +40,7 @@ const jsonLd = JSON.stringify({
     </nav>
 
     <header class="mt-6 pb-8 border-b border-bordo">
-      <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-tenue">
+      <p class="flex flex-wrap items-center gap-x-3 gap-y-1.5 etichetta text-tenue">
         <time datetime={articolo.data.data.toISOString().slice(0, 10)}>
           {dataIt.format(articolo.data.data)}
         </time>
@@ -48,7 +48,7 @@ const jsonLd = JSON.stringify({
         <span>{minuti} min di lettura</span>
         <span aria-hidden="true">·</span>
         <span>{articolo.data.autore}</span>
-        {articolo.data.tag.map((t) => <span class="rounded-full bg-incassato px-2.5 py-0.5">{t}</span>)}
+        {articolo.data.tag.map((t) => <span class="border border-bordo bg-incassato px-1.5 py-0.5">{t}</span>)}
       </p>
       <h1 class="mt-4 font-serif text-4xl sm:text-5xl leading-tight tracking-tight text-testo text-balance">
         {articolo.data.titolo}
@@ -63,11 +63,11 @@ const jsonLd = JSON.stringify({
     {
       correlati.length > 0 && (
         <aside aria-label="Altri articoli" class="mt-14 pt-8 border-t border-bordo">
-          <h2 class="text-sm font-semibold uppercase tracking-wide text-tenue">Continua a leggere</h2>
+          <h2 class="etichetta text-tenue">Continua a leggere</h2>
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             {correlati.map((a) => (
               <a href={withBase(`/blog/${a.id}`)} class="carta group p-4">
-                <p class="text-xs text-tenue/80">
+                <p class="etichetta text-tenue/80">
                   <time datetime={a.data.data.toISOString().slice(0, 10)}>{dataIt.format(a.data.data)}</time>
                 </p>
                 <h3 class="mt-1.5 font-serif text-lg leading-snug text-testo group-hover:text-accento transition-colors duration-150">

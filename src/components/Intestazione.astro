@@ -17,26 +17,26 @@ const vociMenu = [
 const eAttivo = (href: string) => attuale.startsWith(withBase(href));
 ---
 
-<header class="border-b border-bordo bg-sfondo/85 backdrop-blur-md sticky top-0 z-40">
-  <nav aria-label="Navigazione principale" class="mx-auto max-w-6xl px-4 flex items-center gap-4 h-14">
+<header class="border-b border-bordo bg-sfondo/90 backdrop-blur-sm sticky top-0 z-40">
+  <nav aria-label="Navigazione principale" class="mx-auto max-w-6xl px-4 flex items-center gap-5 h-14">
     <a href={withBase('/')} class="group flex items-center gap-2.5 shrink-0">
       <span class="marchio h-7 w-7 text-[0.68rem] font-bold tracking-tight" aria-hidden="true">CT</span>
-      <span class="font-semibold tracking-tight text-testo transition-colors duration-150 group-hover:text-accento max-sm:sr-only">
+      <span class="font-semibold tracking-tight text-testo transition-colors duration-120 group-hover:text-accento max-sm:sr-only">
         Correspondentia Theatri
       </span>
     </a>
-    <ul class="flex items-center gap-1 overflow-x-auto text-sm min-w-0">
+    <ul class="flex items-stretch gap-4 overflow-x-auto text-sm min-w-0 self-stretch">
       {
         vociMenu.map((v) => (
-          <li>
+          <li class="flex">
             <a
               href={withBase(v.href)}
               aria-current={eAttivo(v.href) ? 'page' : undefined}
               class:list={[
-                'px-3 py-1.5 rounded-full whitespace-nowrap transition-colors duration-150',
+                'flex items-center border-b-2 px-0.5 whitespace-nowrap transition-colors duration-120',
                 eAttivo(v.href)
-                  ? 'bg-incassato text-testo font-medium'
-                  : 'text-tenue hover:text-testo hover:bg-incassato/60',
+                  ? 'border-accento text-testo font-medium'
+                  : 'border-transparent text-tenue hover:text-testo',
               ]}
             >
               {v.etichetta}
@@ -49,7 +49,7 @@ const eAttivo = (href: string) => attuale.startsWith(withBase(href));
       <button
         id="apri-ricerca"
         type="button"
-        class="hidden sm:flex items-center gap-2 text-xs text-tenue bg-rialzato border border-bordo rounded-lg ps-2.5 pe-1.5 py-1.5 transition-colors duration-150 hover:border-bordo-forte hover:text-testo"
+        class="hidden sm:flex items-center gap-2 text-xs text-tenue bg-rialzato border border-bordo rounded-sm ps-2.5 pe-1.5 py-1.5 transition-colors duration-120 hover:border-bordo-forte hover:text-testo"
         aria-label="Apri la ricerca rapida (Ctrl+K)"
       >
         <span>Cerca</span>
@@ -58,7 +58,7 @@ const eAttivo = (href: string) => attuale.startsWith(withBase(href));
       <button
         id="commuta-tema"
         type="button"
-        class="text-tenue rounded-lg p-2 transition-colors duration-150 hover:bg-incassato hover:text-testo"
+        class="text-tenue border border-transparent rounded-sm p-2 transition-colors duration-120 hover:border-bordo hover:bg-rialzato hover:text-testo"
         aria-label="Attiva o disattiva il tema scuro"
       >
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
