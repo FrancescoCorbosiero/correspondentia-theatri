@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 /*
- * Design token di Theatrum (§7 del BRIEF).
+ * Design token di Correspondentia Theatri (§7 del BRIEF).
  * Variabili semantiche in :root con variante scura via [data-theme="dark"];
  * Tailwind le espone come utility tramite @theme inline.
  */

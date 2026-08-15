@@ -9,7 +9,7 @@ import { expect, test } from '@playwright/test';
 
 test('1 · dalla home al grafo, dal grafo alla voce', async ({ page }) => {
   await page.goto('.');
-  await expect(page).toHaveTitle(/Theatrum/);
+  await expect(page).toHaveTitle(/Correspondentia Theatri/);
 
   // la porta principale
   await page.getByRole('link', { name: /Esplora il grafo/ }).click();

@@ -19,7 +19,7 @@ const sezioni = headings.filter((h) => h.depth === 2);
 
 <Base
   titolo={capitolo.data.titolo}
-  descrizione={`${capitolo.data.titolo} — il volume di Theatrum in modalità lineare, capitolo ${indice + 1} di ${tutti.length}.`}
+  descrizione={`${capitolo.data.titolo} — il volume di Correspondentia Theatri in modalità lineare, capitolo ${indice + 1} di ${tutti.length}.`}
 >
   <div class="mx-auto max-w-6xl px-4 py-10 grid gap-10 lg:grid-cols-[220px_minmax(0,1fr)]">
     <nav aria-label="Indice del capitolo" class="hidden lg:block">
@@ -80,8 +80,8 @@ const sezioni = headings.filter((h) => h.depth === 2);
 <script define:vars={{ idCapitolo: capitolo.id }}>
   // registra il capitolo nella progressione di lettura
   try {
-    const letti = new Set(JSON.parse(localStorage.getItem('theatrum-letti') ?? '[]'));
+    const letti = new Set(JSON.parse(localStorage.getItem('correspondentia-letti') ?? '[]'));
     letti.add(idCapitolo);
-    localStorage.setItem('theatrum-letti', JSON.stringify([...letti]));
+    localStorage.setItem('correspondentia-letti', JSON.stringify([...letti]));
   } catch {}
 </script>

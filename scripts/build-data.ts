@@ -1,5 +1,5 @@
 /**
- * Pipeline dati di Theatrum — fonte unica (§3.1 del BRIEF).
+ * Pipeline dati di Correspondentia Theatri — fonte unica (§3.1 del BRIEF).
  *
  * Legge il frontmatter di tutte le voci in src/content/voci, valida con lo
  * schema Zod condiviso, deriva gli archi `contiene` dal campo `parte`,

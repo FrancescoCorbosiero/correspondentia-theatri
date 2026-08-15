@@ -1,4 +1,4 @@
-# Guida di stile per le voci di Theatrum
+# Guida di stile per le voci di Correspondentia Theatri
 
 Vincolante per chiunque scriva o amplii un corpo di voce. Deriva dal §4.2 del BRIEF
 e dal registro del volume sorgente in `contenuti/`.

@@ -19,7 +19,7 @@ const eAttivo = (href: string) => attuale.startsWith(withBase(href));
 <header class="border-b border-bordo bg-rialzato/80 backdrop-blur-sm sticky top-0 z-40">
   <nav aria-label="Navigazione principale" class="mx-auto max-w-6xl px-4 flex items-center gap-4 h-12">
     <a href={withBase('/')} class="font-serif text-lg font-semibold tracking-wide text-accento shrink-0">
-      Theatrum
+      Correspondentia Theatri
     </a>
     <ul class="flex items-center gap-1 overflow-x-auto text-sm min-w-0">
       {
@@ -71,12 +71,12 @@ const eAttivo = (href: string) => attuale.startsWith(withBase(href));
     if (scuro) {
       delete radice.dataset.theme;
       try {
-        localStorage.setItem('theatrum-tema', 'light');
+        localStorage.setItem('correspondentia-tema', 'light');
       } catch {}
     } else {
       radice.dataset.theme = 'dark';
       try {
-        localStorage.setItem('theatrum-tema', 'dark');
+        localStorage.setItem('correspondentia-tema', 'dark');
       } catch {}
     }
   });

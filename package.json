@@ -1,7 +1,7 @@
 {
-  "name": "theatrum",
+  "name": "correspondentia-theatri",
   "version": "0.1.0",
-  "description": "Theatrum — atlante ipermediale dell'esoterismo occidentale",
+  "description": "Correspondentia Theatri — atlante ipermediale dell'esoterismo occidentale",
   "type": "module",
   "private": true,
   "engines": {

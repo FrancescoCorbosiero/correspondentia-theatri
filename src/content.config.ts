@@ -3,7 +3,7 @@ import { glob } from 'astro/loaders';
 import { capitoloSchema, percorsoSchema, voceSchema } from './lib/schema';
 
 /**
- * Collections di Theatrum.
+ * Collections di Correspondentia Theatri.
  * - voci: le ~230 voci dell'atlante (una voce = un nodo del grafo, §3.1);
  * - percorsi: i percorsi curati d'autore (§5.6);
  * - capitoli: il volume lineare per /leggi, generato da contenuti/ dalla

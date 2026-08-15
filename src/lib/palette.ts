@@ -1,5 +1,5 @@
 /**
- * Palette di Theatrum (§7 del BRIEF).
+ * Palette di Correspondentia Theatri (§7 del BRIEF).
  *
  * I sei colori delle parti sono tinte desaturate scelte per restare
  * distinguibili anche in deuteranopia: la garanzia non è "a occhio" ma
