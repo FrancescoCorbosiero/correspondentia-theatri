@@ -1,27 +1,26 @@
 @import 'tailwindcss';
 
 /*
- * Tema di Correspondentia Theatri: identità "dashboard" propria, indipendente
- * dal soggetto dell'atlante. Superfici neutre fredde, un solo accento iris,
- * ombre morbide, transizioni brevi. Variabili semantiche in :root con
- * variante scura via [data-theme="dark"]; Tailwind le espone come utility
- * tramite @theme inline. La prosa lunga resta in serif (lettura, §7).
+ * Tema di Correspondentia Theatri: "strumento cartografico".
+ * Identità propria, indipendente dal soggetto dell'atlante e dai kit UI
+ * correnti: carta fredda con griglia a punti appena percettibile, spigoli
+ * quasi vivi, filetti sottili al posto delle ombre, un solo accento
+ * vermiglio, crocini di registro sugli elementi interattivi. Tipografia:
+ * Space Grotesk per la chrome, IBM Plex Mono per i metadati, EB Garamond
+ * per la prosa lunga (lettura, §7). Variante scura via [data-theme="dark"].
  */
 :root {
-  --sfondo: #f6f7f9;
-  --sfondo-rialzato: #ffffff;
-  --sfondo-incassato: #edeff3;
-  --testo: #16181d;
-  --testo-tenue: #5d6370;
-  --accento: #4f46e5; /* iris */
-  --accento-caldo: #b45309; /* ambra */
-  --bordo: #e4e6eb;
-  --bordo-forte: #c6cad3;
-  --focus: #4f46e5;
-  --marchio-a: #6366f1;
-  --marchio-b: #8b5cf6;
-  --ombra-carta: 0 1px 2px rgb(23 25 35 / 0.05), 0 2px 6px rgb(23 25 35 / 0.05);
-  --ombra-carta-su: 0 2px 4px rgb(23 25 35 / 0.06), 0 12px 28px rgb(23 25 35 / 0.1);
+  --sfondo: #f3f2ed; /* carta */
+  --sfondo-rialzato: #fbfaf7;
+  --sfondo-incassato: #eae8e0;
+  --testo: #1c1d1a; /* inchiostro */
+  --testo-tenue: #5d5e57;
+  --accento: #b93a1e; /* vermiglio */
+  --accento-caldo: #8f6a13; /* ottone */
+  --bordo: #dcdad0;
+  --bordo-forte: #a9a798;
+  --focus: #b93a1e;
+  --punto-griglia: rgb(28 29 26 / 0.055);
 
   --parte-1: #31639c;
   --parte-2: #8c3a2e;
@@ -32,20 +31,17 @@
 }
 
 [data-theme='dark'] {
-  --sfondo: #0b0c10;
-  --sfondo-rialzato: #14161c;
-  --sfondo-incassato: #1c1f27;
-  --testo: #e7e9ee;
-  --testo-tenue: #9aa1af;
-  --accento: #8f99f8;
-  --accento-caldo: #d9ab52;
-  --bordo: #262a33;
-  --bordo-forte: #3c4250;
-  --focus: #a5b4fc;
-  --marchio-a: #818cf8;
-  --marchio-b: #a78bfa;
-  --ombra-carta: 0 1px 2px rgb(0 0 0 / 0.4);
-  --ombra-carta-su: 0 2px 4px rgb(0 0 0 / 0.35), 0 12px 28px rgb(0 0 0 / 0.5);
+  --sfondo: #111210;
+  --sfondo-rialzato: #191a17;
+  --sfondo-incassato: #22231f;
+  --testo: #ebeae3;
+  --testo-tenue: #a2a399;
+  --accento: #ff7a52;
+  --accento-caldo: #d3b05e;
+  --bordo: #2d2e29;
+  --bordo-forte: #4c4d45;
+  --focus: #ff7a52;
+  --punto-griglia: rgb(235 234 227 / 0.055);
 
   --parte-1: #6f97c6;
   --parte-2: #c47764;
@@ -73,11 +69,18 @@
   --color-parte-5: var(--parte-5);
   --color-parte-6: var(--parte-6);
 
-  --shadow-carta: var(--ombra-carta);
-  --shadow-carta-su: var(--ombra-carta-su);
+  /* Spigoli quasi vivi ovunque, qualunque utility di raggio usino le pagine */
+  --radius-xs: 1px;
+  --radius-sm: 2px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 3px;
+  --radius-2xl: 4px;
+  --radius-3xl: 4px;
 
   --font-serif: 'EB Garamond Variable', Georgia, 'Times New Roman', serif;
-  --font-sans: 'Inter Variable', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Space Grotesk Variable', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', monospace;
 }
 
 html {
@@ -90,63 +93,97 @@ html {
 
 body {
   min-height: 100dvh;
+  /* Carta millimetrata: griglia a punti appena percettibile */
+  background-image: radial-gradient(circle, var(--punto-griglia) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 /* Focus visibile ovunque (WCAG 2.4.7) */
 :focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
-  border-radius: 4px;
+  border-radius: 1px;
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--accento) 25%, transparent);
+  background: color-mix(in srgb, var(--accento) 22%, transparent);
 }
 
 /*
  * Componenti del tema.
- * .carta: superficie rialzata standard; su elementi interattivi guadagna
- * bordo, ombra e un lieve sollevamento (le transizioni sono azzerate per
- * chi chiede meno movimento, v. media query in coda).
+ * .carta: superficie opaca a filetto sottile, niente ombre. Sugli elementi
+ * interattivi il filetto si rafforza e agli angoli opposti compaiono i
+ * crocini di registro in vermiglio, come su una tavola da stampa.
  */
 .carta {
+  position: relative;
   background: var(--sfondo-rialzato);
   border: 1px solid var(--bordo);
-  border-radius: 0.75rem;
-  box-shadow: var(--ombra-carta);
+  border-radius: 2px;
   transition:
-    border-color 150ms ease,
-    box-shadow 150ms ease,
-    translate 150ms ease;
+    border-color 120ms ease,
+    color 120ms ease;
+}
+:where(a, button, [tabindex]).carta::before,
+:where(a, button, [tabindex]).carta::after {
+  content: '';
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+}
+:where(a, button, [tabindex]).carta::before {
+  top: -1px;
+  left: -1px;
+  border-top: 2px solid var(--accento);
+  border-left: 2px solid var(--accento);
+}
+:where(a, button, [tabindex]).carta::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 2px solid var(--accento);
+  border-right: 2px solid var(--accento);
 }
 :where(a, button, [tabindex]).carta:hover {
   border-color: var(--bordo-forte);
-  box-shadow: var(--ombra-carta-su);
-  translate: 0 -2px;
+}
+:where(a, button, [tabindex]).carta:hover::before,
+:where(a, button, [tabindex]).carta:hover::after {
+  opacity: 1;
 }
 
-/* Tessera del marchio ("CT" su gradiente iris) */
+/* Tessera del marchio: monogramma in negativo su inchiostro */
 .marchio {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--marchio-a), var(--marchio-b));
-  color: #fff;
-  border-radius: 0.5rem;
+  background: var(--testo);
+  color: var(--sfondo);
+  border-radius: 2px;
   user-select: none;
+}
+
+/* Etichetta tecnica: metadati in mono maiuscoletto (date, tipi, conteggi) */
+.etichetta {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 /* Suggerimento di tastiera (⌘K e simili) */
 .tasto {
-  font-family: var(--font-sans);
-  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
   font-weight: 500;
   line-height: 1;
   color: var(--testo-tenue);
   background: var(--sfondo-incassato);
   border: 1px solid var(--bordo);
-  border-bottom-width: 2px;
-  border-radius: 0.375rem;
+  border-radius: 2px;
   padding: 0.2rem 0.35rem;
 }
 
@@ -250,16 +287,15 @@ body {
   background: var(--sfondo-rialzato);
   padding: 0.9rem 1.1rem;
   margin-block: 1.4em;
-  border-radius: 0.625rem;
+  border-radius: 2px;
   font-size: 0.98em;
-  box-shadow: var(--ombra-carta);
 }
 .nota .nota-titolo {
-  font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--accento-caldo);
   margin-bottom: 0.4em;
 }
@@ -271,7 +307,7 @@ body {
   background: color-mix(in srgb, #a04a3c 7%, var(--sfondo-rialzato));
   padding: 0.9rem 1.1rem;
   margin-block: 1.4em;
-  border-radius: 0.625rem;
+  border-radius: 2px;
 }
 
 /* Riduzione del movimento: nessuna transizione decorativa comunque,
@@ -284,7 +320,6 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-    translate: none !important;
   }
 }
 
@@ -297,7 +332,7 @@ body {
   background: var(--accento);
   color: #fff;
   padding: 0.5rem 1rem;
-  border-radius: 0 0 8px 0;
+  border-radius: 0;
 }
 .salta-al-contenuto:focus {
   left: 0;

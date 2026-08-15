@@ -62,7 +62,7 @@ const altreViste = [
 >
   <div class="mx-auto max-w-6xl px-4">
     <section class="pt-14 pb-10 text-center">
-      <p class="inline-flex items-center gap-2 rounded-full border border-bordo bg-rialzato px-3.5 py-1.5 text-xs text-tenue shadow-carta">
+      <p class="inline-flex items-center gap-2.5 border border-bordo bg-rialzato rounded-sm px-3 py-1.5 etichetta text-tenue">
         <span class="marchio h-4 w-4 text-[0.45rem] font-bold" aria-hidden="true">CT</span>
         Atlante ipermediale · in sei parti
       </p>
@@ -76,22 +76,26 @@ const altreViste = [
       </p>
     </section>
 
-    <section aria-label="L'atlante in numeri" class="grid grid-cols-2 sm:grid-cols-4 gap-4 pb-10">
-      {
-        statistiche.map((st) => (
-          <div class="carta p-4 text-center">
-            <p class="text-3xl font-semibold tracking-tight text-testo tabular-nums">{st.valore}</p>
-            <p class="mt-1 text-xs uppercase tracking-wide text-tenue">{st.etichetta}</p>
-          </div>
-        ))
-      }
+    <section aria-label="L'atlante in numeri" class="pb-10">
+      <div class="carta overflow-hidden">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-bordo">
+          {
+            statistiche.map((st) => (
+              <div class="bg-rialzato p-4 text-center">
+                <p class="text-3xl font-semibold tracking-tight text-testo tabular-nums">{st.valore}</p>
+                <p class="mt-1.5 etichetta text-tenue">{st.etichetta}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </section>
 
     <section aria-label="Tre porte d'ingresso" class="grid gap-4 sm:grid-cols-3 pb-6">
       {
         porte.map((porta) => (
           <a href={withBase(porta.href)} class="carta group p-5">
-            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-incassato text-accento">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-bordo bg-incassato text-accento">
               <svg
                 width="20"
                 height="20"
@@ -140,7 +144,7 @@ const altreViste = [
                 {p.data.titolo}
               </h3>
               <p class="mt-1 text-sm text-tenue">{p.data.sottotitolo}</p>
-              <p class="mt-2 text-xs text-tenue/80">{p.data.tappe.length} tappe</p>
+              <p class="mt-2.5 etichetta text-tenue/80">{p.data.tappe.length} tappe</p>
             </a>
           ))
         }
@@ -163,7 +167,7 @@ const altreViste = [
         {
           articoli.map((a) => (
             <a href={withBase(`/blog/${a.id}`)} class="carta group p-4 flex flex-col">
-              <p class="text-xs text-tenue/80">
+              <p class="etichetta text-tenue/80">
                 <time datetime={a.data.data.toISOString().slice(0, 10)}>{dataIt.format(a.data.data)}</time>
               </p>
               <h3 class="mt-2 font-serif text-lg leading-snug text-testo group-hover:text-accento transition-colors duration-150">
@@ -182,7 +186,7 @@ const altreViste = [
           altreViste.map((v) => (
             <li>
               <a
-                class="inline-block rounded-full border border-bordo bg-rialzato px-3.5 py-1.5 text-tenue transition-colors duration-150 hover:border-bordo-forte hover:text-testo"
+                class="inline-block rounded-sm border border-bordo bg-rialzato px-3.5 py-1.5 text-tenue transition-colors duration-120 hover:border-bordo-forte hover:text-testo"
                 href={withBase(v.href)}
               >
                 {v.etichetta}
