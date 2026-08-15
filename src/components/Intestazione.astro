@@ -10,16 +10,20 @@ const vociMenu = [
   { href: '/diagrammi', etichetta: 'Diagrammi' },
   { href: '/percorsi', etichetta: 'Percorsi' },
   { href: '/leggi', etichetta: 'Leggi' },
+  { href: '/blog', etichetta: 'Blog' },
   { href: '/cerca', etichetta: 'Cerca' },
 ];
 
 const eAttivo = (href: string) => attuale.startsWith(withBase(href));
 ---
 
-<header class="border-b border-bordo bg-rialzato/80 backdrop-blur-sm sticky top-0 z-40">
-  <nav aria-label="Navigazione principale" class="mx-auto max-w-6xl px-4 flex items-center gap-4 h-12">
-    <a href={withBase('/')} class="font-serif text-lg font-semibold tracking-wide text-accento shrink-0">
-      Correspondentia Theatri
+<header class="border-b border-bordo bg-sfondo/85 backdrop-blur-md sticky top-0 z-40">
+  <nav aria-label="Navigazione principale" class="mx-auto max-w-6xl px-4 flex items-center gap-4 h-14">
+    <a href={withBase('/')} class="group flex items-center gap-2.5 shrink-0">
+      <span class="marchio h-7 w-7 text-[0.68rem] font-bold tracking-tight" aria-hidden="true">CT</span>
+      <span class="font-semibold tracking-tight text-testo transition-colors duration-150 group-hover:text-accento max-sm:sr-only">
+        Correspondentia Theatri
+      </span>
     </a>
     <ul class="flex items-center gap-1 overflow-x-auto text-sm min-w-0">
       {
@@ -29,8 +33,10 @@ const eAttivo = (href: string) => attuale.startsWith(withBase(href));
               href={withBase(v.href)}
               aria-current={eAttivo(v.href) ? 'page' : undefined}
               class:list={[
-                'px-2.5 py-1.5 rounded whitespace-nowrap hover:bg-incassato',
-                eAttivo(v.href) ? 'text-accento font-medium' : 'text-testo',
+                'px-3 py-1.5 rounded-full whitespace-nowrap transition-colors duration-150',
+                eAttivo(v.href)
+                  ? 'bg-incassato text-testo font-medium'
+                  : 'text-tenue hover:text-testo hover:bg-incassato/60',
               ]}
             >
               {v.etichetta}
@@ -43,19 +49,19 @@ const eAttivo = (href: string) => attuale.startsWith(withBase(href));
       <button
         id="apri-ricerca"
         type="button"
-        class="hidden sm:flex items-center gap-2 text-xs text-tenue border border-bordo rounded px-2 py-1 hover:bg-incassato"
+        class="hidden sm:flex items-center gap-2 text-xs text-tenue bg-rialzato border border-bordo rounded-lg ps-2.5 pe-1.5 py-1.5 transition-colors duration-150 hover:border-bordo-forte hover:text-testo"
         aria-label="Apri la ricerca rapida (Ctrl+K)"
       >
-        <span aria-hidden="true">⌘K</span>
-        <span>cerca</span>
+        <span>Cerca</span>
+        <kbd class="tasto" aria-hidden="true">⌘K</kbd>
       </button>
       <button
         id="commuta-tema"
         type="button"
-        class="text-tenue border border-bordo rounded p-1.5 hover:bg-incassato"
+        class="text-tenue rounded-lg p-2 transition-colors duration-150 hover:bg-incassato hover:text-testo"
         aria-label="Attiva o disattiva il tema scuro"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8Z"></path>
         </svg>
       </button>

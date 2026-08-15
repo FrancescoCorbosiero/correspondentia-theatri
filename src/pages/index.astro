@@ -6,6 +6,19 @@ import grafo from '../generated/graph.json';
 
 const s = grafo.statistiche;
 const percorsi = (await getCollection('percorsi')).sort((a, b) => a.data.ordine - b.data.ordine);
+const articoli = (await getCollection('blog'))
+  .sort((a, b) => b.data.data.getTime() - a.data.data.getTime())
+  .slice(0, 3);
+
+const dataIt = new Intl.DateTimeFormat('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+
+const tipiVoce = Object.keys(s.perTipo).filter((t) => t !== 'parte').length;
+const statistiche = [
+  { valore: s.numeroNodi, etichetta: 'voci' },
+  { valore: s.numeroArchi, etichetta: 'relazioni' },
+  { valore: tipiVoce, etichetta: 'tipi di voce' },
+  { valore: 6, etichetta: 'parti del volume' },
+];
 
 const porte = [
   {
@@ -13,19 +26,33 @@ const porte = [
     titolo: 'Esplora il grafo',
     testo: `${s.numeroNodi} voci e ${s.numeroArchi} relazioni: correnti, concetti, pratiche, simboli, persone, opere, eventi, luoghi.`,
     nota: 'Vista principale · alternativa accessibile: elenco delle voci',
+    icona:
+      'M6 7.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm12 4a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Zm-9 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM8.2 6.4l7.4 3.5M7.5 16.7 6.3 7.6m4.5 10.5 5.5-5.8',
   },
   {
     href: '/leggi',
     titolo: 'Leggi il volume',
     testo: 'Le sei parti nell’ordine originale, capitolo per capitolo, con indice e progressione di lettura.',
     nota: 'Modalità lineare',
+    icona:
+      'M12 5.5C10.5 4 8.4 3.2 5.8 3.2c-1 0-1.9.1-2.8.4v14.6c.9-.3 1.8-.4 2.8-.4 2.6 0 4.7.8 6.2 2.3 1.5-1.5 3.6-2.3 6.2-2.3 1 0 1.9.1 2.8.4V3.6c-.9-.3-1.8-.4-2.8-.4-2.6 0-4.7.8-6.2 2.3Zm0 0v14.6',
   },
   {
     href: '/cerca',
     titolo: 'Cerca',
     testo: 'Titoli, alias, sommari e testo completo. Da qualunque pagina: Ctrl/Cmd + K.',
     nota: 'FlexSearch, indice pre-generato',
+    icona: 'M10.5 17a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Zm10 3.5L15.6 15.6',
   },
+];
+
+const altreViste = [
+  { href: '/cosmo', etichetta: 'Cosmo 3D' },
+  { href: '/tempo', etichetta: 'Timeline' },
+  { href: '/simboli', etichetta: 'Atlante dei simboli' },
+  { href: '/diagrammi', etichetta: 'Diagrammi' },
+  { href: '/percorsi/trova', etichetta: 'Trova un cammino fra due voci' },
+  { href: '/grafo/elenco', etichetta: 'Elenco completo' },
 ];
 ---
 
@@ -35,53 +62,114 @@ const porte = [
 >
   <div class="mx-auto max-w-6xl px-4">
     <section class="pt-14 pb-10 text-center">
-      <h1 class="font-serif text-5xl sm:text-6xl text-accento tracking-tight">Correspondentia Theatri</h1>
-      <p class="mx-auto mt-4 max-w-2xl font-serif text-xl leading-relaxed">
+      <p class="inline-flex items-center gap-2 rounded-full border border-bordo bg-rialzato px-3.5 py-1.5 text-xs text-tenue shadow-carta">
+        <span class="marchio h-4 w-4 text-[0.45rem] font-bold" aria-hidden="true">CT</span>
+        Atlante ipermediale · in sei parti
+      </p>
+      <h1 class="mt-5 font-serif text-5xl sm:text-6xl text-testo tracking-tight text-balance">
+        Correspondentia Theatri
+      </h1>
+      <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-tenue">
         Un atlante dell’esoterismo occidentale in cui la mappa delle relazioni — filiazioni
         documentate e genealogie leggendarie, dichiarate come tali — è la porta principale di
         lettura.
       </p>
     </section>
 
+    <section aria-label="L'atlante in numeri" class="grid grid-cols-2 sm:grid-cols-4 gap-4 pb-10">
+      {
+        statistiche.map((st) => (
+          <div class="carta p-4 text-center">
+            <p class="text-3xl font-semibold tracking-tight text-testo tabular-nums">{st.valore}</p>
+            <p class="mt-1 text-xs uppercase tracking-wide text-tenue">{st.etichetta}</p>
+          </div>
+        ))
+      }
+    </section>
+
     <section aria-label="Tre porte d'ingresso" class="grid gap-4 sm:grid-cols-3 pb-6">
       {
         porte.map((porta) => (
-          <a
-            href={withBase(porta.href)}
-            class="group rounded-lg border border-bordo bg-rialzato p-5 hover:border-bordo-forte focus-visible:border-accento"
-          >
-            <h2 class="font-serif text-2xl text-accento group-hover:underline underline-offset-4">
-              {porta.titolo} →
+          <a href={withBase(porta.href)} class="carta group p-5">
+            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-incassato text-accento">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.7"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d={porta.icona} />
+              </svg>
+            </span>
+            <h2 class="mt-4 text-base font-semibold tracking-tight text-testo group-hover:text-accento transition-colors duration-150">
+              {porta.titolo}
+              <span class="inline-block transition-transform duration-150 group-hover:translate-x-0.5" aria-hidden="true">
+                →
+              </span>
             </h2>
-            <p class="mt-2 text-sm leading-relaxed">{porta.testo}</p>
-            <p class="mt-3 text-xs" style="color: var(--testo-tenue)">
-              {porta.nota}
-            </p>
+            <p class="mt-2 text-sm leading-relaxed text-tenue">{porta.testo}</p>
+            <p class="mt-3 text-xs text-tenue/80">{porta.nota}</p>
           </a>
         ))
       }
     </section>
 
-    <section aria-labelledby="titolo-percorsi" class="py-10 border-t border-bordo">
-      <h2 id="titolo-percorsi" class="font-serif text-2xl">Percorsi d’autore</h2>
-      <p class="mt-1 text-sm max-w-2xl" style="color: var(--testo-tenue)">
-        Sequenze narrate di sei-dieci voci, con il grafo che evidenzia il cammino man mano che si
-        procede.
-      </p>
+    <section aria-labelledby="titolo-percorsi" class="py-10">
+      <div class="flex items-baseline justify-between gap-4">
+        <div>
+          <h2 id="titolo-percorsi" class="text-xl font-semibold tracking-tight">Percorsi d’autore</h2>
+          <p class="mt-1 text-sm max-w-2xl text-tenue">
+            Sequenze narrate di sei-dieci voci, con il grafo che evidenzia il cammino man mano che si
+            procede.
+          </p>
+        </div>
+        <a class="text-sm text-accento hover:underline underline-offset-4 whitespace-nowrap" href={withBase('/percorsi')}>
+          Tutti i percorsi →
+        </a>
+      </div>
       <div class="mt-5 grid gap-4 sm:grid-cols-2">
         {
           percorsi.map((p) => (
-            <a
-              href={withBase(`/percorso/${p.data.slug}`)}
-              class="group rounded-lg border border-bordo bg-rialzato p-4 hover:border-bordo-forte"
-            >
-              <h3 class="font-serif text-lg text-accento group-hover:underline underline-offset-4">
+            <a href={withBase(`/percorso/${p.data.slug}`)} class="carta group p-4">
+              <h3 class="font-serif text-lg text-testo group-hover:text-accento transition-colors duration-150">
                 {p.data.titolo}
               </h3>
-              <p class="mt-1 text-sm" style="color: var(--testo-tenue)">
-                {p.data.sottotitolo}
+              <p class="mt-1 text-sm text-tenue">{p.data.sottotitolo}</p>
+              <p class="mt-2 text-xs text-tenue/80">{p.data.tappe.length} tappe</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section aria-labelledby="titolo-blog" class="py-10 border-t border-bordo">
+      <div class="flex items-baseline justify-between gap-4">
+        <div>
+          <h2 id="titolo-blog" class="text-xl font-semibold tracking-tight">Dal blog</h2>
+          <p class="mt-1 text-sm max-w-2xl text-tenue">
+            Il diario di redazione dell’atlante: metodo, scelte editoriali, modi d’uso.
+          </p>
+        </div>
+        <a class="text-sm text-accento hover:underline underline-offset-4 whitespace-nowrap" href={withBase('/blog')}>
+          Tutti gli articoli →
+        </a>
+      </div>
+      <div class="mt-5 grid gap-4 sm:grid-cols-3">
+        {
+          articoli.map((a) => (
+            <a href={withBase(`/blog/${a.id}`)} class="carta group p-4 flex flex-col">
+              <p class="text-xs text-tenue/80">
+                <time datetime={a.data.data.toISOString().slice(0, 10)}>{dataIt.format(a.data.data)}</time>
               </p>
-              <p class="mt-2 text-xs">{p.data.tappe.length} tappe</p>
+              <h3 class="mt-2 font-serif text-lg leading-snug text-testo group-hover:text-accento transition-colors duration-150">
+                {a.data.titolo}
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-tenue line-clamp-3">{a.data.sommario}</p>
             </a>
           ))
         }
@@ -89,13 +177,19 @@ const porte = [
     </section>
 
     <section aria-label="Altre viste" class="pb-14">
-      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-        <li><a class="underline underline-offset-4 hover:text-accento" href={withBase('/cosmo')}>Cosmo 3D</a></li>
-        <li><a class="underline underline-offset-4 hover:text-accento" href={withBase('/tempo')}>Timeline</a></li>
-        <li><a class="underline underline-offset-4 hover:text-accento" href={withBase('/simboli')}>Atlante dei simboli</a></li>
-        <li><a class="underline underline-offset-4 hover:text-accento" href={withBase('/diagrammi')}>Diagrammi</a></li>
-        <li><a class="underline underline-offset-4 hover:text-accento" href={withBase('/percorsi/trova')}>Trova un cammino fra due voci</a></li>
-        <li><a class="underline underline-offset-4 hover:text-accento" href={withBase('/grafo/elenco')}>Elenco completo</a></li>
+      <ul class="flex flex-wrap gap-2 text-sm">
+        {
+          altreViste.map((v) => (
+            <li>
+              <a
+                class="inline-block rounded-full border border-bordo bg-rialzato px-3.5 py-1.5 text-tenue transition-colors duration-150 hover:border-bordo-forte hover:text-testo"
+                href={withBase(v.href)}
+              >
+                {v.etichetta}
+              </a>
+            </li>
+          ))
+        }
       </ul>
     </section>
   </div>
