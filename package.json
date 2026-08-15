@@ -38,10 +38,8 @@
     "gray-matter": "^4.0.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-force-graph-3d": "^1.29.0",
     "sigma": "^3.0.2",
     "tailwindcss": "^4.1.0",
-    "three": "^0.181.0",
     "zod": "^3.24.0"
   },
   "devDependencies": {

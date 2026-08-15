@@ -11,34 +11,19 @@ import { withBase } from '../../lib/percorsi-url';
   classeMain="relative"
 >
   <p class="sr-only" id="descrizione-grafo">
-    Vista a grafo interattiva. Tutte le informazioni del grafo sono disponibili anche in forma di
-    tabella nell'elenco delle voci.
+    Vista a grafo interattiva. Tutte le informazioni del grafo sono disponibili anche in forma
+    testuale: le liste di adiacenza nella pagina delle relazioni e la tabella dell'elenco delle voci.
   </p>
   <div class="flex items-center gap-3 border-b border-bordo bg-rialzato px-4 py-1.5 text-xs">
     <h1 class="font-medium">Il grafo dell’atlante</h1>
     <a class="underline text-accento hover:no-underline" href={withBase('/grafo/elenco')}>
       Versione accessibile: elenco delle voci
     </a>
-    <a class="underline hover:no-underline ms-auto" href={withBase('/cosmo')}>Vista 3D →</a>
+    <a class="underline hover:no-underline ms-auto" href={withBase('/relazioni')}>Relazioni in testo →</a>
   </div>
   <GraphView client:only="react" />
 </Base>
 
-<script>
-  // Avviso di ripiego dalla vista 3D (§5.3): mostrato una volta, congedabile.
-  if (new URLSearchParams(location.search).get('avviso') === 'cosmo') {
-    const barra = document.createElement('div');
-    barra.setAttribute('role', 'status');
-    barra.className = 'fixed top-14 inset-x-0 z-50 mx-auto max-w-lg rounded border border-bordo bg-rialzato px-4 py-2 text-sm shadow';
-    barra.innerHTML =
-      'La vista 3D non era disponibile (WebGL assente o movimento ridotto): questa vista 2D contiene le stesse informazioni. <button class="underline ms-2" type="button">Chiudi</button>';
-    barra.querySelector('button')!.addEventListener('click', () => barra.remove());
-    document.body.append(barra);
-    const url = new URL(location.href);
-    url.searchParams.delete('avviso');
-    history.replaceState(null, '', url);
-  }
-</script>
 
 <style is:global>
   .vista-grafo {

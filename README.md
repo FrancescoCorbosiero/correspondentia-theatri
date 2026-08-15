@@ -16,7 +16,8 @@ perché l'attribuzione non regge.
 |---|---|
 | `/grafo` | Vista 2D principale (Sigma.js): filtri, slider temporale −800→2030 con riproduzione, ego-network, cluster, stato in query string |
 | `/grafo/elenco` | Fallback accessibile: tabella completa ordinabile e filtrabile |
-| `/cosmo` | Vista 3D (asse Z = tempo); degrada con grazia verso il 2D |
+| `/relazioni` | Il grafo in forma di testo: liste di adiacenza per voce (archi, note, collocazioni) con filtri progressivi |
+| `/relazioni/archi` | Tavola completa e ordinabile di tutti gli archi, genealogie leggendarie contrassegnate |
 | `/tempo` | Timeline a corsie con zoom semantico, sincronizzata col grafo |
 | `/voce/[id]` | Dossier statico: sommario, corpo, archi con note, fonti, mini-grafo ego |
 | `/percorso/[slug]` | 4 percorsi d'autore con mappa del cammino sincronizzata allo scroll |

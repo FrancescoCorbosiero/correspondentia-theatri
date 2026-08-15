@@ -1,0 +1,241 @@
+---
+import Base from '../../layouts/Base.astro';
+import grafo from '../../generated/graph.json';
+import type { ArcoGrafo, DatiGrafo, NodoGrafo } from '../../lib/tipi-grafo';
+import { formattaPeriodo, withBase } from '../../lib/percorsi-url';
+import { ETICHETTE_TIPO_ARCO, ETICHETTE_TIPO_NODO, TIPI_ARCO, TIPI_NODO } from '../../lib/schema';
+import { NOMI_PARTE } from '../../lib/palette';
+
+/**
+ * Il grafo in forma di testo: liste di adiacenza (§6 del BRIEF, parità di
+ * contenuto). Ogni voce con i suoi archi in uscita e in entrata, più le
+ * collocazioni nei luoghi (che la vista a grafo mostra solo come metadato).
+ * Tutto è HTML statico leggibile senza JavaScript; i filtri sono un
+ * miglioramento progressivo.
+ */
+const dati = grafo as unknown as DatiGrafo;
+const perId = new Map(dati.nodi.map((n) => [n.id, n]));
+const archi = dati.archi.filter((a) => a.tipo !== 'contiene');
+
+const uscentiPer = new Map<string, ArcoGrafo[]>();
+const entrantiPer = new Map<string, ArcoGrafo[]>();
+for (const arco of archi) {
+  (uscentiPer.get(arco.da) ?? uscentiPer.set(arco.da, []).get(arco.da)!).push(arco);
+  (entrantiPer.get(arco.a) ?? entrantiPer.set(arco.a, []).get(arco.a)!).push(arco);
+}
+
+// collocazioni: voce → luoghi e, inversa, luogo → voci collocate
+const collocateIn = new Map<string, NodoGrafo[]>();
+for (const n of dati.nodi) {
+  for (const l of n.luoghi ?? []) {
+    (collocateIn.get(l) ?? collocateIn.set(l, []).get(l)!).push(n);
+  }
+}
+
+const titoloDi = (id: string) => perId.get(id)?.titolo ?? id;
+const ordinaPerTipo = (lista: ArcoGrafo[], contro: (a: ArcoGrafo) => string) =>
+  [...lista].sort(
+    (x, y) => x.tipo.localeCompare(y.tipo) || titoloDi(contro(x)).localeCompare(titoloDi(contro(y)), 'it')
+  );
+
+const voci = dati.nodi
+  .filter((n) => n.tipo !== 'parte')
+  .sort((a, b) => a.titolo.localeCompare(b.titolo, 'it'));
+const perParte = new Map<number, NodoGrafo[]>();
+for (const n of voci) {
+  (perParte.get(n.parte) ?? perParte.set(n.parte, []).get(n.parte)!).push(n);
+}
+
+const testoFiltro = (n: NodoGrafo) => {
+  const pezzi = [n.titolo, ...(n.alias ?? [])];
+  for (const a of uscentiPer.get(n.id) ?? []) pezzi.push(ETICHETTE_TIPO_ARCO[a.tipo], titoloDi(a.a));
+  for (const a of entrantiPer.get(n.id) ?? []) pezzi.push(ETICHETTE_TIPO_ARCO[a.tipo], titoloDi(a.da));
+  for (const l of n.luoghi ?? []) pezzi.push(titoloDi(l));
+  for (const v of collocateIn.get(n.id) ?? []) pezzi.push(v.titolo);
+  return pezzi.join(' ').toLowerCase();
+};
+
+const totaleArchi = archi.length;
+---
+
+<Base
+  titolo="Relazioni"
+  descrizione="Il grafo dell'atlante in forma di testo: per ogni voce gli archi in uscita e in entrata, con tipi e note, filtrabili — le liste di adiacenza come vista di prima classe."
+>
+  <div class="mx-auto max-w-4xl px-4 py-10">
+    <h1 class="font-serif text-3xl">Le relazioni, voce per voce</h1>
+    <p class="mt-2 max-w-2xl text-sm text-tenue">
+      Il grafo come testo: per ciascuna delle {voci.length} voci, gli archi in uscita e in entrata
+      ({totaleArchi} in tutto, esclusa l'appartenenza alle parti) con tipo e nota, più le
+      collocazioni nei luoghi. Le <strong>genealogie leggendarie</strong> sono contrassegnate e la
+      loro nota spiega perché non reggono. Stessa informazione della
+      <a class="underline text-accento" href={withBase('/grafo')}>vista a grafo</a>; la tavola
+      completa è in <a class="underline text-accento" href={withBase('/relazioni/archi')}>tutti gli archi</a>,
+      l'anagrafica delle voci nell'<a class="underline text-accento" href={withBase('/grafo/elenco')}>elenco</a>.
+    </p>
+
+    <form class="mt-6 flex flex-wrap items-end gap-3 text-sm" id="filtri-relazioni">
+      <div>
+        <label for="filtro-testo" class="block text-xs font-medium mb-1">Filtra per testo</label>
+        <input
+          id="filtro-testo"
+          type="search"
+          placeholder="voce, relazione, luogo…"
+          class="rounded-sm border border-bordo bg-rialzato px-2 py-1.5 w-64"
+          autocomplete="off"
+        />
+      </div>
+      <div>
+        <label for="filtro-tipo" class="block text-xs font-medium mb-1">Tipo di voce</label>
+        <select id="filtro-tipo" class="rounded-sm border border-bordo bg-rialzato px-2 py-1.5">
+          <option value="">Tutti</option>
+          {TIPI_NODO.filter((t) => t !== 'parte').map((t) => <option value={t}>{ETICHETTE_TIPO_NODO[t]}</option>)}
+        </select>
+      </div>
+      <div>
+        <label for="filtro-arco" class="block text-xs font-medium mb-1">Tipo di relazione</label>
+        <select id="filtro-arco" class="rounded-sm border border-bordo bg-rialzato px-2 py-1.5">
+          <option value="">Tutte</option>
+          {TIPI_ARCO.filter((t) => t !== 'contiene').map((t) => <option value={t}>{ETICHETTE_TIPO_ARCO[t]}</option>)}
+          <option value="collocazione">collocazione nei luoghi</option>
+        </select>
+      </div>
+      <div>
+        <label for="filtro-parte" class="block text-xs font-medium mb-1">Parte</label>
+        <select id="filtro-parte" class="rounded-sm border border-bordo bg-rialzato px-2 py-1.5">
+          <option value="">Tutte</option>
+          {[1, 2, 3, 4, 5, 6].map((n) => <option value={String(n)}>{NOMI_PARTE[n]}</option>)}
+        </select>
+      </div>
+      <label class="flex items-center gap-1.5 pb-1.5">
+        <input type="checkbox" id="filtro-documentate" />
+        solo relazioni documentate
+      </label>
+      <p class="text-xs text-tenue" role="status" id="conteggio-relazioni"></p>
+    </form>
+
+    {
+      [1, 2, 3, 4, 5, 6].map((parte) => (
+        <section aria-labelledby={`parte-${parte}`} data-sezione-parte={String(parte)} class="mt-10">
+          <h2 id={`parte-${parte}`} class="flex items-center gap-2 text-lg font-semibold tracking-tight border-b border-bordo pb-2">
+            <span aria-hidden="true" class="inline-block size-2.5 rounded-full" style={`background: var(--parte-${parte})`} />
+            {NOMI_PARTE[parte]}
+          </h2>
+          <div class="mt-1">
+            {(perParte.get(parte) ?? []).map((n) => {
+              const uscenti = ordinaPerTipo(uscentiPer.get(n.id) ?? [], (a) => a.a);
+              const entranti = ordinaPerTipo(entrantiPer.get(n.id) ?? [], (a) => a.da);
+              const luoghi = (n.luoghi ?? []).map((l) => perId.get(l)!).filter(Boolean);
+              const ospitate = (collocateIn.get(n.id) ?? []).sort((a, b) => a.titolo.localeCompare(b.titolo, 'it'));
+              return (
+                <article
+                  id={`voce-${n.id}`}
+                  class="border-b border-bordo py-4"
+                  data-testo={testoFiltro(n)}
+                  data-tipo={n.tipo}
+                  data-parte={String(n.parte)}
+                >
+                  <h3 class="font-serif text-xl leading-snug">
+                    <a class="hover:text-accento" href={withBase(`/voce/${n.id}`)}>
+                      {n.titolo}
+                    </a>
+                    <span class="ms-2 align-middle etichetta text-tenue/80">
+                      {ETICHETTE_TIPO_NODO[n.tipo]}
+                      {n.periodo ? ` · ${formattaPeriodo(n.periodo)}` : ''}
+                    </span>
+                  </h3>
+                  <ul class="mt-2 grid gap-1 text-sm">
+                    {uscenti.map((a) => (
+                      <li data-arco data-tipo-arco={a.tipo} data-leggendaria={a.tipo === 'attribuzione_infondata' ? '1' : undefined}>
+                        <span class="text-tenue">→ {ETICHETTE_TIPO_ARCO[a.tipo]} →</span>
+                        <a class="underline decoration-dotted underline-offset-2 hover:text-accento" href={withBase(`/voce/${a.a}`)}>
+                          {titoloDi(a.a)}
+                        </a>
+                        {a.tipo === 'attribuzione_infondata' && (
+                          <span class="etichetta ms-1 border border-bordo bg-incassato px-1 py-0.5 text-tenue">leggendaria</span>
+                        )}
+                        {a.nota && <span class="text-tenue"> — {a.nota}</span>}
+                      </li>
+                    ))}
+                    {entranti.map((a) => (
+                      <li data-arco data-tipo-arco={a.tipo} data-leggendaria={a.tipo === 'attribuzione_infondata' ? '1' : undefined}>
+                        <span class="text-tenue">← {ETICHETTE_TIPO_ARCO[a.tipo]} ←</span>
+                        <a class="underline decoration-dotted underline-offset-2 hover:text-accento" href={withBase(`/voce/${a.da}`)}>
+                          {titoloDi(a.da)}
+                        </a>
+                        {a.tipo === 'attribuzione_infondata' && (
+                          <span class="etichetta ms-1 border border-bordo bg-incassato px-1 py-0.5 text-tenue">leggendaria</span>
+                        )}
+                        {a.nota && <span class="text-tenue"> — {a.nota}</span>}
+                      </li>
+                    ))}
+                    {luoghi.map((l) => (
+                      <li data-arco data-tipo-arco="collocazione">
+                        <span class="text-tenue">→ si colloca in →</span>
+                        <a class="underline decoration-dotted underline-offset-2 hover:text-accento" href={withBase(`/voce/${l.id}`)}>
+                          {l.titolo}
+                        </a>
+                      </li>
+                    ))}
+                    {ospitate.map((v) => (
+                      <li data-arco data-tipo-arco="collocazione">
+                        <span class="text-tenue">← vi si colloca ←</span>
+                        <a class="underline decoration-dotted underline-offset-2 hover:text-accento" href={withBase(`/voce/${v.id}`)}>
+                          {v.titolo}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</Base>
+
+<script>
+  // Filtri progressivi: senza JavaScript la pagina resta completa e leggibile.
+  const testo = document.getElementById('filtro-testo') as HTMLInputElement;
+  const tipo = document.getElementById('filtro-tipo') as HTMLSelectElement;
+  const arco = document.getElementById('filtro-arco') as HTMLSelectElement;
+  const parte = document.getElementById('filtro-parte') as HTMLSelectElement;
+  const documentate = document.getElementById('filtro-documentate') as HTMLInputElement;
+  const conteggio = document.getElementById('conteggio-relazioni')!;
+  const articoli = Array.from(document.querySelectorAll<HTMLElement>('article[data-testo]'));
+  const sezioni = Array.from(document.querySelectorAll<HTMLElement>('[data-sezione-parte]'));
+
+  function applica() {
+    const q = testo.value.trim().toLowerCase();
+    const t = tipo.value;
+    const ta = arco.value;
+    const p = parte.value;
+    const soloDoc = documentate.checked;
+    let visibili = 0;
+    for (const art of articoli) {
+      let archiVisibili = 0;
+      for (const li of art.querySelectorAll<HTMLElement>('li[data-arco]')) {
+        const ok = (!ta || li.dataset.tipoArco === ta) && (!soloDoc || li.dataset.leggendaria !== '1');
+        li.hidden = !ok;
+        if (ok) archiVisibili += 1;
+      }
+      const ok =
+        archiVisibili > 0 &&
+        (!q || art.dataset.testo!.includes(q)) &&
+        (!t || art.dataset.tipo === t) &&
+        (!p || art.dataset.parte === p);
+      art.hidden = !ok;
+      if (ok) visibili += 1;
+    }
+    for (const sezione of sezioni) {
+      sezione.hidden = !Array.from(sezione.querySelectorAll('article')).some((a) => !a.hidden);
+    }
+    conteggio.textContent = `${visibili} voci mostrate`;
+  }
+  for (const controllo of [testo, tipo, arco, parte, documentate]) {
+    controllo.addEventListener(controllo === testo ? 'input' : 'change', applica);
+  }
+  applica();
+</script>
