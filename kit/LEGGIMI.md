@@ -50,10 +50,12 @@ costruzione, dentro i guardrail del seme.
 
 | File | Ruolo |
 |---|---|
+| `AVVIO-NUOVO-REPO.md` | Come mettere la fabbrica su un repo nuovo e generare i progetti |
 | `SEME.schema.json` | Specifica formale del formato (JSON Schema draft-07) |
 | `valida-seme.ts` | Validatore: errori bloccanti + avvisi di qualità |
 | `estrai-seme.ts` | Estrae il seme **di questo sito** dal contenuto reale (`--verifica` per il check di allineamento in CI) |
 | `esempio/seme-esoterismo.json` | Il seme di questo sito, estratto e validato: riferimento vivo di formato e densità |
+| `semi/` | Semi pronti per nuovi progetti (`seme-informatica.json` — «Calculemus», 170 voci, validato senza avvisi) |
 | `PROMPT-GENERA-SEME.md` | Da argomento a seme (con la rubrica di validazione dell'argomento) |
 | `PROMPT-COSTRUISCI-SITO.md` | Da seme a sito, per Claude Code |
 
