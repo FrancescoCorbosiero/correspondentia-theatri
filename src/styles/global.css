@@ -1,21 +1,27 @@
 @import 'tailwindcss';
 
 /*
- * Design token di Theatrum (§7 del BRIEF).
- * Variabili semantiche in :root con variante scura via [data-theme="dark"];
- * Tailwind le espone come utility tramite @theme inline.
+ * Tema di Correspondentia Theatri: identità "dashboard" propria, indipendente
+ * dal soggetto dell'atlante. Superfici neutre fredde, un solo accento iris,
+ * ombre morbide, transizioni brevi. Variabili semantiche in :root con
+ * variante scura via [data-theme="dark"]; Tailwind le espone come utility
+ * tramite @theme inline. La prosa lunga resta in serif (lettura, §7).
  */
 :root {
-  --sfondo: #f7f4ee; /* pergamena */
-  --sfondo-rialzato: #fffdf8;
-  --sfondo-incassato: #efeadf;
-  --testo: #1a1a2e; /* inchiostro */
-  --testo-tenue: #5c5a6b;
-  --accento: #6b2d5c; /* porpora */
-  --accento-caldo: #8a6a2f; /* oro */
-  --bordo: #d9d2c1;
-  --bordo-forte: #b3ab97;
-  --focus: #31639c;
+  --sfondo: #f6f7f9;
+  --sfondo-rialzato: #ffffff;
+  --sfondo-incassato: #edeff3;
+  --testo: #16181d;
+  --testo-tenue: #5d6370;
+  --accento: #4f46e5; /* iris */
+  --accento-caldo: #b45309; /* ambra */
+  --bordo: #e4e6eb;
+  --bordo-forte: #c6cad3;
+  --focus: #4f46e5;
+  --marchio-a: #6366f1;
+  --marchio-b: #8b5cf6;
+  --ombra-carta: 0 1px 2px rgb(23 25 35 / 0.05), 0 2px 6px rgb(23 25 35 / 0.05);
+  --ombra-carta-su: 0 2px 4px rgb(23 25 35 / 0.06), 0 12px 28px rgb(23 25 35 / 0.1);
 
   --parte-1: #31639c;
   --parte-2: #8c3a2e;
@@ -26,16 +32,20 @@
 }
 
 [data-theme='dark'] {
-  --sfondo: #16161f;
-  --sfondo-rialzato: #1e1e2a;
-  --sfondo-incassato: #101018;
-  --testo: #e8e4d8;
-  --testo-tenue: #a5a1b0;
-  --accento: #c78bb4;
-  --accento-caldo: #cfa95e;
-  --bordo: #34323f;
-  --bordo-forte: #56536a;
-  --focus: #7ba7d9;
+  --sfondo: #0b0c10;
+  --sfondo-rialzato: #14161c;
+  --sfondo-incassato: #1c1f27;
+  --testo: #e7e9ee;
+  --testo-tenue: #9aa1af;
+  --accento: #8f99f8;
+  --accento-caldo: #d9ab52;
+  --bordo: #262a33;
+  --bordo-forte: #3c4250;
+  --focus: #a5b4fc;
+  --marchio-a: #818cf8;
+  --marchio-b: #a78bfa;
+  --ombra-carta: 0 1px 2px rgb(0 0 0 / 0.4);
+  --ombra-carta-su: 0 2px 4px rgb(0 0 0 / 0.35), 0 12px 28px rgb(0 0 0 / 0.5);
 
   --parte-1: #6f97c6;
   --parte-2: #c47764;
@@ -63,6 +73,9 @@
   --color-parte-5: var(--parte-5);
   --color-parte-6: var(--parte-6);
 
+  --shadow-carta: var(--ombra-carta);
+  --shadow-carta-su: var(--ombra-carta-su);
+
   --font-serif: 'EB Garamond Variable', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter Variable', system-ui, -apple-system, sans-serif;
 }
@@ -72,6 +85,7 @@ html {
   color: var(--testo);
   font-family: var(--font-sans);
   scrollbar-gutter: stable;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
@@ -82,11 +96,58 @@ body {
 :focus-visible {
   outline: 2px solid var(--focus);
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 ::selection {
   background: color-mix(in srgb, var(--accento) 25%, transparent);
+}
+
+/*
+ * Componenti del tema.
+ * .carta: superficie rialzata standard; su elementi interattivi guadagna
+ * bordo, ombra e un lieve sollevamento (le transizioni sono azzerate per
+ * chi chiede meno movimento, v. media query in coda).
+ */
+.carta {
+  background: var(--sfondo-rialzato);
+  border: 1px solid var(--bordo);
+  border-radius: 0.75rem;
+  box-shadow: var(--ombra-carta);
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    translate 150ms ease;
+}
+:where(a, button, [tabindex]).carta:hover {
+  border-color: var(--bordo-forte);
+  box-shadow: var(--ombra-carta-su);
+  translate: 0 -2px;
+}
+
+/* Tessera del marchio ("CT" su gradiente iris) */
+.marchio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--marchio-a), var(--marchio-b));
+  color: #fff;
+  border-radius: 0.5rem;
+  user-select: none;
+}
+
+/* Suggerimento di tastiera (⌘K e simili) */
+.tasto {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--testo-tenue);
+  background: var(--sfondo-incassato);
+  border: 1px solid var(--bordo);
+  border-bottom-width: 2px;
+  border-radius: 0.375rem;
+  padding: 0.2rem 0.35rem;
 }
 
 /* Prosa lunga in serif, da edizione critica */
@@ -189,8 +250,9 @@ body {
   background: var(--sfondo-rialzato);
   padding: 0.9rem 1.1rem;
   margin-block: 1.4em;
-  border-radius: 4px;
+  border-radius: 0.625rem;
   font-size: 0.98em;
+  box-shadow: var(--ombra-carta);
 }
 .nota .nota-titolo {
   font-family: var(--font-sans);
@@ -209,7 +271,7 @@ body {
   background: color-mix(in srgb, #a04a3c 7%, var(--sfondo-rialzato));
   padding: 0.9rem 1.1rem;
   margin-block: 1.4em;
-  border-radius: 4px;
+  border-radius: 0.625rem;
 }
 
 /* Riduzione del movimento: nessuna transizione decorativa comunque,
@@ -222,6 +284,7 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    translate: none !important;
   }
 }
 
@@ -234,7 +297,7 @@ body {
   background: var(--accento);
   color: #fff;
   padding: 0.5rem 1rem;
-  border-radius: 0 0 4px 0;
+  border-radius: 0 0 8px 0;
 }
 .salta-al-contenuto:focus {
   left: 0;

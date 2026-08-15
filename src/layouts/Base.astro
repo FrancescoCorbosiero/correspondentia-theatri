@@ -19,7 +19,7 @@ interface Props {
 }
 
 const { titolo, descrizione, jsonLd, classeMain = '', pienaAltezza = false } = Astro.props;
-const titoloCompleto = titolo === 'Theatrum' ? 'Theatrum — atlante dell’esoterismo occidentale' : `${titolo} · Theatrum`;
+const titoloCompleto = titolo === 'Correspondentia Theatri' ? 'Correspondentia Theatri — atlante dell’esoterismo occidentale' : `${titolo} · Correspondentia Theatri`;
 ---
 
 <!doctype html>
@@ -39,7 +39,7 @@ const titoloCompleto = titolo === 'Theatrum' ? 'Theatrum — atlante dell’esot
       // Tema: variante scura solo su scelta esplicita (default: chiaro, §7).
       (() => {
         try {
-          const salvato = localStorage.getItem('theatrum-tema');
+          const salvato = localStorage.getItem('correspondentia-tema');
           if (salvato === 'dark') document.documentElement.dataset.theme = 'dark';
         } catch {}
       })();

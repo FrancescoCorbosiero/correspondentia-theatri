@@ -1,4 +1,4 @@
-# Inventario delle voci di Theatrum
+# Inventario delle voci di Correspondentia Theatri
 
 Documento della fase 2 (§8.2 del BRIEF): l’elenco completo delle voci proposte con tipo,
 parte, peso, periodo e archi dichiarati. Gli archi `contiene` (parte → voce) sono derivati

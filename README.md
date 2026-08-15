@@ -1,4 +1,4 @@
-# Theatrum
+# Correspondentia Theatri
 
 Atlante ipermediale dell'esoterismo occidentale: un volume di studio (in `contenuti/`)
 smontato in **234 voci collegate a grafo** — correnti, concetti, pratiche, simboli, persone,

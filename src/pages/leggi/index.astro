@@ -42,7 +42,7 @@ const capitoli = (await getCollection('capitoli')).sort((a, b) => a.data.ordine 
 
 <script>
   // Progressione di lettura: capitoli aperti, salvati in localStorage.
-  const letti = new Set<string>(JSON.parse(localStorage.getItem('theatrum-letti') ?? '[]'));
+  const letti = new Set<string>(JSON.parse(localStorage.getItem('correspondentia-letti') ?? '[]'));
   const collegamenti = document.querySelectorAll<HTMLAnchorElement>('.capitolo-link');
   let contati = 0;
   for (const collegamento of collegamenti) {

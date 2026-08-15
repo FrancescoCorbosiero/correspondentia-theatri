@@ -93,3 +93,14 @@ export const capitoloSchema = z.object({
   titolo: z.string().min(1),
   sottotitolo: z.string().optional(),
 });
+
+/** Articolo del blog: il diario di redazione dell'atlante. */
+export const articoloSchema = z.object({
+  titolo: z.string().min(1).max(120),
+  sommario: z.string().min(20).max(500),
+  data: z.coerce.date(),
+  tag: z.array(z.string().min(1)).default([]),
+  autore: z.string().min(1).default('La redazione'),
+});
+
+export type ArticoloFrontmatter = z.infer<typeof articoloSchema>;
