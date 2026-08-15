@@ -15,12 +15,18 @@ const SOGLIA_KB = 200;
 
 const html = readFileSync(join(DIST, 'index.html'), 'utf-8');
 const asset = new Set();
-// script/stili classici, isole Astro (component-url / renderer-url) e import inline
-for (const confronto of html.matchAll(/(?:src|href|component-url|renderer-url)="(\/correspondentia-theatri\/_astro\/[^"]+\.(?:js|css))"/g)) {
-  asset.add(confronto[1].replace('/correspondentia-theatri/', ''));
+// script/stili classici, isole Astro (component-url / renderer-url) e import
+// inline; il base path del sito è qualunque, si aggancia al segmento /_astro/
+const relativo = (url) => url.slice(url.indexOf('/_astro/') + 1);
+for (const confronto of html.matchAll(/(?:src|href|component-url|renderer-url)="([^"]*\/_astro\/[^"]+\.(?:js|css))"/g)) {
+  asset.add(relativo(confronto[1]));
 }
-for (const confronto of html.matchAll(/import\("(\/correspondentia-theatri\/_astro\/[^"]+\.js)"\)/g)) {
-  asset.add(confronto[1].replace('/correspondentia-theatri/', ''));
+for (const confronto of html.matchAll(/import\("([^"]*\/_astro\/[^"]+\.js)"\)/g)) {
+  asset.add(relativo(confronto[1]));
+}
+if (asset.size === 0) {
+  console.error('✗ nessun asset trovato in dist/index.html: controllo inattendibile (base path cambiato?)');
+  process.exit(1);
 }
 // dipendenze statiche di primo livello dei moduli raccolti (le isole importano
 // React e i chunk condivisi via import statici relativi)
