@@ -1,0 +1,4937 @@
+{
+  "formato": "correspondentia-seme@1",
+  "progetto": {
+    "nome": "Calculemus",
+    "argomento": "informatica",
+    "sottotitolo": "atlante ipermediale dell’informatica",
+    "lingua": "it",
+    "descrizione": "Atlante navigabile a grafo dell’informatica come campo storico-concettuale: dalla logica alla macchina, dai linguaggi alle reti, dall’intelligenza artificiale alle sue conseguenze sociali — con le priorità contese e i miti fondativi dichiarati come tali."
+  },
+  "valutazione": {
+    "verdetto": "idoneo",
+    "criteri": {
+      "entita-enumerabili": 5,
+      "relazioni-tipizzabili": 5,
+      "profondita-temporale": 5,
+      "doppio-registro": 4,
+      "letteratura-di-riferimento": 5,
+      "granularita-sostenibile": 4
+    },
+    "note": "Perimetro scelto: storia e fondamenti dell’informatica (soglia di ingresso: la voce ha una storiografia o una letteratura tecnica canonica propria), non catalogo tecnologico: esclusi prodotti commerciali, versioni e aziende salvo rilievo strutturale. Doppio registro reale ma meno costitutivo che in campi mitopoietici: priorità contese (ENIAC/ABC/Z3), attribuzioni semplificate dalla vulgata (Colossus «di Turing», il «primo bug» di Hopper, l’eponimo di von Neumann), miti fondativi (il garage, il genio solitario). Granularità: il campo è vasto; questa prima passata fissa ~170 voci ed è pensata per crescere senza cambiare struttura."
+  },
+  "tassonomia": {
+    "tipiNodo": [
+      {
+        "id": "area",
+        "etichetta": "Area",
+        "descrizione": "Discipline e campi di ricerca (teoria della computabilità, crittografia, IA…)"
+      },
+      {
+        "id": "concetto",
+        "etichetta": "Concetto",
+        "descrizione": "Astrazioni e risultati (computabilità, complessità, ricorsione…)"
+      },
+      {
+        "id": "algoritmo",
+        "etichetta": "Algoritmo",
+        "descrizione": "Procedure con nome e storia propria (Euclide, quicksort, RSA…)"
+      },
+      {
+        "id": "linguaggio",
+        "etichetta": "Linguaggio",
+        "descrizione": "Linguaggi di programmazione e notazioni"
+      },
+      {
+        "id": "sistema",
+        "etichetta": "Sistema",
+        "descrizione": "Macchine, software e infrastrutture (ENIAC, UNIX, Internet…)"
+      },
+      {
+        "id": "persona",
+        "etichetta": "Persona",
+        "descrizione": "Figure e gruppi di lavoro"
+      },
+      {
+        "id": "opera",
+        "etichetta": "Opera",
+        "descrizione": "Testi, articoli e libri fondativi"
+      },
+      {
+        "id": "evento",
+        "etichetta": "Evento",
+        "descrizione": "Svolte databili (conferenze, processi, dimostrazioni)"
+      },
+      {
+        "id": "luogo",
+        "etichetta": "Luogo",
+        "descrizione": "Laboratori e centri dove il campo ha preso forma"
+      }
+    ],
+    "tipiArco": [
+      {
+        "id": "influenza",
+        "etichetta": "influenza"
+      },
+      {
+        "id": "deriva_da",
+        "etichetta": "deriva da"
+      },
+      {
+        "id": "si_oppone_a",
+        "etichetta": "si oppone a"
+      },
+      {
+        "id": "elabora",
+        "etichetta": "elabora"
+      },
+      {
+        "id": "implementa",
+        "etichetta": "implementa"
+      },
+      {
+        "id": "formalizza",
+        "etichetta": "formalizza"
+      },
+      {
+        "id": "contemporaneo_di",
+        "etichetta": "contemporaneo di"
+      },
+      {
+        "id": "contiene",
+        "etichetta": "contiene"
+      },
+      {
+        "id": "attribuzione_infondata",
+        "etichetta": "attribuzione infondata"
+      }
+    ],
+    "archiDerivati": [
+      "contiene"
+    ],
+    "doppioRegistro": {
+      "attivo": true,
+      "tipiLeggendari": [
+        "attribuzione_infondata"
+      ],
+      "criterio": "Priorità contese, attribuzioni semplificate dalla vulgata e miti fondativi: la relazione dichiarata dal racconto corrente esiste nel grafo, spenta di default, con nota obbligatoria che riporta ciò che la storiografia documenta."
+    }
+  },
+  "parti": [
+    {
+      "numero": 1,
+      "id": "parte-1-fondamenti",
+      "titolo": "Fondamenti",
+      "sommario": "Logica, computabilità e informazione: come una domanda sulla matematica (che cosa è calcolabile?) generò la macchina universale e la misura dell’informazione."
+    },
+    {
+      "numero": 2,
+      "id": "parte-2-macchine",
+      "titolo": "Macchine",
+      "sommario": "Dal telaio di Jacquard al microprocessore: la storia materiale del calcolo, con le sue priorità contese e i suoi progetti dimenticati."
+    },
+    {
+      "numero": 3,
+      "id": "parte-3-linguaggi",
+      "titolo": "Linguaggi e astrazioni",
+      "sommario": "Come si è imparato a parlare alle macchine: linguaggi, paradigmi, compilatori e l’arte di costruire astrazioni sopra astrazioni."
+    },
+    {
+      "numero": 4,
+      "id": "parte-4-algoritmi",
+      "titolo": "Algoritmi e complessità",
+      "sommario": "Le procedure con nome e storia, la misura del loro costo, i limiti di ciò che si può calcolare in tempo utile — e la crittografia che su quei limiti si fonda."
+    },
+    {
+      "numero": 5,
+      "id": "parte-5-sistemi-e-reti",
+      "titolo": "Sistemi e reti",
+      "sommario": "I sistemi operativi, le basi di dati, l’ingegneria del software e la rete delle reti: come i calcolatori impararono a convivere e a parlarsi."
+    },
+    {
+      "numero": 6,
+      "id": "parte-6-intelligenza-e-societa",
+      "titolo": "Intelligenza e società",
+      "sommario": "L’intelligenza artificiale fra promesse e inverni, il personal computer, le culture del software e le conseguenze sociali dell’informatica."
+    }
+  ],
+  "regole": {
+    "guardrail": [
+      "Le priorità contese (ENIAC/ABC/Z3, paternità di idee e macchine) sono presentate come contese, mai risolte d’ufficio in un solo «inventore».",
+      "Vulgate e miti fondativi (il garage, il genio solitario, il «primo bug») vengono raccontati e marcati come tali, con ciò che la storiografia documenta.",
+      "Le figure cancellate dal racconto corrente (le programmatrici dell’ENIAC, Tommy Flowers, i contributi collettivi) sono restituite alla storia.",
+      "Crittografia e sicurezza si descrivono storicamente e concettualmente: nessuna istruzione operativa per attacchi o esfiltrazioni.",
+      "Distinguere sempre il risultato matematico dalla sua vulgata: le affermazioni di impossibilità citano il teorema e il suo enunciato reale.",
+      "Ogni voce cita in calce letteratura reale (storiografia dell’informatica o testi tecnici canonici); nessuna fonte inventata."
+    ],
+    "lunghezze": {
+      "1": [
+        120,
+        250
+      ],
+      "2": [
+        150,
+        300
+      ],
+      "3": [
+        200,
+        400
+      ],
+      "4": [
+        250,
+        600
+      ],
+      "5": [
+        400,
+        1500
+      ]
+    },
+    "fontiMinime": 1
+  },
+  "voci": [
+    {
+      "id": "leibniz",
+      "titolo": "Gottfried Wilhelm Leibniz",
+      "tipo": "persona",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "Il filosofo che sognò di ridurre il ragionamento a calcolo («calculemus») e progettò una macchina moltiplicatrice: il programma intellettuale dell’informatica, due secoli in anticipo sui mezzi.",
+      "periodo": {
+        "da": 1646,
+        "a": 1716
+      },
+      "archi": [
+        {
+          "verso": "logica-booleana",
+          "tipo": "influenza",
+          "nota": "La characteristica universalis come antenato del calcolo logico"
+        },
+        {
+          "verso": "logica-matematica",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "babbage",
+          "tipo": "influenza",
+          "nota": "La macchina moltiplicatrice come precedente dichiarato"
+        }
+      ],
+      "fonti": [
+        "Davis, The Universal Computer"
+      ]
+    },
+    {
+      "id": "boole",
+      "titolo": "George Boole",
+      "tipo": "persona",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "Ridusse la logica ad algebra: le sue «leggi del pensiero» diventeranno, un secolo dopo, il linguaggio dei circuiti.",
+      "periodo": {
+        "da": 1815,
+        "a": 1864
+      },
+      "archi": [
+        {
+          "verso": "logica-booleana",
+          "tipo": "elabora",
+          "nota": "L’algebra della logica nelle Laws of Thought (1854)"
+        },
+        {
+          "verso": "logica-matematica",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Davis, The Universal Computer",
+        "Gleick, The Information"
+      ]
+    },
+    {
+      "id": "hilbert",
+      "titolo": "David Hilbert",
+      "tipo": "persona",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "Il matematico che chiese se esista un procedimento meccanico per decidere ogni enunciato (Entscheidungsproblem): la domanda sbagliata che generò le risposte giuste — Gödel, Church, Turing.",
+      "periodo": {
+        "da": 1862,
+        "a": 1943
+      },
+      "archi": [
+        {
+          "verso": "godel",
+          "tipo": "influenza",
+          "nota": "Il programma formalista è il bersaglio dei teoremi di incompletezza"
+        },
+        {
+          "verso": "computabilita",
+          "tipo": "influenza",
+          "nota": "L’Entscheidungsproblem costringe a definire che cosa sia un procedimento effettivo"
+        }
+      ],
+      "fonti": [
+        "Davis, The Universal Computer"
+      ]
+    },
+    {
+      "id": "godel",
+      "titolo": "Kurt Gödel",
+      "tipo": "persona",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "I teoremi di incompletezza (1931) mostrarono i limiti dei sistemi formali e fornirono la tecnica — l’aritmetizzazione — con cui Turing costruirà l’indecidibilità della fermata.",
+      "periodo": {
+        "da": 1906,
+        "a": 1978
+      },
+      "luoghi": [
+        "ias-princeton"
+      ],
+      "archi": [
+        {
+          "verso": "turing",
+          "tipo": "influenza",
+          "nota": "Aritmetizzazione e autoriferimento passano nel lavoro del 1936"
+        },
+        {
+          "verso": "logica-matematica",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "von-neumann",
+          "tipo": "influenza",
+          "nota": "A Princeton, fra i primi a cogliere la portata dell'incompletezza"
+        }
+      ],
+      "fonti": [
+        "Davis, The Universal Computer",
+        "Hofstadter, Gödel, Escher, Bach"
+      ]
+    },
+    {
+      "id": "turing",
+      "titolo": "Alan Turing",
+      "tipo": "persona",
+      "parte": 1,
+      "peso": 5,
+      "sommario": "Definì la macchina astratta che porta il suo nome, dimostrò l’indecidibilità della fermata, lavorò alla crittoanalisi di Enigma a Bletchley Park e pose la domanda «le macchine possono pensare?». La vulgata gli attribuisce più di quanto un solo uomo abbia fatto; ciò che ha fatto davvero basta e avanza.",
+      "periodo": {
+        "da": 1912,
+        "a": 1954
+      },
+      "luoghi": [
+        "bletchley-park"
+      ],
+      "archi": [
+        {
+          "verso": "macchina-di-turing",
+          "tipo": "elabora",
+          "nota": "Il modello astratto del 1936"
+        },
+        {
+          "verso": "problema-della-fermata",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "test-di-turing",
+          "tipo": "elabora",
+          "nota": "Il gioco dell’imitazione (1950)"
+        },
+        {
+          "verso": "church",
+          "tipo": "contemporaneo_di",
+          "nota": "Risultati equivalenti e indipendenti sull’Entscheidungsproblem (1936)"
+        },
+        {
+          "verso": "crittografia",
+          "tipo": "elabora",
+          "nota": "La crittoanalisi di Enigma come matematica applicata in tempo reale"
+        }
+      ],
+      "fonti": [
+        "Hodges, Alan Turing: The Enigma"
+      ]
+    },
+    {
+      "id": "church",
+      "titolo": "Alonzo Church",
+      "tipo": "persona",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "Con il lambda-calcolo diede una definizione di calcolabilità equivalente a quella di Turing: la convergenza indipendente delle due è il cuore della tesi di Church-Turing.",
+      "periodo": {
+        "da": 1903,
+        "a": 1995
+      },
+      "luoghi": [
+        "ias-princeton"
+      ],
+      "archi": [
+        {
+          "verso": "lambda-calcolo",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "tesi-di-church-turing",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Davis, The Universal Computer"
+      ]
+    },
+    {
+      "id": "shannon",
+      "titolo": "Claude Shannon",
+      "tipo": "persona",
+      "parte": 1,
+      "peso": 5,
+      "sommario": "Nella tesi del 1937 mostrò che i circuiti a relè calcolano l’algebra di Boole; nel 1948 fondò la teoria dell’informazione. Due gesti che collegano la logica al silicio e danno all’informazione un’unità di misura.",
+      "periodo": {
+        "da": 1916,
+        "a": 2001
+      },
+      "luoghi": [
+        "bell-labs",
+        "mit"
+      ],
+      "archi": [
+        {
+          "verso": "logica-booleana",
+          "tipo": "implementa",
+          "nota": "La tesi del 1937: i relè realizzano l’algebra di Boole"
+        },
+        {
+          "verso": "teoria-dell-informazione",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "entropia-di-shannon",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "crittografia",
+          "tipo": "elabora",
+          "nota": "Communication Theory of Secrecy Systems (1949)"
+        }
+      ],
+      "fonti": [
+        "Soni e Goodman, A Mind at Play",
+        "Gleick, The Information"
+      ]
+    },
+    {
+      "id": "wiener",
+      "titolo": "Norbert Wiener",
+      "tipo": "persona",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "Fondò la cibernetica: controllo e comunicazione nell’animale e nella macchina. Il primo linguaggio comune fra ingegneri, neurofisiologi e filosofi — e le prime inquietudini sull’automazione.",
+      "periodo": {
+        "da": 1894,
+        "a": 1964
+      },
+      "luoghi": [
+        "mit"
+      ],
+      "archi": [
+        {
+          "verso": "cibernetica",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "conferenze-macy",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "etica-e-bias",
+          "tipo": "influenza",
+          "nota": "The Human Use of Human Beings: l'automazione come questione morale"
+        }
+      ],
+      "fonti": [
+        "Rid, Rise of the Machines"
+      ]
+    },
+    {
+      "id": "logica-matematica",
+      "titolo": "Logica matematica",
+      "tipo": "area",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "Il terreno da cui l’informatica è nata: la formalizzazione del ragionamento da Frege a Hilbert, i suoi trionfi e i suoi limiti scoperti da Gödel.",
+      "periodo": {
+        "da": 1879,
+        "a": 1940
+      },
+      "archi": [
+        {
+          "verso": "teoria-della-computabilita",
+          "tipo": "influenza",
+          "nota": "La computabilità nasce come capitolo della logica"
+        },
+        {
+          "verso": "lambda-calcolo",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Davis, The Universal Computer"
+      ]
+    },
+    {
+      "id": "teoria-della-computabilita",
+      "titolo": "Teoria della computabilità",
+      "tipo": "area",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "Che cosa può essere calcolato in linea di principio: macchine di Turing, funzioni ricorsive, lambda-calcolo e i problemi che nessun algoritmo risolverà mai.",
+      "periodo": {
+        "da": 1931,
+        "a": 1970
+      },
+      "archi": [
+        {
+          "verso": "complessita-computazionale",
+          "tipo": "influenza",
+          "nota": "Dalla calcolabilità in principio alla calcolabilità in pratica"
+        },
+        {
+          "verso": "indecidibilita",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Sipser, Introduction to the Theory of Computation"
+      ]
+    },
+    {
+      "id": "teoria-dell-informazione",
+      "titolo": "Teoria dell’informazione",
+      "tipo": "area",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "La disciplina fondata da Shannon nel 1948: misura dell’informazione, capacità di canale, codifica. Rese l’informazione una grandezza fisica trattabile, indifferente al significato.",
+      "periodo": {
+        "da": 1948,
+        "a": 1970
+      },
+      "archi": [
+        {
+          "verso": "codifica-di-huffman",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "crittografia",
+          "tipo": "influenza",
+          "nota": "Communication Theory of Secrecy Systems (1949) fonda la crittografia matematica"
+        }
+      ],
+      "fonti": [
+        "Gleick, The Information"
+      ]
+    },
+    {
+      "id": "cibernetica",
+      "titolo": "Cibernetica",
+      "tipo": "area",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "Il programma interdisciplinare di Wiener su controllo e retroazione. Tramontò come disciplina, ma disseminò idee ovunque: dalle reti neurali all’interazione uomo-macchina.",
+      "periodo": {
+        "da": 1943,
+        "a": 1970
+      },
+      "archi": [
+        {
+          "verso": "rete-neurale",
+          "tipo": "influenza",
+          "nota": "McCulloch e Pitts nascono nell’ambiente cibernetico"
+        },
+        {
+          "verso": "interazione-uomo-macchina",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Rid, Rise of the Machines"
+      ]
+    },
+    {
+      "id": "algoritmo",
+      "titolo": "Algoritmo",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 5,
+      "sommario": "Procedura finita, eseguibile passo per passo, che trasforma un ingresso in un risultato. Il nome viene da al-Khwarizmi; la definizione rigorosa arrivò solo quando Hilbert costrinse a chiedersi che cosa sia un «procedimento effettivo».",
+      "periodo": {
+        "da": 825,
+        "a": 1936
+      },
+      "archi": [
+        {
+          "verso": "al-khwarizmi",
+          "tipo": "deriva_da",
+          "nota": "Dal nome latinizzato Algorismus"
+        },
+        {
+          "verso": "computabilita",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Knuth, The Art of Computer Programming, vol. 1"
+      ]
+    },
+    {
+      "id": "computabilita",
+      "titolo": "Computabilità",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "La proprietà di una funzione di essere calcolabile da una procedura meccanica. Tre definizioni indipendenti (Turing, Church, Gödel-Herbrand) coincisero: il segnale che si era colto qualcosa di reale.",
+      "periodo": {
+        "da": 1931,
+        "a": 1936
+      },
+      "archi": [
+        {
+          "verso": "tesi-di-church-turing",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "complessita-computazionale",
+          "tipo": "influenza",
+          "nota": "Dal possibile in principio al fattibile in pratica"
+        }
+      ],
+      "fonti": [
+        "Sipser, Introduction to the Theory of Computation"
+      ]
+    },
+    {
+      "id": "macchina-di-turing",
+      "titolo": "Macchina di Turing",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 5,
+      "sommario": "Nastro infinito, testina, tabella di stati: il modello più spoglio possibile di calcolatore, e proprio per questo universale. La «macchina universale» che simula ogni altra macchina è il progetto concettuale del computer a programma memorizzato.",
+      "periodo": {
+        "da": 1936,
+        "a": 1936
+      },
+      "archi": [
+        {
+          "verso": "architettura-di-von-neumann",
+          "tipo": "influenza",
+          "nota": "L’universalità prefigura il programma memorizzato"
+        },
+        {
+          "verso": "computabilita",
+          "tipo": "formalizza"
+        }
+      ],
+      "fonti": [
+        "Hodges, Alan Turing: The Enigma",
+        "Sipser, Introduction to the Theory of Computation"
+      ]
+    },
+    {
+      "id": "tesi-di-church-turing",
+      "titolo": "Tesi di Church-Turing",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "L’ipotesi che ogni funzione «effettivamente calcolabile» sia calcolabile da una macchina di Turing. Non è un teorema: è la definizione condivisa che regge l’intero edificio.",
+      "periodo": {
+        "da": 1936,
+        "a": 1936
+      },
+      "archi": [
+        {
+          "verso": "macchina-di-turing",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "lambda-calcolo",
+          "tipo": "elabora",
+          "nota": "L'equivalenza fra i modelli è il contenuto della tesi"
+        }
+      ],
+      "fonti": [
+        "Sipser, Introduction to the Theory of Computation"
+      ]
+    },
+    {
+      "id": "indecidibilita",
+      "titolo": "Indecidibilità",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "Esistono problemi ben posti che nessun algoritmo può risolvere per tutti i casi. Non un difetto delle macchine attuali: un limite dimostrato di ogni macchina possibile.",
+      "periodo": {
+        "da": 1936,
+        "a": 1936
+      },
+      "archi": [
+        {
+          "verso": "problema-della-fermata",
+          "tipo": "elabora",
+          "nota": "Il caso paradigmatico"
+        },
+        {
+          "verso": "godel",
+          "tipo": "deriva_da",
+          "nota": "Tecnica diagonale e autoriferimento"
+        }
+      ],
+      "fonti": [
+        "Sipser, Introduction to the Theory of Computation"
+      ]
+    },
+    {
+      "id": "problema-della-fermata",
+      "titolo": "Problema della fermata",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "Decidere se un programma qualsiasi termini: Turing dimostrò che nessun programma può farlo in generale. La pietra di paragone di ogni impossibilità informatica.",
+      "periodo": {
+        "da": 1936,
+        "a": 1936
+      },
+      "archi": [
+        {
+          "verso": "indecidibilita",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "complessita-computazionale",
+          "tipo": "influenza",
+          "nota": "Il confine esterno oltre il quale la questione del costo non si pone"
+        }
+      ],
+      "fonti": [
+        "Sipser, Introduction to the Theory of Computation"
+      ]
+    },
+    {
+      "id": "logica-booleana",
+      "titolo": "Logica booleana",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "Vero e falso come 1 e 0, congiunzione e disgiunzione come operazioni algebriche. Dall’astrazione di Boole alla tesi di Shannon che la mise nei circuiti: il ponte fra logica ed elettronica.",
+      "periodo": {
+        "da": 1854,
+        "a": 1937
+      },
+      "archi": [
+        {
+          "verso": "bit",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "transistor",
+          "tipo": "influenza",
+          "nota": "Le porte logiche realizzano l’algebra in hardware"
+        }
+      ],
+      "fonti": [
+        "Petzold, Code"
+      ]
+    },
+    {
+      "id": "entropia-di-shannon",
+      "titolo": "Entropia di Shannon",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "La misura dell’informazione come sorpresa media di una sorgente. Fissa il limite teorico di ogni compressione e dà al bit il suo significato quantitativo.",
+      "periodo": {
+        "da": 1948,
+        "a": 1948
+      },
+      "archi": [
+        {
+          "verso": "bit",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "codifica-di-huffman",
+          "tipo": "influenza",
+          "nota": "La codifica ottima si avvicina al limite entropico"
+        },
+        {
+          "verso": "crittografia",
+          "tipo": "influenza",
+          "nota": "Ridondanza e unicità: quanto un cifrario può nascondere"
+        }
+      ],
+      "fonti": [
+        "Gleick, The Information"
+      ]
+    },
+    {
+      "id": "bit",
+      "titolo": "Bit",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "L’unità minima di informazione: una scelta fra due alternative. Il nome è del 1948 (binary digit, via John Tukey); l’idea che tutto — numeri, testi, immagini — si riduca a sequenze di bit è la premessa silenziosa dell’era digitale.",
+      "periodo": {
+        "da": 1948,
+        "a": 1948
+      },
+      "archi": [
+        {
+          "verso": "teoria-dell-informazione",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "teoria-matematica-della-comunicazione",
+          "tipo": "deriva_da",
+          "nota": "Il nome nasce in queste pagine, da binary digit"
+        }
+      ],
+      "fonti": [
+        "Gleick, The Information"
+      ]
+    },
+    {
+      "id": "lambda-calcolo",
+      "titolo": "Lambda-calcolo",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "Il sistema di Church: tutto è funzione, calcolare è sostituire. Equivalente alla macchina di Turing, diventerà la matrice teorica della programmazione funzionale.",
+      "periodo": {
+        "da": 1932,
+        "a": 1936
+      },
+      "archi": [
+        {
+          "verso": "programmazione-funzionale",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "lisp",
+          "tipo": "influenza",
+          "nota": "McCarthy attinge al lambda-calcolo per Lisp"
+        }
+      ],
+      "fonti": [
+        "Davis, The Universal Computer"
+      ]
+    },
+    {
+      "id": "automa",
+      "titolo": "Automa",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 2,
+      "sommario": "Macchina astratta a stati finiti: il gradino più basso della scala di potenza computazionale, e il modello di ogni circuito sequenziale, lessico compreso.",
+      "periodo": {
+        "da": 1943,
+        "a": 1959
+      },
+      "archi": [
+        {
+          "verso": "gerarchia-di-chomsky",
+          "tipo": "elabora",
+          "nota": "A ogni classe di grammatiche il suo automa"
+        },
+        {
+          "verso": "macchina-di-turing",
+          "tipo": "elabora",
+          "nota": "Il caso più potente della scala degli automi"
+        }
+      ],
+      "fonti": [
+        "Hopcroft e Ullman, Introduction to Automata Theory"
+      ]
+    },
+    {
+      "id": "ricorsione",
+      "titolo": "Ricorsione",
+      "tipo": "concetto",
+      "parte": 1,
+      "peso": 3,
+      "sommario": "Definire una cosa nei termini di se stessa, con un caso base che ferma la discesa. Tecnica matematica, stile di programmazione e figura concettuale dell’intero campo.",
+      "periodo": {
+        "da": 1931,
+        "a": 1960
+      },
+      "archi": [
+        {
+          "verso": "lisp",
+          "tipo": "influenza",
+          "nota": "Il primo linguaggio a farne lo stile dominante"
+        },
+        {
+          "verso": "struttura-dati",
+          "tipo": "influenza",
+          "nota": "Liste e alberi sono definiti ricorsivamente"
+        }
+      ],
+      "fonti": [
+        "Abelson e Sussman, Structure and Interpretation of Computer Programs"
+      ]
+    },
+    {
+      "id": "on-computable-numbers",
+      "titolo": "On Computable Numbers",
+      "tipo": "opera",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "L’articolo di Turing del 1936: definisce la macchina, la macchina universale, e dimostra l’indecidibilità dell’Entscheidungsproblem. Il certificato di nascita dell’informatica teorica.",
+      "periodo": {
+        "da": 1936,
+        "a": 1936
+      },
+      "archi": [
+        {
+          "verso": "computabilita",
+          "tipo": "formalizza"
+        },
+        {
+          "verso": "macchina-di-turing",
+          "tipo": "elabora",
+          "nota": "Il modello è definito in queste pagine"
+        }
+      ],
+      "fonti": [
+        "Hodges, Alan Turing: The Enigma"
+      ]
+    },
+    {
+      "id": "teoria-matematica-della-comunicazione",
+      "titolo": "A Mathematical Theory of Communication",
+      "tipo": "opera",
+      "parte": 1,
+      "peso": 4,
+      "sommario": "L’articolo di Shannon del 1948: sorgente, canale, rumore, entropia, capacità. Una teoria completa consegnata in un colpo solo, con l’avvertenza che il significato è «irrilevante per il problema ingegneristico».",
+      "periodo": {
+        "da": 1948,
+        "a": 1948
+      },
+      "archi": [
+        {
+          "verso": "entropia-di-shannon",
+          "tipo": "formalizza"
+        },
+        {
+          "verso": "teoria-dell-informazione",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "codifica-di-huffman",
+          "tipo": "influenza",
+          "nota": "Il problema della codifica ottima lasciato aperto nel 1948"
+        }
+      ],
+      "fonti": [
+        "Gleick, The Information"
+      ]
+    },
+    {
+      "id": "conferenze-macy",
+      "titolo": "Conferenze Macy",
+      "tipo": "evento",
+      "parte": 1,
+      "peso": 2,
+      "sommario": "I convegni interdisciplinari (1946-1953) dove ingegneri, matematici e scienziati della mente costruirono il lessico cibernetico: retroazione, informazione, sistema.",
+      "periodo": {
+        "da": 1946,
+        "a": 1953
+      },
+      "archi": [
+        {
+          "verso": "cibernetica",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "rete-neurale",
+          "tipo": "influenza",
+          "nota": "McCulloch presiede: il neurone formale circola qui"
+        }
+      ],
+      "fonti": [
+        "Rid, Rise of the Machines"
+      ]
+    },
+    {
+      "id": "babbage",
+      "titolo": "Charles Babbage",
+      "tipo": "persona",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Progettò la macchina alle differenze e poi la macchina analitica, programmabile a schede: l’architettura concettuale di un computer, un secolo prima dell’elettronica. Non ne completò nessuna.",
+      "periodo": {
+        "da": 1791,
+        "a": 1871
+      },
+      "archi": [
+        {
+          "verso": "macchina-analitica",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "telaio-di-jacquard",
+          "tipo": "deriva_da",
+          "nota": "Le schede perforate come mezzo di programmazione"
+        }
+      ],
+      "fonti": [
+        "Swade, The Difference Engine"
+      ]
+    },
+    {
+      "id": "lovelace",
+      "titolo": "Ada Lovelace",
+      "tipo": "persona",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Tradusse e annotò la memoria sulla macchina analitica: le sue note contengono un procedimento per i numeri di Bernoulli e l’intuizione che la macchina possa manipolare simboli, non solo numeri. Il superlativo «prima programmatrice» è conteso dalla storiografia; il contributo documentato non ne ha bisogno.",
+      "periodo": {
+        "da": 1815,
+        "a": 1852
+      },
+      "archi": [
+        {
+          "verso": "note-alla-macchina-analitica",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "babbage",
+          "tipo": "contemporaneo_di",
+          "nota": "Collaborazione diretta sulla macchina analitica"
+        },
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "influenza",
+          "nota": "L'obiezione di Lady Lovelace, discussa da Turing nel 1950"
+        }
+      ],
+      "fonti": [
+        "Essinger, Jacquard's Web",
+        "Swade, The Difference Engine"
+      ]
+    },
+    {
+      "id": "zuse",
+      "titolo": "Konrad Zuse",
+      "tipo": "persona",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "Costruì in Germania, isolato e in guerra, lo Z3 (1941): il primo calcolatore programmabile funzionante a logica binaria. La storiografia lo ha recuperato tardi, fuori dal racconto anglo-americano.",
+      "periodo": {
+        "da": 1910,
+        "a": 1995
+      },
+      "archi": [
+        {
+          "verso": "z3",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "eniac",
+          "tipo": "contemporaneo_di",
+          "nota": "Linee indipendenti in guerra, ignare l'una dell'altra"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "atanasoff",
+      "titolo": "John Atanasoff",
+      "tipo": "persona",
+      "parte": 2,
+      "peso": 2,
+      "sommario": "Con Clifford Berry costruì all’Iowa State l’ABC, calcolatore elettronico binario non programmabile. Il processo Honeywell-Sperry (1973) gli riconobbe la priorità concettuale sull’ENIAC: la storiografia resta più cauta della sentenza.",
+      "periodo": {
+        "da": 1903,
+        "a": 1995
+      },
+      "archi": [
+        {
+          "verso": "atanasoff-berry-computer",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "eckert-e-mauchly",
+          "tipo": "influenza",
+          "nota": "La visita di Mauchly del 1941, al centro del contenzioso"
+        }
+      ],
+      "fonti": [
+        "Haigh, Priestley e Rope, ENIAC in Action"
+      ]
+    },
+    {
+      "id": "eckert-e-mauchly",
+      "titolo": "Eckert e Mauchly",
+      "tipo": "persona",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "Progettarono e costruirono l’ENIAC alla Moore School e poi il primo calcolatore commerciale americano (UNIVAC). Il First Draft fece circolare le loro idee sotto un solo nome, che non era il loro.",
+      "periodo": {
+        "da": 1919,
+        "a": 1995
+      },
+      "archi": [
+        {
+          "verso": "eniac",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "rapporto-sull-edvac",
+          "tipo": "influenza",
+          "nota": "Le discussioni di progetto confluite nel First Draft"
+        },
+        {
+          "verso": "processo-honeywell-sperry",
+          "tipo": "elabora",
+          "nota": "Il loro brevetto è l'oggetto del giudizio"
+        }
+      ],
+      "fonti": [
+        "Haigh, Priestley e Rope, ENIAC in Action"
+      ]
+    },
+    {
+      "id": "flowers",
+      "titolo": "Tommy Flowers",
+      "tipo": "persona",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "L’ingegnere del General Post Office che progettò Colossus, il primo elaboratore elettronico programmabile, per la crittoanalisi di Lorenz. Il segreto di guerra lo cancellò dal racconto per trent’anni.",
+      "periodo": {
+        "da": 1905,
+        "a": 1998
+      },
+      "luoghi": [
+        "bletchley-park"
+      ],
+      "archi": [
+        {
+          "verso": "colossus",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "turing",
+          "tipo": "contemporaneo_di",
+          "nota": "A Bletchley, su linee di attacco diverse"
+        }
+      ],
+      "fonti": [
+        "Copeland, Colossus"
+      ]
+    },
+    {
+      "id": "von-neumann",
+      "titolo": "John von Neumann",
+      "tipo": "persona",
+      "parte": 2,
+      "peso": 5,
+      "sommario": "Matematico onnivoro: teoria dei giochi, bomba, automi cellulari, e il First Draft che descrisse l’architettura a programma memorizzato. L’eponimo «architettura di von Neumann» è insieme un riconoscimento e un torto ai progettisti dell’ENIAC.",
+      "periodo": {
+        "da": 1903,
+        "a": 1957
+      },
+      "luoghi": [
+        "ias-princeton"
+      ],
+      "archi": [
+        {
+          "verso": "rapporto-sull-edvac",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "automa",
+          "tipo": "elabora",
+          "nota": "Gli automi cellulari e la teoria degli automi autoreplicanti"
+        },
+        {
+          "verso": "turing",
+          "tipo": "influenza",
+          "nota": "Conobbe il lavoro del 1936 e ne comprese la portata pratica"
+        },
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "influenza",
+          "nota": "The Computer and the Brain e il confronto cervello-macchina"
+        }
+      ],
+      "fonti": [
+        "Dyson, Turing's Cathedral",
+        "Aspray, John von Neumann and the Origins of Modern Computing"
+      ]
+    },
+    {
+      "id": "programmatrici-dell-eniac",
+      "titolo": "Le programmatrici dell’ENIAC",
+      "tipo": "persona",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "Kathleen McNulty, Betty Jennings, Betty Snyder, Marlyn Wescoff, Frances Bilas, Ruth Lichterman: programmarono l’ENIAC quando programmare significava ricablare. Il racconto le ridusse per decenni a «ragazze del calcolo».",
+      "periodo": {
+        "da": 1945,
+        "a": 1955
+      },
+      "archi": [
+        {
+          "verso": "eniac",
+          "tipo": "elabora",
+          "nota": "Il mestiere della programmazione inventato sul campo, a ricablaggio"
+        },
+        {
+          "verso": "hopper",
+          "tipo": "contemporaneo_di",
+          "nota": "La prima generazione del mestiere"
+        },
+        {
+          "verso": "ingegneria-del-software",
+          "tipo": "influenza",
+          "nota": "La professione nasce senza nome e senza credito"
+        }
+      ],
+      "fonti": [
+        "Haigh, Priestley e Rope, ENIAC in Action"
+      ]
+    },
+    {
+      "id": "telaio-di-jacquard",
+      "titolo": "Telaio di Jacquard",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "Il telaio a schede perforate (1804): il disegno del tessuto separato dalla macchina che lo esegue. La prima incarnazione industriale dell’idea di programma.",
+      "periodo": {
+        "da": 1804,
+        "a": 1840
+      },
+      "archi": [
+        {
+          "verso": "macchina-analitica",
+          "tipo": "influenza",
+          "nota": "Babbage adotta le schede perforate"
+        },
+        {
+          "verso": "programma-memorizzato",
+          "tipo": "influenza",
+          "nota": "Il programma su supporto esterno come antenato concettuale"
+        }
+      ],
+      "fonti": [
+        "Essinger, Jacquard's Web"
+      ]
+    },
+    {
+      "id": "macchina-analitica",
+      "titolo": "Macchina analitica",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Il progetto di Babbage: mulino (unità di calcolo), magazzino (memoria), schede di operazioni e di variabili. Mai costruita, ma concettualmente completa: separa programma, dati e calcolo.",
+      "periodo": {
+        "da": 1834,
+        "a": 1871
+      },
+      "archi": [
+        {
+          "verso": "architettura-di-von-neumann",
+          "tipo": "influenza",
+          "nota": "Anticipazione concettuale, senza filiazione tecnica diretta documentata"
+        }
+      ],
+      "fonti": [
+        "Swade, The Difference Engine"
+      ]
+    },
+    {
+      "id": "z3",
+      "titolo": "Z3",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "Il calcolatore elettromeccanico di Zuse (1941): binario, a virgola mobile, programmabile da nastro. Funzionante prima dell’ENIAC, ma elettromeccanico e ignoto agli Alleati: la priorità dipende da come si definisce «computer».",
+      "periodo": {
+        "da": 1941,
+        "a": 1943
+      },
+      "archi": [
+        {
+          "verso": "atanasoff-berry-computer",
+          "tipo": "contemporaneo_di",
+          "nota": "Sviluppi indipendenti e ignari l’uno dell’altro"
+        },
+        {
+          "verso": "logica-booleana",
+          "tipo": "implementa",
+          "nota": "Binario e virgola mobile in relè"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "atanasoff-berry-computer",
+      "titolo": "Atanasoff-Berry Computer",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 2,
+      "sommario": "Il calcolatore elettronico binario dell’Iowa State (1939-42): non programmabile, dedicato ai sistemi lineari. Mauchly lo vide nel 1941: quanto ne derivò è la questione al centro del processo Honeywell-Sperry.",
+      "periodo": {
+        "da": 1939,
+        "a": 1942
+      },
+      "archi": [
+        {
+          "verso": "eniac",
+          "tipo": "influenza",
+          "nota": "Influenza riconosciuta dalla sentenza del 1973; la storiografia la giudica parziale"
+        },
+        {
+          "verso": "logica-booleana",
+          "tipo": "implementa"
+        }
+      ],
+      "fonti": [
+        "Haigh, Priestley e Rope, ENIAC in Action"
+      ]
+    },
+    {
+      "id": "colossus",
+      "titolo": "Colossus",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Il primo elaboratore elettronico programmabile (1944), costruito da Flowers per attaccare il cifrario Lorenz. Coperto dal segreto fino agli anni Settanta: la sua assenza deformò tutte le prime storie del computer.",
+      "periodo": {
+        "da": 1943,
+        "a": 1945
+      },
+      "luoghi": [
+        "bletchley-park"
+      ],
+      "archi": [
+        {
+          "verso": "turing",
+          "tipo": "attribuzione_infondata",
+          "nota": "La vulgata lo attribuisce a Turing; fu progettato da Tommy Flowers. Turing lavorò alle Bombe per Enigma; Colossus attaccava Lorenz con i metodi di Tutte e Newman"
+        },
+        {
+          "verso": "crittografia",
+          "tipo": "elabora",
+          "nota": "La crittoanalisi meccanizzata del cifrario Lorenz"
+        }
+      ],
+      "fonti": [
+        "Copeland, Colossus"
+      ]
+    },
+    {
+      "id": "eniac",
+      "titolo": "ENIAC",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Il gigante elettronico della Moore School (1945): 18.000 valvole, programmazione per ricablaggio. «Primo computer» solo con molte clausole — elettronico e general-purpose sì, a programma memorizzato no.",
+      "periodo": {
+        "da": 1943,
+        "a": 1955
+      },
+      "archi": [
+        {
+          "verso": "rapporto-sull-edvac",
+          "tipo": "influenza",
+          "nota": "L’esperienza ENIAC è la base del progetto EDVAC"
+        },
+        {
+          "verso": "processo-honeywell-sperry",
+          "tipo": "influenza",
+          "nota": "Il brevetto ENIAC è l’oggetto del processo"
+        }
+      ],
+      "fonti": [
+        "Haigh, Priestley e Rope, ENIAC in Action"
+      ]
+    },
+    {
+      "id": "rapporto-sull-edvac",
+      "titolo": "First Draft of a Report on the EDVAC",
+      "tipo": "opera",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Il rapporto del 1945 che descrive l’architettura a programma memorizzato. Circolò col solo nome di von Neumann, canonizzando un’attribuzione esclusiva che la storiografia ha corretto: il progetto era lavoro di gruppo.",
+      "periodo": {
+        "da": 1945,
+        "a": 1945
+      },
+      "archi": [
+        {
+          "verso": "architettura-di-von-neumann",
+          "tipo": "formalizza"
+        },
+        {
+          "verso": "von-neumann",
+          "tipo": "attribuzione_infondata",
+          "nota": "L’attribuzione al solo von Neumann non regge: il testo sintetizza le discussioni del gruppo ENIAC, con Eckert e Mauchly; la circolazione senza coautori fu contestata già allora"
+        }
+      ],
+      "fonti": [
+        "Haigh, Priestley e Rope, ENIAC in Action",
+        "Dyson, Turing's Cathedral"
+      ]
+    },
+    {
+      "id": "baby-di-manchester",
+      "titolo": "Manchester Baby",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "Il 21 giugno 1948 a Manchester il primo programma memorizzato in una memoria elettronica venne eseguito: 17 istruzioni. La data più difendibile per la nascita del computer in senso moderno.",
+      "periodo": {
+        "da": 1948,
+        "a": 1948
+      },
+      "archi": [
+        {
+          "verso": "architettura-di-von-neumann",
+          "tipo": "implementa",
+          "nota": "Prima esecuzione documentata di un programma memorizzato"
+        },
+        {
+          "verso": "programma-memorizzato",
+          "tipo": "implementa"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "transistor",
+      "titolo": "Transistor",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 5,
+      "sommario": "L’interruttore a stato solido (Bell Labs, 1947): piccolo, affidabile, miniaturizzabile. Tutto ciò che l’informatica è diventata materialmente discende da qui.",
+      "periodo": {
+        "da": 1947,
+        "a": 1960
+      },
+      "luoghi": [
+        "bell-labs"
+      ],
+      "archi": [
+        {
+          "verso": "circuito-integrato",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "legge-di-moore",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Riordan e Hoddeson, Crystal Fire"
+      ]
+    },
+    {
+      "id": "circuito-integrato",
+      "titolo": "Circuito integrato",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Più transistor su un solo cristallo (Kilby e Noyce, 1958-59, indipendenti: priorità spartita dai brevetti). Premessa della legge di Moore e del microprocessore.",
+      "periodo": {
+        "da": 1958,
+        "a": 1971
+      },
+      "archi": [
+        {
+          "verso": "microprocessore",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "legge-di-moore",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "silicon-valley",
+          "tipo": "influenza",
+          "nota": "Fairchild e i suoi figli: il distretto nasce dal processo planare"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "microprocessore",
+      "titolo": "Microprocessore",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Un’intera unità di calcolo su un chip (Intel 4004, 1971). Trasformò il computer da istituzione a componente: da qui il personal computer e l’informatica ubiqua.",
+      "periodo": {
+        "da": 1971,
+        "a": 1980
+      },
+      "archi": [
+        {
+          "verso": "apple-ii",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "ibm-pc",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "ibm-system-360",
+      "titolo": "IBM System/360",
+      "tipo": "sistema",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "La famiglia di calcolatori compatibili (1964): un’unica architettura per tutte le taglie. Inventò la nozione di architettura come contratto separato dall’implementazione — e il software come investimento che sopravvive all’hardware.",
+      "periodo": {
+        "da": 1964,
+        "a": 1978
+      },
+      "archi": [
+        {
+          "verso": "mitico-uomo-mese",
+          "tipo": "influenza",
+          "nota": "L’OS/360 è l’esperienza da cui nasce il libro di Brooks"
+        },
+        {
+          "verso": "sistema-operativo",
+          "tipo": "elabora",
+          "nota": "OS/360: il sistema operativo come prodotto industriale"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "architettura-di-von-neumann",
+      "titolo": "Architettura di von Neumann",
+      "tipo": "concetto",
+      "parte": 2,
+      "peso": 5,
+      "sommario": "Memoria unica per dati e istruzioni, unità di controllo, aritmetica, ingresso/uscita: lo schema del First Draft, ancora alla base di quasi ogni macchina. L’eponimo canonizza un’attribuzione che la storiografia ha ridimensionato.",
+      "periodo": {
+        "da": 1945,
+        "a": 1950
+      },
+      "archi": [
+        {
+          "verso": "programma-memorizzato",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "ibm-system-360",
+          "tipo": "influenza",
+          "nota": "L'architettura come contratto: la generalizzazione industriale dello schema"
+        }
+      ],
+      "fonti": [
+        "Haigh, Priestley e Rope, ENIAC in Action"
+      ]
+    },
+    {
+      "id": "programma-memorizzato",
+      "titolo": "Programma memorizzato",
+      "tipo": "concetto",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Il programma sta in memoria come i dati: può essere caricato, modificato, trattato da altri programmi. È la condizione di possibilità di compilatori, sistemi operativi e software come industria.",
+      "periodo": {
+        "da": 1945,
+        "a": 1950
+      },
+      "archi": [
+        {
+          "verso": "compilatore",
+          "tipo": "influenza",
+          "nota": "Programmi che producono programmi presuppongono il programma in memoria"
+        },
+        {
+          "verso": "sistema-operativo",
+          "tipo": "influenza",
+          "nota": "Programmi che caricano programmi"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "legge-di-moore",
+      "titolo": "Legge di Moore",
+      "tipo": "concetto",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "L’osservazione (1965) che i transistor per chip raddoppiano a intervalli regolari. Non una legge di natura: una profezia autoavverante che ha coordinato per mezzo secolo investimenti e aspettative.",
+      "periodo": {
+        "da": 1965,
+        "a": 2015
+      },
+      "archi": [
+        {
+          "verso": "microprocessore",
+          "tipo": "influenza",
+          "nota": "La roadmap che ha guidato l’industria dei semiconduttori"
+        },
+        {
+          "verso": "silicon-valley",
+          "tipo": "influenza",
+          "nota": "La cadenza che ha ritmato l'economia del distretto"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "note-alla-macchina-analitica",
+      "titolo": "Note alla macchina analitica",
+      "tipo": "opera",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "La traduzione della memoria di Menabrea con le note di Lovelace (1843), fra cui la tavola per i numeri di Bernoulli e l’osservazione che la macchina «tesse motivi algebrici». Il testo fondativo dell’idea di programmazione.",
+      "periodo": {
+        "da": 1843,
+        "a": 1843
+      },
+      "archi": [
+        {
+          "verso": "macchina-analitica",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "algoritmo",
+          "tipo": "elabora",
+          "nota": "La tavola per i numeri di Bernoulli come primo programma pubblicato"
+        }
+      ],
+      "fonti": [
+        "Swade, The Difference Engine"
+      ]
+    },
+    {
+      "id": "processo-honeywell-sperry",
+      "titolo": "Processo Honeywell-Sperry",
+      "tipo": "evento",
+      "parte": 2,
+      "peso": 2,
+      "sommario": "La sentenza del 1973 che invalidò il brevetto ENIAC riconoscendo la derivazione da Atanasoff. Decise una lite industriale, non una questione storiografica: le due cose vengono spesso confuse.",
+      "periodo": {
+        "da": 1967,
+        "a": 1973
+      },
+      "archi": [
+        {
+          "verso": "atanasoff",
+          "tipo": "elabora",
+          "nota": "La sentenza lo consacra «inventore» ai fini brevettuali"
+        },
+        {
+          "verso": "atanasoff-berry-computer",
+          "tipo": "elabora",
+          "nota": "L'ABC come prior art riconosciuta"
+        }
+      ],
+      "fonti": [
+        "Haigh, Priestley e Rope, ENIAC in Action"
+      ]
+    },
+    {
+      "id": "bletchley-park",
+      "titolo": "Bletchley Park",
+      "tipo": "luogo",
+      "parte": 2,
+      "peso": 3,
+      "sommario": "La tenuta della crittoanalisi britannica in guerra: Enigma, Lorenz, le Bombe, Colossus. Un’intera protoinformatica coperta dal segreto per trent’anni.",
+      "periodo": {
+        "da": 1939,
+        "a": 1945
+      },
+      "archi": [
+        {
+          "verso": "crittografia",
+          "tipo": "influenza",
+          "nota": "La crittoanalisi industrializzata come laboratorio del calcolo"
+        }
+      ],
+      "fonti": [
+        "Copeland, Colossus",
+        "Hodges, Alan Turing: The Enigma"
+      ]
+    },
+    {
+      "id": "bell-labs",
+      "titolo": "Bell Labs",
+      "tipo": "luogo",
+      "parte": 2,
+      "peso": 4,
+      "sommario": "Il laboratorio industriale del monopolio telefonico: transistor, teoria dell’informazione, UNIX, C. Un modello irripetuto di ricerca lunga finanziata da una bolletta.",
+      "periodo": {
+        "da": 1925,
+        "a": 1984
+      },
+      "archi": [
+        {
+          "verso": "unix",
+          "tipo": "influenza",
+          "nota": "Il contesto che permise a Thompson e Ritchie di lavorare per anni senza prodotto"
+        }
+      ],
+      "fonti": [
+        "Gertner, The Idea Factory"
+      ]
+    },
+    {
+      "id": "ias-princeton",
+      "titolo": "Institute for Advanced Study",
+      "tipo": "luogo",
+      "parte": 2,
+      "peso": 2,
+      "sommario": "L’istituto di Princeton dove von Neumann costruì la macchina IAS, il progetto a programma memorizzato più copiato al mondo — in un ambiente pensato per la matematica pura.",
+      "periodo": {
+        "da": 1946,
+        "a": 1958
+      },
+      "archi": [
+        {
+          "verso": "architettura-di-von-neumann",
+          "tipo": "elabora",
+          "nota": "La macchina IAS come implementazione di riferimento"
+        }
+      ],
+      "fonti": [
+        "Dyson, Turing's Cathedral"
+      ]
+    },
+    {
+      "id": "hopper",
+      "titolo": "Grace Hopper",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "Scrisse uno dei primi compilatori (A-0) e guidò la nascita del COBOL: l’idea eretica che si potesse programmare in qualcosa di simile all’inglese. L’aneddoto del «primo bug» le viene attribuito con più affetto che precisione.",
+      "periodo": {
+        "da": 1906,
+        "a": 1992
+      },
+      "archi": [
+        {
+          "verso": "compilatore",
+          "tipo": "elabora",
+          "nota": "A-0 e la difesa pubblica della compilazione"
+        },
+        {
+          "verso": "cobol",
+          "tipo": "influenza",
+          "nota": "Il FLOW-MATIC è il modello diretto del COBOL"
+        },
+        {
+          "verso": "linguaggio-di-programmazione",
+          "tipo": "elabora",
+          "nota": "La programmazione in inglese come progetto"
+        }
+      ],
+      "fonti": [
+        "Beyer, Grace Hopper and the Invention of the Information Age"
+      ]
+    },
+    {
+      "id": "backus",
+      "titolo": "John Backus",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Guidò il progetto FORTRAN e diede il nome alla notazione BNF con cui si descrivono le grammatiche. Da vecchio ripudiò lo stile imperativo che aveva contribuito a fondare.",
+      "periodo": {
+        "da": 1924,
+        "a": 2007
+      },
+      "archi": [
+        {
+          "verso": "fortran",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "gerarchia-di-chomsky",
+          "tipo": "elabora",
+          "nota": "La BNF mette le grammatiche generative al servizio dei linguaggi"
+        },
+        {
+          "verso": "programmazione-funzionale",
+          "tipo": "influenza",
+          "nota": "La Turing Lecture del 1977: «Can Programming Be Liberated…»"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "mccarthy",
+      "titolo": "John McCarthy",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "Inventò il Lisp, coniò «intelligenza artificiale», propose il time-sharing: tre gesti che aprirono tre tradizioni. Il Lisp è il più longevo dei tre.",
+      "periodo": {
+        "da": 1927,
+        "a": 2011
+      },
+      "luoghi": [
+        "mit",
+        "stanford"
+      ],
+      "archi": [
+        {
+          "verso": "lisp",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "conferenza-di-dartmouth",
+          "tipo": "elabora",
+          "nota": "Redasse la proposta e il nome della disciplina"
+        },
+        {
+          "verso": "tempo-condiviso",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Levy, Hackers",
+        "Nilsson, The Quest for Artificial Intelligence"
+      ]
+    },
+    {
+      "id": "chomsky",
+      "titolo": "Noam Chomsky",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "La sua gerarchia delle grammatiche (1956), nata per il linguaggio naturale, divenne la tassonomia dei linguaggi formali: ogni parser la usa, quasi nessun parlante la rispetta.",
+      "periodo": {
+        "da": 1928,
+        "a": 2024
+      },
+      "luoghi": [
+        "mit"
+      ],
+      "archi": [
+        {
+          "verso": "gerarchia-di-chomsky",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "linguaggio-di-programmazione",
+          "tipo": "influenza",
+          "nota": "Le grammatiche formali entrano nella definizione dei linguaggi"
+        }
+      ],
+      "fonti": [
+        "Hopcroft e Ullman, Introduction to Automata Theory"
+      ]
+    },
+    {
+      "id": "dijkstra",
+      "titolo": "Edsger Dijkstra",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "L’algoritmo dei cammini minimi, la lettera contro il go to, i semafori, la disciplina della programmazione strutturata: il moralista del campo, tagliente quanto influente.",
+      "periodo": {
+        "da": 1930,
+        "a": 2002
+      },
+      "archi": [
+        {
+          "verso": "algoritmo-di-dijkstra",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "go-to-considered-harmful",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "programmazione-strutturata",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "sistemi-distribuiti",
+          "tipo": "influenza",
+          "nota": "Mutua esclusione e semafori: i primitivi della concorrenza"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "knuth",
+      "titolo": "Donald Knuth",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "L’analisi degli algoritmi come disciplina matematica e The Art of Computer Programming come sua cattedrale, in costruzione dal 1962. Per pagarne la tipografia scrisse TeX.",
+      "periodo": {
+        "da": 1938,
+        "a": 2024
+      },
+      "luoghi": [
+        "stanford"
+      ],
+      "archi": [
+        {
+          "verso": "arte-della-programmazione",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "notazione-o-grande",
+          "tipo": "elabora",
+          "nota": "Ne canonizzò l’uso nell’analisi degli algoritmi"
+        },
+        {
+          "verso": "struttura-dati",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Knuth, The Art of Computer Programming, vol. 1"
+      ]
+    },
+    {
+      "id": "wirth",
+      "titolo": "Niklaus Wirth",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 2,
+      "sommario": "Pascal, Modula, Oberon: la convinzione, ripetuta per cinquant’anni, che la semplicità sia una proprietà tecnica e non un gusto. «Algorithms + Data Structures = Programs».",
+      "periodo": {
+        "da": 1934,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "pascal",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "programmazione-strutturata",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Wirth, Algorithms + Data Structures = Programs"
+      ]
+    },
+    {
+      "id": "kay",
+      "titolo": "Alan Kay",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Allo Xerox PARC concepì il Dynabook e guidò Smalltalk: oggetti, messaggi e interfacce grafiche pensate per i bambini. «Il modo migliore di predire il futuro è inventarlo».",
+      "periodo": {
+        "da": 1940,
+        "a": 2024
+      },
+      "luoghi": [
+        "xerox-parc"
+      ],
+      "archi": [
+        {
+          "verso": "smalltalk",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "interfaccia-grafica",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "interazione-uomo-macchina",
+          "tipo": "elabora",
+          "nota": "Il Dynabook come orizzonte: il computer per bambini"
+        }
+      ],
+      "fonti": [
+        "Hiltzik, Dealers of Lightning"
+      ]
+    },
+    {
+      "id": "ritchie",
+      "titolo": "Dennis Ritchie",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "Creò il C e, con Thompson, UNIX: la coppia linguaggio-sistema che è ancora il substrato di quasi tutto. Morì la stessa settimana di Steve Jobs, con un millesimo dei necrologi.",
+      "periodo": {
+        "da": 1941,
+        "a": 2011
+      },
+      "luoghi": [
+        "bell-labs"
+      ],
+      "archi": [
+        {
+          "verso": "c",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "unix",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Kernighan, UNIX: A History and a Memoir"
+      ]
+    },
+    {
+      "id": "liskov",
+      "titolo": "Barbara Liskov",
+      "tipo": "persona",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "CLU e l’astrazione dei dati: i tipi di dato astratti come contratto, non come cortesia. Il «principio di sostituzione» che porta il suo nome disciplina l’ereditarietà a oggetti.",
+      "periodo": {
+        "da": 1939,
+        "a": 2024
+      },
+      "luoghi": [
+        "mit"
+      ],
+      "archi": [
+        {
+          "verso": "astrazione",
+          "tipo": "elabora",
+          "nota": "L’astrazione dei dati resa costrutto linguistico"
+        },
+        {
+          "verso": "programmazione-a-oggetti",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Liskov e Guttag, Program Development in Java"
+      ]
+    },
+    {
+      "id": "fortran",
+      "titolo": "FORTRAN",
+      "tipo": "linguaggio",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "Il primo linguaggio ad alto livello di successo (1957): dimostrò che un compilatore può produrre codice competitivo con quello scritto a mano, e che i programmi possono sopravvivere alle macchine.",
+      "periodo": {
+        "da": 1957,
+        "a": 1990
+      },
+      "archi": [
+        {
+          "verso": "compilatore",
+          "tipo": "implementa",
+          "nota": "La prova che la compilazione è praticabile"
+        },
+        {
+          "verso": "algol",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "linguaggio-di-programmazione",
+          "tipo": "implementa",
+          "nota": "La prova che l'alto livello è praticabile"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "lisp",
+      "titolo": "Lisp",
+      "tipo": "linguaggio",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "Liste, ricorsione, programmi come dati (1958). Nato per l’IA, generò una stirpe di idee — garbage collection, REPL, macro — che gli altri linguaggi hanno adottato con decenni di ritardo.",
+      "periodo": {
+        "da": 1958,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "programmazione-funzionale",
+          "tipo": "implementa"
+        },
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "influenza",
+          "nota": "La lingua franca dell’IA simbolica"
+        }
+      ],
+      "fonti": [
+        "Levy, Hackers",
+        "Abelson e Sussman, Structure and Interpretation of Computer Programs"
+      ]
+    },
+    {
+      "id": "cobol",
+      "titolo": "COBOL",
+      "tipo": "linguaggio",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Il linguaggio dell’elaborazione gestionale (1959), progettato per leggersi come inglese. Deriso dagli accademici, fa ancora girare una parte non negoziabile della finanza mondiale.",
+      "periodo": {
+        "da": 1959,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "hopper",
+          "tipo": "deriva_da",
+          "nota": "Dal FLOW-MATIC di Hopper attraverso il comitato CODASYL"
+        },
+        {
+          "verso": "fortran",
+          "tipo": "contemporaneo_di",
+          "nota": "Le due metà del primo software: scienza e gestione"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "algol",
+      "titolo": "ALGOL",
+      "tipo": "linguaggio",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Il linguaggio dei comitati (1958-60): blocchi, ricorsione, grammatica in BNF. Commercialmente marginale, geneticamente ovunque: quasi ogni linguaggio moderno è un dialetto della sua sintassi.",
+      "periodo": {
+        "da": 1958,
+        "a": 1968
+      },
+      "archi": [
+        {
+          "verso": "pascal",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "c",
+          "tipo": "influenza",
+          "nota": "Via BCPL e B, nella linea Algol"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "c",
+      "titolo": "C",
+      "tipo": "linguaggio",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "Il linguaggio di UNIX (1972): abbastanza alto da essere portabile, abbastanza basso da scrivere un sistema operativo. Il compromesso che vinse tutto, con i costi di sicurezza che ancora paghiamo.",
+      "periodo": {
+        "da": 1972,
+        "a": 2024
+      },
+      "luoghi": [
+        "bell-labs"
+      ],
+      "archi": [
+        {
+          "verso": "unix",
+          "tipo": "implementa",
+          "nota": "UNIX riscritto in C nel 1973: il sistema diventa portabile"
+        },
+        {
+          "verso": "sistema-operativo",
+          "tipo": "influenza",
+          "nota": "Il linguaggio in cui i sistemi si scrivono da mezzo secolo"
+        }
+      ],
+      "fonti": [
+        "Kernighan e Ritchie, The C Programming Language"
+      ]
+    },
+    {
+      "id": "pascal",
+      "titolo": "Pascal",
+      "tipo": "linguaggio",
+      "parte": 3,
+      "peso": 2,
+      "sommario": "Il linguaggio didattico di Wirth (1970): strutture dati esplicite, tipi severi, un compilatore piccolo. Ha insegnato a programmare a una generazione prima di cedere il passo.",
+      "periodo": {
+        "da": 1970,
+        "a": 1995
+      },
+      "archi": [
+        {
+          "verso": "programmazione-strutturata",
+          "tipo": "implementa"
+        },
+        {
+          "verso": "compilatore",
+          "tipo": "elabora",
+          "nota": "Il P-code: compilare verso una macchina astratta portabile"
+        }
+      ],
+      "fonti": [
+        "Wirth, Algorithms + Data Structures = Programs"
+      ]
+    },
+    {
+      "id": "smalltalk",
+      "titolo": "Smalltalk",
+      "tipo": "linguaggio",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Tutto è oggetto, tutto è messaggio (PARC, anni Settanta). Con l’ambiente grafico integrato è insieme un linguaggio e una visione dell’informatica personale; l’industria ne prese la superficie.",
+      "periodo": {
+        "da": 1972,
+        "a": 1983
+      },
+      "luoghi": [
+        "xerox-parc"
+      ],
+      "archi": [
+        {
+          "verso": "programmazione-a-oggetti",
+          "tipo": "implementa",
+          "nota": "Il paradigma nella sua forma pura"
+        },
+        {
+          "verso": "interfaccia-grafica",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Hiltzik, Dealers of Lightning"
+      ]
+    },
+    {
+      "id": "java",
+      "titolo": "Java",
+      "tipo": "linguaggio",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "«Scrivi una volta, esegui ovunque» (1995): macchina virtuale, garbage collection, oggetti obbligatori. Il linguaggio con cui l’industria fece pace con le idee dei laboratori.",
+      "periodo": {
+        "da": 1995,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "programmazione-a-oggetti",
+          "tipo": "implementa"
+        },
+        {
+          "verso": "c",
+          "tipo": "deriva_da",
+          "nota": "Sintassi C, semantica addomesticata"
+        },
+        {
+          "verso": "world-wide-web",
+          "tipo": "contemporaneo_di",
+          "nota": "Venduto al mondo come linguaggio della rete"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "python",
+      "titolo": "Python",
+      "tipo": "linguaggio",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Nato come linguaggio di script leggibile (1991), diventato la lingua franca della scienza dei dati e dell’apprendimento automatico: la leggibilità come strategia di sopravvivenza.",
+      "periodo": {
+        "da": 1991,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "apprendimento-automatico",
+          "tipo": "influenza",
+          "nota": "L’ecosistema numerico che ha reso l’AA accessibile"
+        },
+        {
+          "verso": "c",
+          "tipo": "deriva_da",
+          "nota": "L'interprete e l'estendibilità in C"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "linguaggio-di-programmazione",
+      "titolo": "Linguaggio di programmazione",
+      "tipo": "concetto",
+      "parte": 3,
+      "peso": 5,
+      "sommario": "Notazione per dire a una macchina cosa fare e a un umano cosa si è detto. Ogni linguaggio è una teoria implicita su cosa sia un programma: la storia dei linguaggi è la storia di queste teorie.",
+      "periodo": {
+        "da": 1948,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "compilatore",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "astrazione",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "compilatore",
+      "titolo": "Compilatore",
+      "tipo": "concetto",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "Il programma che traduce programmi: la dimostrazione pratica che il codice è un dato. Ha reso i linguaggi possibili e la teoria delle grammatiche una tecnologia.",
+      "periodo": {
+        "da": 1952,
+        "a": 1975
+      },
+      "archi": [
+        {
+          "verso": "gerarchia-di-chomsky",
+          "tipo": "implementa",
+          "nota": "Parser costruiti sulle classi di grammatiche"
+        },
+        {
+          "verso": "astrazione",
+          "tipo": "elabora",
+          "nota": "La traduzione come fabbrica di astrazioni"
+        }
+      ],
+      "fonti": [
+        "Aho, Sethi e Ullman, Compilers: Principles, Techniques, and Tools"
+      ]
+    },
+    {
+      "id": "programmazione-strutturata",
+      "titolo": "Programmazione strutturata",
+      "tipo": "concetto",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Sequenza, selezione, iterazione — e niente salti arbitrari: il primo movimento di riforma morale del codice, nato dalla crisi del software degli anni Sessanta.",
+      "periodo": {
+        "da": 1968,
+        "a": 1980
+      },
+      "archi": [
+        {
+          "verso": "ingegneria-del-software",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "programmazione-a-oggetti",
+          "tipo": "influenza",
+          "nota": "La disciplina del flusso prepara la disciplina dello stato"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "programmazione-a-oggetti",
+      "titolo": "Programmazione a oggetti",
+      "tipo": "concetto",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Dati e comportamento incapsulati insieme, programmi come società di oggetti che si scambiano messaggi. Da Simula e Smalltalk alla lingua franca industriale degli anni Novanta.",
+      "periodo": {
+        "da": 1967,
+        "a": 2010
+      },
+      "archi": [
+        {
+          "verso": "astrazione",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "struttura-dati",
+          "tipo": "elabora",
+          "nota": "Dato e comportamento incapsulati insieme"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "programmazione-funzionale",
+      "titolo": "Programmazione funzionale",
+      "tipo": "concetto",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Programmi come composizione di funzioni senza stato mutabile: la tradizione che discende dal lambda-calcolo e che l’industria riscopre a ogni crisi della concorrenza.",
+      "periodo": {
+        "da": 1958,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "lambda-calcolo",
+          "tipo": "deriva_da"
+        },
+        {
+          "verso": "ricorsione",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Abelson e Sussman, Structure and Interpretation of Computer Programs"
+      ]
+    },
+    {
+      "id": "struttura-dati",
+      "titolo": "Struttura dati",
+      "tipo": "concetto",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "Il modo in cui i dati sono organizzati determina ciò che si può farne in tempo utile: liste, alberi, tabelle hash, grafi. L’altra metà di ogni algoritmo.",
+      "periodo": {
+        "da": 1950,
+        "a": 1980
+      },
+      "archi": [
+        {
+          "verso": "hashing",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "complessita-computazionale",
+          "tipo": "elabora",
+          "nota": "Le operazioni di una struttura hanno un costo: è qui che si misura"
+        }
+      ],
+      "fonti": [
+        "Cormen, Leiserson, Rivest e Stein, Introduction to Algorithms"
+      ]
+    },
+    {
+      "id": "gerarchia-di-chomsky",
+      "titolo": "Gerarchia di Chomsky",
+      "tipo": "concetto",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Quattro classi di grammatiche, quattro classi di automi, una scala di potenza espressiva: la mappa che collega linguistica, automi e compilatori.",
+      "periodo": {
+        "da": 1956,
+        "a": 1959
+      },
+      "archi": [
+        {
+          "verso": "automa",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Hopcroft e Ullman, Introduction to Automata Theory"
+      ]
+    },
+    {
+      "id": "astrazione",
+      "titolo": "Astrazione",
+      "tipo": "concetto",
+      "parte": 3,
+      "peso": 4,
+      "sommario": "Nascondere i dettagli dietro un’interfaccia stabile: il gesto fondamentale dell’informatica, ripetuto a ogni strato — dal transistor alla funzione, dal file al servizio.",
+      "periodo": {
+        "da": 1950,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "linguaggio-di-programmazione",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "interfaccia-grafica",
+          "tipo": "influenza",
+          "nota": "La scrivania come astrazione per non programmatori"
+        }
+      ],
+      "fonti": [
+        "Abelson e Sussman, Structure and Interpretation of Computer Programs"
+      ]
+    },
+    {
+      "id": "go-to-considered-harmful",
+      "titolo": "Go To Statement Considered Harmful",
+      "tipo": "opera",
+      "parte": 3,
+      "peso": 2,
+      "sommario": "La lettera di Dijkstra (1968) contro il salto incondizionato: due pagine che diedero al campo un genere letterario (il «considered harmful») e una coscienza strutturata.",
+      "periodo": {
+        "da": 1968,
+        "a": 1968
+      },
+      "archi": [
+        {
+          "verso": "programmazione-strutturata",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "arte-della-programmazione",
+      "titolo": "The Art of Computer Programming",
+      "tipo": "opera",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "L’opera-mondo di Knuth, iniziata nel 1962 e tuttora incompiuta: l’analisi degli algoritmi fondata volume dopo volume, con assegni ricompensa per ogni errore trovato.",
+      "periodo": {
+        "da": 1968,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "notazione-o-grande",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "quicksort",
+          "tipo": "elabora",
+          "nota": "L’analisi canonica degli ordinamenti"
+        }
+      ],
+      "fonti": [
+        "Knuth, The Art of Computer Programming, vol. 1"
+      ]
+    },
+    {
+      "id": "primo-bug",
+      "titolo": "Il «primo bug»",
+      "tipo": "evento",
+      "parte": 3,
+      "peso": 1,
+      "sommario": "9 settembre 1947: una falena nel relè del Mark II, incollata al registro con la nota «first actual case of bug being found». L’aneddoto perfetto — e infatti la parola «bug» è più vecchia di decenni.",
+      "periodo": {
+        "da": 1947,
+        "a": 1947
+      },
+      "archi": [
+        {
+          "verso": "hopper",
+          "tipo": "attribuzione_infondata",
+          "nota": "La vulgata le attribuisce il conio del termine: «bug» per difetto tecnico è attestato almeno da Edison (1878); la nota nel registro scherza proprio perché il termine era già in uso, e non è certo fosse di sua mano"
+        },
+        {
+          "verso": "ingegneria-del-software",
+          "tipo": "influenza",
+          "nota": "Il debugging entra nell'aneddotica fondativa del mestiere"
+        }
+      ],
+      "fonti": [
+        "Beyer, Grace Hopper and the Invention of the Information Age"
+      ]
+    },
+    {
+      "id": "mit",
+      "titolo": "MIT",
+      "tipo": "luogo",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Dal Tech Model Railroad Club al Project MAC: time-sharing, Lisp, la parola «hacker» nel suo senso originario. Il luogo dove il computer smise di essere solo uno strumento di calcolo.",
+      "periodo": {
+        "da": 1950,
+        "a": 1980
+      },
+      "archi": [
+        {
+          "verso": "cultura-hacker",
+          "tipo": "influenza",
+          "nota": "Il TMRC e il laboratorio di IA come culla del termine"
+        },
+        {
+          "verso": "tempo-condiviso",
+          "tipo": "influenza",
+          "nota": "CTSS e Project MAC"
+        }
+      ],
+      "fonti": [
+        "Levy, Hackers"
+      ]
+    },
+    {
+      "id": "xerox-parc",
+      "titolo": "Xerox PARC",
+      "tipo": "luogo",
+      "parte": 3,
+      "peso": 3,
+      "sommario": "Il laboratorio (1970) dove nacquero Alto, Smalltalk, Ethernet e la stampante laser: il futuro dimostrato in anticipo, monetizzato da altri. Il mito del «fumble» è più semplice dei fatti.",
+      "periodo": {
+        "da": 1970,
+        "a": 1983
+      },
+      "archi": [
+        {
+          "verso": "interfaccia-grafica",
+          "tipo": "elabora",
+          "nota": "L’Alto come prima workstation grafica in rete"
+        },
+        {
+          "verso": "silicon-valley",
+          "tipo": "influenza",
+          "nota": "Le idee migrano nelle aziende della Valle: Apple su tutte"
+        }
+      ],
+      "fonti": [
+        "Hiltzik, Dealers of Lightning"
+      ]
+    },
+    {
+      "id": "al-khwarizmi",
+      "titolo": "al-Khwarizmi",
+      "tipo": "persona",
+      "parte": 4,
+      "peso": 3,
+      "sommario": "Il matematico di Baghdad (IX secolo) i cui trattati su calcolo indiano e al-jabr diedero all’Occidente i numeri posizionali, l’algebra — e, dal suo nome latinizzato, la parola «algoritmo».",
+      "periodo": {
+        "da": 780,
+        "a": 850
+      },
+      "archi": [
+        {
+          "verso": "algoritmo",
+          "tipo": "influenza",
+          "nota": "Eponimo e canone delle procedure di calcolo"
+        }
+      ],
+      "fonti": [
+        "Knuth, The Art of Computer Programming, vol. 1"
+      ]
+    },
+    {
+      "id": "hoare",
+      "titolo": "Tony Hoare",
+      "tipo": "persona",
+      "parte": 4,
+      "peso": 3,
+      "sommario": "Quicksort a ventisei anni, la logica per ragionare sui programmi, e la confessione del «null reference» come errore da un miliardo di dollari: l’eleganza come programma di ricerca.",
+      "periodo": {
+        "da": 1934,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "quicksort",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "ingegneria-del-software",
+          "tipo": "influenza",
+          "nota": "La verifica formale come risposta alla crisi del software"
+        }
+      ],
+      "fonti": [
+        "Cormen, Leiserson, Rivest e Stein, Introduction to Algorithms"
+      ]
+    },
+    {
+      "id": "cook",
+      "titolo": "Stephen Cook",
+      "tipo": "persona",
+      "parte": 4,
+      "peso": 3,
+      "sommario": "Il teorema del 1971: la soddisfacibilità booleana è NP-completa. Da un solo problema, la mappa di intere classi di difficoltà — e la domanda da un millennio, P contro NP.",
+      "periodo": {
+        "da": 1939,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "np-completezza",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "p-contro-np",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Sipser, Introduction to the Theory of Computation"
+      ]
+    },
+    {
+      "id": "karp",
+      "titolo": "Richard Karp",
+      "tipo": "persona",
+      "parte": 4,
+      "peso": 2,
+      "sommario": "I ventuno problemi del 1972: mostrò che la NP-completezza non è un caso isolato ma la condizione normale dei problemi combinatori interessanti.",
+      "periodo": {
+        "da": 1935,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "np-completezza",
+          "tipo": "elabora",
+          "nota": "Le 21 riduzioni che popolarono la classe"
+        },
+        {
+          "verso": "cook",
+          "tipo": "contemporaneo_di"
+        }
+      ],
+      "fonti": [
+        "Sipser, Introduction to the Theory of Computation"
+      ]
+    },
+    {
+      "id": "diffie-e-hellman",
+      "titolo": "Diffie e Hellman",
+      "tipo": "persona",
+      "parte": 4,
+      "peso": 3,
+      "sommario": "«New Directions in Cryptography» (1976): chiavi pubbliche, accordo su un segreto attraverso un canale ostile. La crittografia esce dai ministeri; il GCHQ ci era arrivato prima, in segreto.",
+      "periodo": {
+        "da": 1944,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "crittografia-a-chiave-pubblica",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "rsa",
+          "tipo": "influenza",
+          "nota": "Il problema aperto che RSA risolve"
+        }
+      ],
+      "fonti": [
+        "Singh, The Code Book"
+      ]
+    },
+    {
+      "id": "algoritmo-di-euclide",
+      "titolo": "Algoritmo di Euclide",
+      "tipo": "algoritmo",
+      "parte": 4,
+      "peso": 2,
+      "sommario": "Il massimo comun divisore per sottrazioni successive: negli Elementi, III secolo a.C. Il più antico algoritmo non banale ancora in uso — e ancora nella libreria standard di ogni linguaggio.",
+      "periodo": {
+        "da": -300,
+        "a": -300
+      },
+      "archi": [
+        {
+          "verso": "algoritmo",
+          "tipo": "elabora",
+          "nota": "L’esempio canonico con cui il concetto si insegna da ventitré secoli"
+        }
+      ],
+      "fonti": [
+        "Knuth, The Art of Computer Programming, vol. 2"
+      ]
+    },
+    {
+      "id": "quicksort",
+      "titolo": "Quicksort",
+      "tipo": "algoritmo",
+      "parte": 4,
+      "peso": 3,
+      "sommario": "Dividi attorno a un perno e ricorri (Hoare, 1961): l’ordinamento medio più veloce in pratica, con il caso peggiore in agguato. Il banco di prova classico dell’analisi degli algoritmi.",
+      "periodo": {
+        "da": 1961,
+        "a": 1961
+      },
+      "archi": [
+        {
+          "verso": "ricorsione",
+          "tipo": "implementa",
+          "nota": "Divide et impera nella forma più celebre"
+        }
+      ],
+      "fonti": [
+        "Cormen, Leiserson, Rivest e Stein, Introduction to Algorithms"
+      ]
+    },
+    {
+      "id": "algoritmo-di-dijkstra",
+      "titolo": "Algoritmo di Dijkstra",
+      "tipo": "algoritmo",
+      "parte": 4,
+      "peso": 3,
+      "sommario": "I cammini minimi da una sorgente, concepiti — racconta l’autore — in venti minuti a un tavolino di Amsterdam (1956). Da lì a ogni navigatore e a ogni router.",
+      "periodo": {
+        "da": 1956,
+        "a": 1959
+      },
+      "archi": [
+        {
+          "verso": "struttura-dati",
+          "tipo": "elabora",
+          "nota": "L’efficienza dipende dalla coda di priorità sottostante"
+        },
+        {
+          "verso": "internet",
+          "tipo": "influenza",
+          "nota": "L'instradamento link-state discende dai cammini minimi"
+        }
+      ],
+      "fonti": [
+        "Cormen, Leiserson, Rivest e Stein, Introduction to Algorithms"
+      ]
+    },
+    {
+      "id": "codifica-di-huffman",
+      "titolo": "Codifica di Huffman",
+      "tipo": "algoritmo",
+      "parte": 4,
+      "peso": 2,
+      "sommario": "I codici ottimi a lunghezza variabile, trovati da uno studente (1952) per evitare l’esame: l’albero greedy che avvicina il limite di Shannon e vive in ogni formato compresso.",
+      "periodo": {
+        "da": 1952,
+        "a": 1952
+      },
+      "archi": [
+        {
+          "verso": "entropia-di-shannon",
+          "tipo": "implementa",
+          "nota": "La costruzione pratica che tocca il limite teorico"
+        }
+      ],
+      "fonti": [
+        "Cormen, Leiserson, Rivest e Stein, Introduction to Algorithms"
+      ]
+    },
+    {
+      "id": "rsa",
+      "titolo": "RSA",
+      "tipo": "algoritmo",
+      "parte": 4,
+      "peso": 4,
+      "sommario": "Cifratura a chiave pubblica sulla difficoltà di fattorizzare (1977): la prima realizzazione pratica dell’idea di Diffie e Hellman. Al GCHQ Cocks l’aveva trovata nel 1973, e non poteva dirlo.",
+      "periodo": {
+        "da": 1977,
+        "a": 1977
+      },
+      "archi": [
+        {
+          "verso": "crittografia-a-chiave-pubblica",
+          "tipo": "implementa"
+        },
+        {
+          "verso": "complessita-computazionale",
+          "tipo": "deriva_da",
+          "nota": "La sicurezza è una scommessa sulla durezza della fattorizzazione"
+        }
+      ],
+      "fonti": [
+        "Singh, The Code Book",
+        "Katz e Lindell, Introduction to Modern Cryptography"
+      ]
+    },
+    {
+      "id": "hashing",
+      "titolo": "Hashing",
+      "tipo": "algoritmo",
+      "parte": 4,
+      "peso": 3,
+      "sommario": "Trasformare una chiave in un indirizzo: l’accesso in tempo quasi costante pagato con collisioni governate dalla probabilità. La tecnica che regge tabelle, impronte e firme digitali.",
+      "periodo": {
+        "da": 1953,
+        "a": 1980
+      },
+      "archi": [
+        {
+          "verso": "struttura-dati",
+          "tipo": "elabora",
+          "nota": "La tabella hash come struttura d’elezione"
+        },
+        {
+          "verso": "crittografia",
+          "tipo": "influenza",
+          "nota": "Le funzioni hash crittografiche come impronte"
+        }
+      ],
+      "fonti": [
+        "Knuth, The Art of Computer Programming, vol. 3"
+      ]
+    },
+    {
+      "id": "complessita-computazionale",
+      "titolo": "Complessità computazionale",
+      "tipo": "concetto",
+      "parte": 4,
+      "peso": 5,
+      "sommario": "Non «si può calcolare?» ma «a che costo?»: tempo e memoria in funzione della taglia dell’ingresso. La disciplina che separa il fattibile dal teoricamente possibile.",
+      "periodo": {
+        "da": 1965,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "p-contro-np",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "teoria-della-computabilita",
+          "tipo": "deriva_da"
+        }
+      ],
+      "fonti": [
+        "Sipser, Introduction to the Theory of Computation"
+      ]
+    },
+    {
+      "id": "p-contro-np",
+      "titolo": "P contro NP",
+      "tipo": "concetto",
+      "parte": 4,
+      "peso": 4,
+      "sommario": "Trovare una soluzione è davvero più difficile che verificarla? La congettura aperta più importante dell’informatica: quasi tutti credono P≠NP, nessuno lo dimostra dal 1971.",
+      "periodo": {
+        "da": 1971,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "np-completezza",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "crittografia",
+          "tipo": "influenza",
+          "nota": "Se P=NP, gran parte della crittografia cade"
+        }
+      ],
+      "fonti": [
+        "Sipser, Introduction to the Theory of Computation",
+        "Fortnow, The Golden Ticket"
+      ]
+    },
+    {
+      "id": "np-completezza",
+      "titolo": "NP-completezza",
+      "tipo": "concetto",
+      "parte": 4,
+      "peso": 3,
+      "sommario": "I problemi più difficili di NP, tutti equivalenti fra loro per riduzione: risolverne uno in tempo polinomiale li risolverebbe tutti. La forma matematica della frustrazione combinatoria.",
+      "periodo": {
+        "da": 1971,
+        "a": 1979
+      },
+      "archi": [
+        {
+          "verso": "complessita-computazionale",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Garey e Johnson, Computers and Intractability"
+      ]
+    },
+    {
+      "id": "notazione-o-grande",
+      "titolo": "Notazione O-grande",
+      "tipo": "concetto",
+      "parte": 4,
+      "peso": 2,
+      "sommario": "Il costo asintotico al netto di costanti e dettagli: presa in prestito dalla teoria dei numeri, è la lingua franca con cui gli algoritmi si confrontano.",
+      "periodo": {
+        "da": 1894,
+        "a": 1976
+      },
+      "archi": [
+        {
+          "verso": "complessita-computazionale",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Knuth, The Art of Computer Programming, vol. 1"
+      ]
+    },
+    {
+      "id": "crittografia-a-chiave-pubblica",
+      "titolo": "Crittografia a chiave pubblica",
+      "tipo": "concetto",
+      "parte": 4,
+      "peso": 4,
+      "sommario": "Due chiavi, una pubblica e una privata: cifrare senza segreti condivisi, firmare senza presenza. L’idea che rese possibile la fiducia fra sconosciuti in rete.",
+      "periodo": {
+        "da": 1976,
+        "a": 1980
+      },
+      "archi": [
+        {
+          "verso": "crittografia",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "world-wide-web",
+          "tipo": "influenza",
+          "nota": "Il commercio in rete presuppone canali cifrati con estranei"
+        }
+      ],
+      "fonti": [
+        "Singh, The Code Book"
+      ]
+    },
+    {
+      "id": "crittografia",
+      "titolo": "Crittografia",
+      "tipo": "area",
+      "parte": 4,
+      "peso": 4,
+      "sommario": "Da arte di corte a matematica applicata: la disciplina della segretezza e dell’autenticità. La sua storia moderna è metà pubblica e metà classificata, con le priorità a lungo segrete.",
+      "periodo": {
+        "da": 1900,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "teoria-dell-informazione",
+          "tipo": "deriva_da",
+          "nota": "Shannon 1949: la segretezza perfetta ha una definizione"
+        },
+        {
+          "verso": "diffie-e-hellman",
+          "tipo": "elabora",
+          "nota": "La svolta pubblica del 1976 rifonda la disciplina"
+        }
+      ],
+      "fonti": [
+        "Singh, The Code Book",
+        "Katz e Lindell, Introduction to Modern Cryptography"
+      ]
+    },
+    {
+      "id": "thompson",
+      "titolo": "Ken Thompson",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 4,
+      "sommario": "Scrisse il primo UNIX in un mese su un PDP-7 dismesso, poi il B, poi (decenni dopo) il Go. La Turing Lecture «Reflections on Trusting Trust» è la meditazione definitiva sulla fiducia nel software.",
+      "periodo": {
+        "da": 1943,
+        "a": 2024
+      },
+      "luoghi": [
+        "bell-labs"
+      ],
+      "archi": [
+        {
+          "verso": "unix",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "ritchie",
+          "tipo": "contemporaneo_di",
+          "nota": "La coppia di lavoro che definì sistema e linguaggio"
+        }
+      ],
+      "fonti": [
+        "Kernighan, UNIX: A History and a Memoir"
+      ]
+    },
+    {
+      "id": "torvalds",
+      "titolo": "Linus Torvalds",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Nel 1991 annunciò «un sistema operativo per hobby, niente di grosso e professionale»; ne uscirono Linux e, più tardi, Git. Il coordinamento di migliaia di sconosciuti come sua vera invenzione.",
+      "periodo": {
+        "da": 1969,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "linux",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "git",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Torvalds e Diamond, Just for Fun"
+      ]
+    },
+    {
+      "id": "codd",
+      "titolo": "Edgar Codd",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Il matematico IBM che nel 1970 propose di trattare i dati come relazioni algebriche, contro le gerarchie dei database dell’epoca — e contro la sua stessa azienda, che tardò ad ascoltarlo.",
+      "periodo": {
+        "da": 1923,
+        "a": 2003
+      },
+      "archi": [
+        {
+          "verso": "modello-relazionale",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "articolo-di-codd",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "licklider",
+      "titolo": "J.C.R. Licklider",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Lo psicologo che dall’ARPA finanziò time-sharing e reti con una visione — la «simbiosi uomo-computer» e la «rete galattica» — più che con specifiche. Il committente più influente della storia del campo.",
+      "periodo": {
+        "da": 1915,
+        "a": 1990
+      },
+      "archi": [
+        {
+          "verso": "arpanet",
+          "tipo": "influenza",
+          "nota": "Creò il contesto e scelse le persone che la costruirono"
+        },
+        {
+          "verso": "interazione-uomo-macchina",
+          "tipo": "elabora",
+          "nota": "Man-Computer Symbiosis (1960)"
+        }
+      ],
+      "fonti": [
+        "Waldrop, The Dream Machine"
+      ]
+    },
+    {
+      "id": "baran",
+      "titolo": "Paul Baran",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Alla RAND progettò reti distribuite a commutazione di pacchetto capaci di sopravvivere a danni estesi. Il suo studio è il nocciolo di verità del mito «ARPANET nacque per la guerra nucleare».",
+      "periodo": {
+        "da": 1926,
+        "a": 2011
+      },
+      "archi": [
+        {
+          "verso": "commutazione-di-pacchetto",
+          "tipo": "elabora",
+          "nota": "Con Donald Davies, indipendentemente: priorità condivisa"
+        },
+        {
+          "verso": "tcp-ip",
+          "tipo": "influenza",
+          "nota": "La robustezza senza centro come requisito ereditato"
+        }
+      ],
+      "fonti": [
+        "Hafner e Lyon, Where Wizards Stay Up Late"
+      ]
+    },
+    {
+      "id": "cerf-e-kahn",
+      "titolo": "Cerf e Kahn",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Progettarono il TCP/IP (1974): il contratto minimo che permette a reti diverse di comportarsi come una sola. L’internetworking come idea prima che come infrastruttura.",
+      "periodo": {
+        "da": 1938,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "tcp-ip",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "arpanet",
+          "tipo": "elabora",
+          "nota": "Il problema pratico: collegare ARPANET, radio e satellite"
+        }
+      ],
+      "fonti": [
+        "Abbate, Inventing the Internet"
+      ]
+    },
+    {
+      "id": "berners-lee",
+      "titolo": "Tim Berners-Lee",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 4,
+      "sommario": "Al CERN propose nel 1989 un sistema ipertestuale per i documenti dei fisici: URL, HTTP, HTML. Convinse il CERN a non brevettarlo: la decisione che fece del Web un bene comune.",
+      "periodo": {
+        "da": 1955,
+        "a": 2024
+      },
+      "luoghi": [
+        "cern"
+      ],
+      "archi": [
+        {
+          "verso": "world-wide-web",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "ipertesto",
+          "tipo": "implementa",
+          "nota": "L’ipertesto ridotto al praticabile: link unidirezionali che possono rompersi"
+        }
+      ],
+      "fonti": [
+        "Berners-Lee, Weaving the Web"
+      ]
+    },
+    {
+      "id": "brooks",
+      "titolo": "Fred Brooks",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Guidò l’OS/360, il più grande progetto software del suo tempo, e ne distillò le lezioni nel Mythical Man-Month: aggiungere persone a un progetto in ritardo lo ritarda.",
+      "periodo": {
+        "da": 1931,
+        "a": 2022
+      },
+      "archi": [
+        {
+          "verso": "mitico-uomo-mese",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "ingegneria-del-software",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Brooks, The Mythical Man-Month"
+      ]
+    },
+    {
+      "id": "lamport",
+      "titolo": "Leslie Lamport",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 2,
+      "sommario": "Ordinare eventi senza un orologio comune, tollerare i «generali bizantini», specificare prima di programmare: la teoria che tiene insieme i sistemi distribuiti. E, di passaggio, LaTeX.",
+      "periodo": {
+        "da": 1941,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "sistemi-distribuiti",
+          "tipo": "elabora",
+          "nota": "Time, Clocks, and the Ordering of Events (1978)"
+        }
+      ],
+      "fonti": [
+        "Lamport, Time, Clocks, and the Ordering of Events in a Distributed System"
+      ]
+    },
+    {
+      "id": "vannevar-bush",
+      "titolo": "Vannevar Bush",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "L’organizzatore della ricerca bellica americana che nel 1945 immaginò il memex: una scrivania che collega documenti per associazione. L’ipertesto come progetto culturale, vent’anni prima del nome.",
+      "periodo": {
+        "da": 1890,
+        "a": 1974
+      },
+      "archi": [
+        {
+          "verso": "as-we-may-think",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "ipertesto",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Waldrop, The Dream Machine"
+      ]
+    },
+    {
+      "id": "margaret-hamilton",
+      "titolo": "Margaret Hamilton",
+      "tipo": "persona",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Diresse il software di bordo dell’Apollo al MIT: priorità, tolleranza agli errori, e l’allarme 1202 gestito durante l’allunaggio. Rivendicò per il mestiere il nome «software engineering».",
+      "periodo": {
+        "da": 1936,
+        "a": 2024
+      },
+      "luoghi": [
+        "mit"
+      ],
+      "archi": [
+        {
+          "verso": "ingegneria-del-software",
+          "tipo": "elabora",
+          "nota": "Il software di missione come disciplina ingegneristica"
+        },
+        {
+          "verso": "brooks",
+          "tipo": "contemporaneo_di",
+          "nota": "Le due scuole del software di missione: NASA e IBM"
+        }
+      ],
+      "fonti": [
+        "Mindell, Digital Apollo"
+      ]
+    },
+    {
+      "id": "unix",
+      "titolo": "UNIX",
+      "tipo": "sistema",
+      "parte": 5,
+      "peso": 5,
+      "sommario": "Piccoli programmi che fanno una cosa sola, testo come interfaccia universale, tutto è un file (1969-73). Riscritto in C divenne portabile; portabile, divenne il genoma di quasi ogni sistema vivo.",
+      "periodo": {
+        "da": 1969,
+        "a": 2024
+      },
+      "luoghi": [
+        "bell-labs"
+      ],
+      "archi": [
+        {
+          "verso": "sistema-operativo",
+          "tipo": "implementa",
+          "nota": "L’implementazione che ridefinì il concetto"
+        },
+        {
+          "verso": "linux",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "tempo-condiviso",
+          "tipo": "deriva_da",
+          "nota": "Reazione in piccolo al gigantismo di Multics"
+        },
+        {
+          "verso": "cultura-hacker",
+          "tipo": "influenza",
+          "nota": "Sorgenti che circolano nelle università: la scuola di una generazione"
+        }
+      ],
+      "fonti": [
+        "Kernighan, UNIX: A History and a Memoir",
+        "Salus, A Quarter Century of UNIX"
+      ]
+    },
+    {
+      "id": "linux",
+      "titolo": "Linux",
+      "tipo": "sistema",
+      "parte": 5,
+      "peso": 4,
+      "sommario": "Il kernel di uno studente finlandese più gli strumenti GNU: il sistema libero che finì per far girare Internet, i telefoni e i supercomputer. La prova su scala del modello bazaar.",
+      "periodo": {
+        "da": 1991,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "software-libero",
+          "tipo": "deriva_da",
+          "nota": "Licenza GPL e toolchain GNU come condizioni abilitanti"
+        },
+        {
+          "verso": "cattedrale-e-bazaar",
+          "tipo": "influenza",
+          "nota": "È il caso di studio da cui il saggio nasce"
+        },
+        {
+          "verso": "internet",
+          "tipo": "elabora",
+          "nota": "Sviluppo coordinato in rete: il metodo è il messaggio"
+        }
+      ],
+      "fonti": [
+        "Torvalds e Diamond, Just for Fun",
+        "Moody, Rebel Code"
+      ]
+    },
+    {
+      "id": "arpanet",
+      "titolo": "ARPANET",
+      "tipo": "sistema",
+      "parte": 5,
+      "peso": 4,
+      "sommario": "La rete dell’ARPA (primo collegamento: 1969) che dimostrò la commutazione di pacchetto su scala reale. Nata per condividere risorse di calcolo fra centri di ricerca; il resto è vulgata.",
+      "periodo": {
+        "da": 1969,
+        "a": 1990
+      },
+      "archi": [
+        {
+          "verso": "commutazione-di-pacchetto",
+          "tipo": "implementa"
+        },
+        {
+          "verso": "internet",
+          "tipo": "influenza",
+          "nota": "Il nucleo storico su cui il TCP/IP venne dispiegato"
+        },
+        {
+          "verso": "baran",
+          "tipo": "attribuzione_infondata",
+          "nota": "La vulgata la vuole «progettata per sopravvivere all’attacco nucleare», fondendo gli studi RAND di Baran con il progetto ARPA: la motivazione documentata era la condivisione di risorse fra i centri finanziati"
+        }
+      ],
+      "fonti": [
+        "Hafner e Lyon, Where Wizards Stay Up Late",
+        "Abbate, Inventing the Internet"
+      ]
+    },
+    {
+      "id": "internet",
+      "titolo": "Internet",
+      "tipo": "sistema",
+      "parte": 5,
+      "peso": 5,
+      "sommario": "La rete delle reti tenuta insieme dal TCP/IP: nessun centro, nessun proprietario, un contratto tecnico minimo. Il passaggio del 1983 e la crescita che nessun piano aveva previsto.",
+      "periodo": {
+        "da": 1983,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "tcp-ip",
+          "tipo": "implementa"
+        },
+        {
+          "verso": "world-wide-web",
+          "tipo": "influenza",
+          "nota": "L’infrastruttura su cui il Web è un’applicazione"
+        },
+        {
+          "verso": "etica-e-bias",
+          "tipo": "influenza",
+          "nota": "La scala planetaria trasforma i difetti in questioni pubbliche"
+        }
+      ],
+      "fonti": [
+        "Abbate, Inventing the Internet"
+      ]
+    },
+    {
+      "id": "world-wide-web",
+      "titolo": "World Wide Web",
+      "tipo": "sistema",
+      "parte": 5,
+      "peso": 5,
+      "sommario": "Documenti collegati da link su scala planetaria: la proposta del CERN (1989) che rese Internet abitabile dai non specialisti. Spesso confuso con Internet: è la sua applicazione più riuscita.",
+      "periodo": {
+        "da": 1989,
+        "a": 2024
+      },
+      "luoghi": [
+        "cern"
+      ],
+      "archi": [
+        {
+          "verso": "ipertesto",
+          "tipo": "implementa"
+        },
+        {
+          "verso": "javascript",
+          "tipo": "influenza",
+          "nota": "Dal documento all’applicazione: il Web programmabile"
+        }
+      ],
+      "fonti": [
+        "Berners-Lee, Weaving the Web"
+      ]
+    },
+    {
+      "id": "git",
+      "titolo": "Git",
+      "tipo": "sistema",
+      "parte": 5,
+      "peso": 2,
+      "sommario": "Il controllo di versione distribuito scritto da Torvalds in poche settimane (2005) per il kernel: la storia del codice come grafo di contenuti. Ha cambiato il modo in cui il software si scrive insieme.",
+      "periodo": {
+        "da": 2005,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "sistemi-distribuiti",
+          "tipo": "implementa",
+          "nota": "Ogni copia è integra: il coordinamento senza centro"
+        },
+        {
+          "verso": "open-source",
+          "tipo": "influenza",
+          "nota": "L’infrastruttura della collaborazione di massa"
+        }
+      ],
+      "fonti": [
+        "Kernighan, UNIX: A History and a Memoir"
+      ]
+    },
+    {
+      "id": "sistema-operativo",
+      "titolo": "Sistema operativo",
+      "tipo": "concetto",
+      "parte": 5,
+      "peso": 4,
+      "sommario": "Il programma che governa gli altri: astrae l’hardware, arbitra le risorse, protegge i processi l’uno dall’altro. La più grande astrazione riuscita del campo.",
+      "periodo": {
+        "da": 1956,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "astrazione",
+          "tipo": "elabora",
+          "nota": "File, processi e memoria virtuale come interfacce stabili sull’hardware"
+        }
+      ],
+      "fonti": [
+        "Tanenbaum, Modern Operating Systems"
+      ]
+    },
+    {
+      "id": "tempo-condiviso",
+      "titolo": "Time-sharing",
+      "tipo": "concetto",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Una macchina, molti utenti, l’illusione per ciascuno di averla tutta: il time-sharing (CTSS, Multics) trasformò il calcolo da rito a colloquio, e preparò l’informatica interattiva.",
+      "periodo": {
+        "da": 1961,
+        "a": 1975
+      },
+      "archi": [
+        {
+          "verso": "sistema-operativo",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "interazione-uomo-macchina",
+          "tipo": "influenza",
+          "nota": "L’interattività come esperienza quotidiana"
+        }
+      ],
+      "fonti": [
+        "Waldrop, The Dream Machine"
+      ]
+    },
+    {
+      "id": "commutazione-di-pacchetto",
+      "titolo": "Commutazione di pacchetto",
+      "tipo": "concetto",
+      "parte": 5,
+      "peso": 4,
+      "sommario": "Spezzare i messaggi in pacchetti instradati indipendentemente: l’idea (Baran e Davies, anni Sessanta) che rese le reti robuste ed economiche, contro l’ortodossia della commutazione di circuito.",
+      "periodo": {
+        "da": 1961,
+        "a": 1969
+      },
+      "archi": [
+        {
+          "verso": "internet",
+          "tipo": "influenza",
+          "nota": "Il principio di instradamento su cui la rete delle reti si regge"
+        }
+      ],
+      "fonti": [
+        "Hafner e Lyon, Where Wizards Stay Up Late"
+      ]
+    },
+    {
+      "id": "tcp-ip",
+      "titolo": "TCP/IP",
+      "tipo": "concetto",
+      "parte": 5,
+      "peso": 4,
+      "sommario": "Il protocollo a clessidra: qualunque rete sotto, qualunque applicazione sopra, in mezzo un contratto minimo. La scelta di non ottimizzare nulla in particolare è ciò che lo rese universale.",
+      "periodo": {
+        "da": 1974,
+        "a": 1983
+      },
+      "archi": [
+        {
+          "verso": "commutazione-di-pacchetto",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "sistemi-distribuiti",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Abbate, Inventing the Internet"
+      ]
+    },
+    {
+      "id": "modello-relazionale",
+      "titolo": "Modello relazionale",
+      "tipo": "concetto",
+      "parte": 5,
+      "peso": 4,
+      "sommario": "I dati come tabelle interrogabili con un’algebra, indipendenti da come sono memorizzati: la proposta di Codd (1970) che separò per sempre il «cosa» dal «come» nelle basi di dati.",
+      "periodo": {
+        "da": 1970,
+        "a": 1985
+      },
+      "archi": [
+        {
+          "verso": "sql",
+          "tipo": "influenza",
+          "nota": "Il linguaggio che lo portò nell’industria, con compromessi"
+        },
+        {
+          "verso": "struttura-dati",
+          "tipo": "deriva_da",
+          "nota": "La tabella contro il puntatore"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "ipertesto",
+      "titolo": "Ipertesto",
+      "tipo": "concetto",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Testo che si legge per salti espliciti: dal memex di Bush a Xanadu di Nelson (che coniò la parola) al Web, che ne realizzò la versione più povera e per questo praticabile.",
+      "periodo": {
+        "da": 1945,
+        "a": 1991
+      },
+      "archi": [
+        {
+          "verso": "as-we-may-think",
+          "tipo": "deriva_da"
+        },
+        {
+          "verso": "pagerank",
+          "tipo": "influenza",
+          "nota": "Il link come struttura dati globale"
+        }
+      ],
+      "fonti": [
+        "Berners-Lee, Weaving the Web"
+      ]
+    },
+    {
+      "id": "sistemi-distribuiti",
+      "titolo": "Sistemi distribuiti",
+      "tipo": "concetto",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Molte macchine, un solo compito, nessun orologio comune e guasti parziali sempre possibili: la teoria del coordinamento imperfetto, da Lamport ai data center.",
+      "periodo": {
+        "da": 1978,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "internet",
+          "tipo": "elabora",
+          "nota": "La rete come sistema distribuito per antonomasia"
+        }
+      ],
+      "fonti": [
+        "Lamport, Time, Clocks, and the Ordering of Events in a Distributed System"
+      ]
+    },
+    {
+      "id": "ingegneria-del-software",
+      "titolo": "Ingegneria del software",
+      "tipo": "concetto",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Il nome nacque provocatorio alla conferenza NATO del 1968, in piena «crisi del software»: costruire programmi grandi con la disciplina delle opere civili. La crisi, per molti versi, continua.",
+      "periodo": {
+        "da": 1968,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "conferenza-nato-1968",
+          "tipo": "deriva_da"
+        },
+        {
+          "verso": "mitico-uomo-mese",
+          "tipo": "elabora",
+          "nota": "Il libro che ne fissò le leggi empiriche"
+        }
+      ],
+      "fonti": [
+        "Brooks, The Mythical Man-Month"
+      ]
+    },
+    {
+      "id": "sql",
+      "titolo": "SQL",
+      "tipo": "linguaggio",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Il linguaggio dichiarativo delle basi relazionali (IBM, anni Settanta): si dice cosa si vuole, il sistema decide come. Il linguaggio più usato da chi non si considera programmatore.",
+      "periodo": {
+        "da": 1974,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "modello-relazionale",
+          "tipo": "implementa"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "javascript",
+      "titolo": "JavaScript",
+      "tipo": "linguaggio",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Scritto in dieci giorni nel 1995 per animare le pagine, con un nome scelto dal marketing: il linguaggio che, per la legge del canale unico, divenne il runtime dell’umanità connessa.",
+      "periodo": {
+        "da": 1995,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "world-wide-web",
+          "tipo": "elabora",
+          "nota": "Dal documento all’applicazione"
+        },
+        {
+          "verso": "lisp",
+          "tipo": "deriva_da",
+          "nota": "Chiusure e funzioni di prima classe sotto sintassi C"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "pagerank",
+      "titolo": "PageRank",
+      "tipo": "algoritmo",
+      "parte": 5,
+      "peso": 2,
+      "sommario": "L’autorevolezza di una pagina come probabilità di trovarcisi navigando a caso: l’algebra lineare applicata al Web (1998) che fondò Google e trasformò il link in moneta.",
+      "periodo": {
+        "da": 1998,
+        "a": 1998
+      },
+      "archi": [
+        {
+          "verso": "world-wide-web",
+          "tipo": "elabora",
+          "nota": "Il grafo dei link come oggetto matematico"
+        }
+      ],
+      "fonti": [
+        "Levy, In the Plex"
+      ]
+    },
+    {
+      "id": "mitico-uomo-mese",
+      "titolo": "The Mythical Man-Month",
+      "tipo": "opera",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Le lezioni dell’OS/360 (1975): il mese-uomo è un mito, la comunicazione cresce col quadrato delle persone, «non esiste proiettile d’argento». Il libro di ingegneria del software che invecchia meglio.",
+      "periodo": {
+        "da": 1975,
+        "a": 1975
+      },
+      "archi": [
+        {
+          "verso": "ingegneria-del-software",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Brooks, The Mythical Man-Month"
+      ]
+    },
+    {
+      "id": "articolo-di-codd",
+      "titolo": "A Relational Model of Data",
+      "tipo": "opera",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "L’articolo del 1970: dieci pagine di algebra che resero obsolete le gerarchie dei database e fondarono un’industria. Un caso esemplare di idea matematica che vince per superiorità concettuale.",
+      "periodo": {
+        "da": 1970,
+        "a": 1970
+      },
+      "archi": [
+        {
+          "verso": "modello-relazionale",
+          "tipo": "formalizza"
+        },
+        {
+          "verso": "sql",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "as-we-may-think",
+      "titolo": "As We May Think",
+      "tipo": "opera",
+      "parte": 5,
+      "peso": 3,
+      "sommario": "Il saggio di Bush sull’Atlantic (1945): il memex, le «piste associative», la scienza sommersa dai propri archivi. Il testo che Engelbart e Nelson citeranno come origine.",
+      "periodo": {
+        "da": 1945,
+        "a": 1945
+      },
+      "archi": [
+        {
+          "verso": "ipertesto",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "engelbart",
+          "tipo": "influenza",
+          "nota": "Letto in una capanna nelle Filippine: la vocazione di Engelbart"
+        }
+      ],
+      "fonti": [
+        "Waldrop, The Dream Machine"
+      ]
+    },
+    {
+      "id": "conferenza-nato-1968",
+      "titolo": "Conferenza NATO sul software (1968)",
+      "tipo": "evento",
+      "parte": 5,
+      "peso": 2,
+      "sommario": "A Garmisch il termine «software engineering» venne scelto apposta per essere provocatorio: i programmi grandi fallivano, e l’ingegneria era l’aspirazione, non la realtà.",
+      "periodo": {
+        "da": 1968,
+        "a": 1968
+      },
+      "archi": [
+        {
+          "verso": "ingegneria-del-software",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "cern",
+      "titolo": "CERN",
+      "tipo": "luogo",
+      "parte": 5,
+      "peso": 2,
+      "sommario": "Il laboratorio europeo di fisica dove il problema di far parlare documenti e gruppi eterogenei produsse il Web — e dove si scelse di regalarlo.",
+      "periodo": {
+        "da": 1954,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "world-wide-web",
+          "tipo": "influenza",
+          "nota": "Il problema documentale che il Web risolve nasce qui"
+        },
+        {
+          "verso": "internet",
+          "tipo": "elabora",
+          "nota": "Il grande nodo europeo negli anni della transizione TCP/IP"
+        }
+      ],
+      "fonti": [
+        "Berners-Lee, Weaving the Web"
+      ]
+    },
+    {
+      "id": "minsky",
+      "titolo": "Marvin Minsky",
+      "tipo": "persona",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Cofondatore dell’IA al MIT, teorico dei frame e della «società della mente»; con Perceptrons contribuì a spegnere la prima stagione delle reti neurali — un’eredità a doppio taglio.",
+      "periodo": {
+        "da": 1927,
+        "a": 2016
+      },
+      "luoghi": [
+        "mit"
+      ],
+      "archi": [
+        {
+          "verso": "perceptrons",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "McCorduck, Machines Who Think"
+      ]
+    },
+    {
+      "id": "rosenblatt",
+      "titolo": "Frank Rosenblatt",
+      "tipo": "persona",
+      "parte": 6,
+      "peso": 2,
+      "sommario": "Costruì il percettrone (1958), la prima macchina che imparava dai dati, e ne promise troppo ai giornali. Morì prima di vedere le sue idee rivincere sotto altro nome.",
+      "periodo": {
+        "da": 1928,
+        "a": 1971
+      },
+      "archi": [
+        {
+          "verso": "percettrone",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "minsky",
+          "tipo": "contemporaneo_di",
+          "nota": "Compagni di liceo al Bronx Science, avversari scientifici"
+        }
+      ],
+      "fonti": [
+        "Nilsson, The Quest for Artificial Intelligence"
+      ]
+    },
+    {
+      "id": "hinton",
+      "titolo": "Geoffrey Hinton",
+      "tipo": "persona",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Tenne accesa la ricerca sulle reti neurali durante gli inverni, contribuì alla retropropagazione e guidò la svolta del deep learning; poi si dimise per poter parlare liberamente dei rischi.",
+      "periodo": {
+        "da": 1947,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "rete-neurale",
+          "tipo": "elabora",
+          "nota": "Retropropagazione (1986) e la scuola che portò ad AlexNet"
+        },
+        {
+          "verso": "alexnet",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Metz, Genius Makers"
+      ]
+    },
+    {
+      "id": "weizenbaum",
+      "titolo": "Joseph Weizenbaum",
+      "tipo": "persona",
+      "parte": 6,
+      "peso": 2,
+      "sommario": "Scrisse ELIZA e si spaventò di quanto la gente le credesse: da lì la critica morale dell’IA (Computer Power and Human Reason) — il primo pentito interno del campo.",
+      "periodo": {
+        "da": 1923,
+        "a": 2008
+      },
+      "luoghi": [
+        "mit"
+      ],
+      "archi": [
+        {
+          "verso": "eliza",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "etica-e-bias",
+          "tipo": "influenza",
+          "nota": "La distinzione fra decidere e calcolare come questione morale"
+        }
+      ],
+      "fonti": [
+        "Weizenbaum, Computer Power and Human Reason"
+      ]
+    },
+    {
+      "id": "stallman",
+      "titolo": "Richard Stallman",
+      "tipo": "persona",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Fondò GNU e la Free Software Foundation, inventò il copyleft: la licenza come strumento politico. Intransigente per principio, efficace proprio per questo.",
+      "periodo": {
+        "da": 1953,
+        "a": 2024
+      },
+      "luoghi": [
+        "mit"
+      ],
+      "archi": [
+        {
+          "verso": "software-libero",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "cultura-hacker",
+          "tipo": "deriva_da",
+          "nota": "L'etica del laboratorio IA del MIT resa programma politico"
+        }
+      ],
+      "fonti": [
+        "Levy, Hackers",
+        "Moody, Rebel Code"
+      ]
+    },
+    {
+      "id": "engelbart",
+      "titolo": "Douglas Engelbart",
+      "tipo": "persona",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Dedicò la vita ad «aumentare l’intelletto umano»: mouse, finestre, videoconferenza e collaborazione remota, tutti mostrati in una sola demo nel 1968, vent’anni in anticipo.",
+      "periodo": {
+        "da": 1925,
+        "a": 2013
+      },
+      "luoghi": [
+        "stanford"
+      ],
+      "archi": [
+        {
+          "verso": "madre-di-tutte-le-demo",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "interazione-uomo-macchina",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "ipertesto",
+          "tipo": "elabora",
+          "nota": "NLS: il primo ipertesto funzionante su scala di lavoro"
+        }
+      ],
+      "fonti": [
+        "Markoff, What the Dormouse Said"
+      ]
+    },
+    {
+      "id": "intelligenza-artificiale",
+      "titolo": "Intelligenza artificiale",
+      "tipo": "area",
+      "parte": 6,
+      "peso": 5,
+      "sommario": "Il progetto di far fare alle macchine ciò che richiede intelligenza agli umani: battezzato a Dartmouth (1956), oscillante da settant’anni fra promesse eccessive e risultati che ridefiniscono il possibile.",
+      "periodo": {
+        "da": 1956,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "apprendimento-automatico",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "test-di-turing",
+          "tipo": "deriva_da",
+          "nota": "La domanda del 1950 come atto fondativo avant la lettre"
+        }
+      ],
+      "fonti": [
+        "Russell e Norvig, Artificial Intelligence: A Modern Approach",
+        "Nilsson, The Quest for Artificial Intelligence"
+      ]
+    },
+    {
+      "id": "interazione-uomo-macchina",
+      "titolo": "Interazione uomo-macchina",
+      "tipo": "area",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "La disciplina che studia il punto di contatto: dal batch all’interattività, dalla riga di comando alla manipolazione diretta. La sua storia è la progressiva scomparsa del computer dalla vista.",
+      "periodo": {
+        "da": 1960,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "interfaccia-grafica",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Markoff, What the Dormouse Said"
+      ]
+    },
+    {
+      "id": "test-di-turing",
+      "titolo": "Test di Turing",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 4,
+      "sommario": "Se nel dialogo cieco la macchina è indistinguibile da un umano, chiamarla pensante è questione di parole: il gioco dell’imitazione (1950) sposta la domanda dalla metafisica al comportamento.",
+      "periodo": {
+        "da": 1950,
+        "a": 1950
+      },
+      "archi": [
+        {
+          "verso": "computing-machinery-and-intelligence",
+          "tipo": "deriva_da"
+        },
+        {
+          "verso": "stanza-cinese",
+          "tipo": "influenza",
+          "nota": "Il bersaglio dell’obiezione di Searle"
+        }
+      ],
+      "fonti": [
+        "Hodges, Alan Turing: The Enigma"
+      ]
+    },
+    {
+      "id": "rete-neurale",
+      "titolo": "Rete neurale artificiale",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 4,
+      "sommario": "Unità semplici, pesi regolabili, apprendimento dagli esempi: dall’astrazione di McCulloch e Pitts (1943) alla retropropagazione al deep learning — l’idea più volte dichiarata morta del campo.",
+      "periodo": {
+        "da": 1943,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "cibernetica",
+          "tipo": "deriva_da",
+          "nota": "Il neurone formale nasce nel giro cibernetico"
+        },
+        {
+          "verso": "apprendimento-automatico",
+          "tipo": "elabora"
+        }
+      ],
+      "fonti": [
+        "Nilsson, The Quest for Artificial Intelligence",
+        "Metz, Genius Makers"
+      ]
+    },
+    {
+      "id": "apprendimento-automatico",
+      "titolo": "Apprendimento automatico",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 4,
+      "sommario": "Programmi che migliorano con l’esperienza invece che per istruzioni esplicite: il rovesciamento del paradigma classico, diventato dominante quando dati e calcolo lo hanno permesso.",
+      "periodo": {
+        "da": 1959,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "etica-e-bias",
+          "tipo": "influenza",
+          "nota": "Chi impara dai dati eredita i pregiudizi dei dati"
+        }
+      ],
+      "fonti": [
+        "Russell e Norvig, Artificial Intelligence: A Modern Approach"
+      ]
+    },
+    {
+      "id": "percettrone",
+      "titolo": "Percettrone",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Il classificatore lineare che impara dai propri errori (Rosenblatt, 1958): promosso come embrione di coscienza, demolito da un teorema, riabilitato dalla storia come primo passo giusto.",
+      "periodo": {
+        "da": 1958,
+        "a": 1969
+      },
+      "archi": [
+        {
+          "verso": "rete-neurale",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "apprendimento-automatico",
+          "tipo": "elabora",
+          "nota": "Il primo dispositivo che apprende dai dati"
+        }
+      ],
+      "fonti": [
+        "Nilsson, The Quest for Artificial Intelligence"
+      ]
+    },
+    {
+      "id": "stanza-cinese",
+      "titolo": "Stanza cinese",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 2,
+      "sommario": "L’esperimento mentale di Searle (1980): manipolare simboli secondo regole non è capire. L’obiezione standard al funzionalismo, con quarant’anni di controrepliche.",
+      "periodo": {
+        "da": 1980,
+        "a": 1980
+      },
+      "archi": [
+        {
+          "verso": "test-di-turing",
+          "tipo": "si_oppone_a",
+          "nota": "Contro l’equivalenza fra comportamento e comprensione"
+        }
+      ],
+      "fonti": [
+        "Russell e Norvig, Artificial Intelligence: A Modern Approach"
+      ]
+    },
+    {
+      "id": "interfaccia-grafica",
+      "titolo": "Interfaccia grafica",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 4,
+      "sommario": "Finestre, icone, menu, puntatore: la manipolazione diretta al posto del comando. Da Engelbart al PARC al Macintosh: la catena di trasmissione più raccontata — e più semplificata — del campo.",
+      "periodo": {
+        "da": 1968,
+        "a": 1984
+      },
+      "luoghi": [
+        "xerox-parc"
+      ],
+      "archi": [
+        {
+          "verso": "madre-di-tutte-le-demo",
+          "tipo": "deriva_da"
+        }
+      ],
+      "fonti": [
+        "Hiltzik, Dealers of Lightning"
+      ]
+    },
+    {
+      "id": "software-libero",
+      "titolo": "Software libero",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Le quattro libertà — usare, studiare, modificare, ridistribuire — garantite dal copyleft: il software come questione di libertà, non di prezzo. Il movimento di Stallman, nato da una stampante.",
+      "periodo": {
+        "da": 1983,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "open-source",
+          "tipo": "si_oppone_a",
+          "nota": "Stessa pratica, filosofie rivali: etica contro pragmatica — la scissione del 1998"
+        }
+      ],
+      "fonti": [
+        "Moody, Rebel Code",
+        "Levy, Hackers"
+      ]
+    },
+    {
+      "id": "open-source",
+      "titolo": "Open source",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Il rebranding pragmatico del 1998: codice aperto come metodo di sviluppo superiore, presentabile alle aziende. Vinse il mercato; la domanda su cosa si sia perso resta aperta.",
+      "periodo": {
+        "da": 1998,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "cattedrale-e-bazaar",
+          "tipo": "deriva_da",
+          "nota": "Il saggio che fornì la teoria al rebranding"
+        }
+      ],
+      "fonti": [
+        "Raymond, The Cathedral and the Bazaar"
+      ]
+    },
+    {
+      "id": "cultura-hacker",
+      "titolo": "Cultura hacker",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "L’etica nata al MIT: le informazioni vogliono essere libere, giudica il codice e non le credenziali, l’accesso ai computer dev’essere illimitato. Il significato criminale della parola è un’acquisizione tarda dei media.",
+      "periodo": {
+        "da": 1959,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "software-libero",
+          "tipo": "influenza",
+          "nota": "L’etica hacker come humus del movimento"
+        },
+        {
+          "verso": "homebrew-computer-club",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Levy, Hackers"
+      ]
+    },
+    {
+      "id": "etica-e-bias",
+      "titolo": "Etica e bias algoritmico",
+      "tipo": "concetto",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Quando le decisioni passano ai modelli, i dati storici diventano destino: discriminazioni apprese, opacità, responsabilità diffuse. Il capitolo dove l’informatica smette di essere solo tecnica.",
+      "periodo": {
+        "da": 2016,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "apprendimento-automatico",
+          "tipo": "elabora",
+          "nota": "Il problema nasce dalla natura statistica dell’apprendimento"
+        }
+      ],
+      "fonti": [
+        "O'Neil, Weapons of Math Destruction"
+      ]
+    },
+    {
+      "id": "eliza",
+      "titolo": "ELIZA",
+      "tipo": "sistema",
+      "parte": 6,
+      "peso": 2,
+      "sommario": "Il programma di Weizenbaum (1966) che scimmiottava uno psicoterapeuta con pattern matching elementare. L’«effetto ELIZA» — attribuire comprensione a chi non ne ha — è più vivo che mai.",
+      "periodo": {
+        "da": 1966,
+        "a": 1966
+      },
+      "archi": [
+        {
+          "verso": "test-di-turing",
+          "tipo": "elabora",
+          "nota": "La dimostrazione involontaria che il test misura anche la nostra credulità"
+        },
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "elabora",
+          "nota": "Il caso limite citato da sessant'anni"
+        }
+      ],
+      "fonti": [
+        "Weizenbaum, Computer Power and Human Reason"
+      ]
+    },
+    {
+      "id": "apple-ii",
+      "titolo": "Apple II",
+      "tipo": "sistema",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Il personal computer come elettrodomestico (1977): completo, espandibile, con VisiCalc come prima «killer application». Il mito del garage è marketing; l’ingegneria di Wozniak è documentata.",
+      "periodo": {
+        "da": 1977,
+        "a": 1993
+      },
+      "archi": [
+        {
+          "verso": "homebrew-computer-club",
+          "tipo": "deriva_da",
+          "nota": "Wozniak presentò il progetto alle riunioni del club"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing",
+        "Isaacson, The Innovators"
+      ]
+    },
+    {
+      "id": "ibm-pc",
+      "titolo": "IBM PC",
+      "tipo": "sistema",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Il 1981: IBM legittima il personal computer e, scegliendo componenti standard e un sistema operativo altrui, crea senza volerlo l’industria dei cloni e la fortuna di Microsoft.",
+      "periodo": {
+        "da": 1981,
+        "a": 1995
+      },
+      "archi": [
+        {
+          "verso": "microprocessore",
+          "tipo": "deriva_da"
+        },
+        {
+          "verso": "apple-ii",
+          "tipo": "contemporaneo_di",
+          "nota": "La risposta dell’establishment alla microinformatica"
+        }
+      ],
+      "fonti": [
+        "Ceruzzi, A History of Modern Computing"
+      ]
+    },
+    {
+      "id": "alexnet",
+      "titolo": "AlexNet",
+      "tipo": "sistema",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "La rete convoluzionale che nel 2012 stravinse ImageNet usando GPU: il momento in cui il deep learning smise di essere una scuola minoritaria e divenne il paradigma.",
+      "periodo": {
+        "da": 2012,
+        "a": 2012
+      },
+      "archi": [
+        {
+          "verso": "rete-neurale",
+          "tipo": "implementa"
+        },
+        {
+          "verso": "attention-is-all-you-need",
+          "tipo": "influenza",
+          "nota": "Apre la stagione di cui i trasformatori sono il culmine"
+        }
+      ],
+      "fonti": [
+        "Metz, Genius Makers"
+      ]
+    },
+    {
+      "id": "computing-machinery-and-intelligence",
+      "titolo": "Computing Machinery and Intelligence",
+      "tipo": "opera",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "L’articolo di Turing su Mind (1950): il gioco dell’imitazione, le obiezioni catalogate e confutate in anticipo, la profezia della macchina che impara. Il testo fondativo dell’IA prima dell’IA.",
+      "periodo": {
+        "da": 1950,
+        "a": 1950
+      },
+      "archi": [
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "influenza"
+        }
+      ],
+      "fonti": [
+        "Hodges, Alan Turing: The Enigma"
+      ]
+    },
+    {
+      "id": "perceptrons",
+      "titolo": "Perceptrons",
+      "tipo": "opera",
+      "parte": 6,
+      "peso": 2,
+      "sommario": "Il libro di Minsky e Papert (1969): i limiti dimostrati del percettrone a uno strato. Matematica corretta letta come condanna dell’intero approccio: il caso classico di teorema trasformato in slogan.",
+      "periodo": {
+        "da": 1969,
+        "a": 1969
+      },
+      "archi": [
+        {
+          "verso": "percettrone",
+          "tipo": "si_oppone_a",
+          "nota": "La critica che, nella ricezione, travolse anche ciò che il teorema non copriva"
+        },
+        {
+          "verso": "inverni-dell-ia",
+          "tipo": "influenza",
+          "nota": "Concausa del riflusso dei finanziamenti alle reti"
+        }
+      ],
+      "fonti": [
+        "Nilsson, The Quest for Artificial Intelligence"
+      ]
+    },
+    {
+      "id": "cattedrale-e-bazaar",
+      "titolo": "La cattedrale e il bazaar",
+      "tipo": "opera",
+      "parte": 6,
+      "peso": 2,
+      "sommario": "Il saggio di Raymond (1997): lo sviluppo aperto e caotico di Linux come metodo superiore alla progettazione chiusa. «Con abbastanza occhi, ogni bug è superficiale» — legge più citata che verificata.",
+      "periodo": {
+        "da": 1997,
+        "a": 1999
+      },
+      "archi": [
+        {
+          "verso": "linux",
+          "tipo": "elabora",
+          "nota": "Linux come caso di studio del modello bazaar"
+        }
+      ],
+      "fonti": [
+        "Raymond, The Cathedral and the Bazaar"
+      ]
+    },
+    {
+      "id": "attention-is-all-you-need",
+      "titolo": "Attention Is All You Need",
+      "tipo": "opera",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "L’articolo del 2017 che introdusse il trasformatore: solo attenzione, niente ricorrenza, parallelizzabile a piacere. L’architettura dietro i modelli linguistici che hanno riaperto ogni domanda del campo.",
+      "periodo": {
+        "da": 2017,
+        "a": 2017
+      },
+      "archi": [
+        {
+          "verso": "rete-neurale",
+          "tipo": "elabora",
+          "nota": "L’architettura dominante dell’era dei grandi modelli"
+        },
+        {
+          "verso": "test-di-turing",
+          "tipo": "influenza",
+          "nota": "I modelli linguistici riportano il gioco dell’imitazione all’ordine del giorno"
+        }
+      ],
+      "fonti": [
+        "Vaswani et al., Attention Is All You Need"
+      ]
+    },
+    {
+      "id": "conferenza-di-dartmouth",
+      "titolo": "Conferenza di Dartmouth",
+      "tipo": "evento",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "L’estate del 1956: dieci ricercatori, una proposta che prometteva progressi «in un’estate» e un nome nuovo — intelligenza artificiale. Il battesimo, l’ottimismo e il peccato originale del campo.",
+      "periodo": {
+        "da": 1956,
+        "a": 1956
+      },
+      "archi": [
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "elabora"
+        },
+        {
+          "verso": "lisp",
+          "tipo": "influenza",
+          "nota": "Dal programma di Dartmouth alla lingua del campo"
+        }
+      ],
+      "fonti": [
+        "McCorduck, Machines Who Think"
+      ]
+    },
+    {
+      "id": "inverni-dell-ia",
+      "titolo": "Inverni dell’IA",
+      "tipo": "evento",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "I riflussi ciclici dei finanziamenti (metà anni Settanta, fine Ottanta) quando le promesse eccedono i risultati: il rapporto Lighthill, il crollo dei sistemi esperti. Il campo che dimentica e ripete.",
+      "periodo": {
+        "da": 1974,
+        "a": 1993
+      },
+      "archi": [
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "elabora",
+          "nota": "Il ciclo promessa-delusione come costante strutturale"
+        },
+        {
+          "verso": "apprendimento-automatico",
+          "tipo": "influenza",
+          "nota": "La cautela terminologica: machine learning come nome rifugio"
+        }
+      ],
+      "fonti": [
+        "Nilsson, The Quest for Artificial Intelligence"
+      ]
+    },
+    {
+      "id": "madre-di-tutte-le-demo",
+      "titolo": "La madre di tutte le demo",
+      "tipo": "evento",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "San Francisco, 9 dicembre 1968: Engelbart mostra in novanta minuti mouse, finestre, ipertesto, editing collaborativo e videoconferenza. Il futuro dell’interazione, dimostrato in blocco.",
+      "periodo": {
+        "da": 1968,
+        "a": 1968
+      },
+      "archi": [
+        {
+          "verso": "interfaccia-grafica",
+          "tipo": "influenza"
+        },
+        {
+          "verso": "xerox-parc",
+          "tipo": "influenza",
+          "nota": "Parte del gruppo di Engelbart migrò al PARC"
+        }
+      ],
+      "fonti": [
+        "Markoff, What the Dormouse Said"
+      ]
+    },
+    {
+      "id": "homebrew-computer-club",
+      "titolo": "Homebrew Computer Club",
+      "tipo": "evento",
+      "parte": 6,
+      "peso": 2,
+      "sommario": "Il club di hobbisti della Silicon Valley (1975): kit Altair, schemi scambiati liberamente, e la lettera di Bill Gates contro la copia del software — la faglia commerciale del microcomputer, in miniatura.",
+      "periodo": {
+        "da": 1975,
+        "a": 1977
+      },
+      "luoghi": [
+        "silicon-valley"
+      ],
+      "archi": [
+        {
+          "verso": "cultura-hacker",
+          "tipo": "elabora",
+          "nota": "L’etica dello scambio applicata all’hardware"
+        }
+      ],
+      "fonti": [
+        "Levy, Hackers",
+        "Markoff, What the Dormouse Said"
+      ]
+    },
+    {
+      "id": "deep-blue-contro-kasparov",
+      "titolo": "Deep Blue contro Kasparov",
+      "tipo": "evento",
+      "parte": 6,
+      "peso": 2,
+      "sommario": "New York, 1997: il campione del mondo di scacchi perde la rivincita contro la macchina IBM. Forza bruta più conoscenza compilata: una vittoria che disse meno sull’intelligenza di quanto parve.",
+      "periodo": {
+        "da": 1996,
+        "a": 1997
+      },
+      "archi": [
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "elabora",
+          "nota": "Il traguardo simbolico che costrinse a ridefinire i traguardi"
+        }
+      ],
+      "fonti": [
+        "Nilsson, The Quest for Artificial Intelligence"
+      ]
+    },
+    {
+      "id": "stanford",
+      "titolo": "Stanford",
+      "tipo": "luogo",
+      "parte": 6,
+      "peso": 2,
+      "sommario": "L’università al centro della Valle: lo SAIL di McCarthy, l’SRI di Engelbart a due passi, e la porosità fra campus e impresa che definì il modello californiano.",
+      "periodo": {
+        "da": 1962,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "silicon-valley",
+          "tipo": "influenza",
+          "nota": "La pompa di talenti e brevetti del distretto"
+        },
+        {
+          "verso": "intelligenza-artificiale",
+          "tipo": "influenza",
+          "nota": "SAIL come secondo polo dell'IA accademica"
+        }
+      ],
+      "fonti": [
+        "Markoff, What the Dormouse Said"
+      ]
+    },
+    {
+      "id": "silicon-valley",
+      "titolo": "Silicon Valley",
+      "tipo": "luogo",
+      "parte": 6,
+      "peso": 3,
+      "sommario": "Dal silicio dei semiconduttori al software: il distretto dove capitale di rischio, università e migrazione di ingegneri crearono un modello industriale — e la sua mitologia del garage.",
+      "periodo": {
+        "da": 1956,
+        "a": 2024
+      },
+      "archi": [
+        {
+          "verso": "homebrew-computer-club",
+          "tipo": "influenza",
+          "nota": "L’ambiente hobbistico da cui uscì la microinformatica commerciale"
+        }
+      ],
+      "fonti": [
+        "Isaacson, The Innovators",
+        "Markoff, What the Dormouse Said"
+      ]
+    }
+  ],
+  "percorsi": [
+    {
+      "slug": "dalla-logica-al-silicio",
+      "titolo": "Dalla logica al silicio",
+      "sottotitolo": "Come un problema di fondazioni della matematica divenne una macchina",
+      "ordine": 1,
+      "tappe": [
+        {
+          "voce": "leibniz",
+          "traccia": "Il sogno di ridurre il ragionamento a calcolo nasce come progetto filosofico: «calculemus», sediamoci e calcoliamo, invece di disputare."
+        },
+        {
+          "voce": "boole",
+          "traccia": "Boole trasforma la logica in algebra: le leggi del pensiero come equazioni. Per ottant’anni resta matematica pura, senza applicazione."
+        },
+        {
+          "voce": "godel",
+          "traccia": "Il programma di Hilbert chiede una matematica completa e decidibile; Gödel dimostra che completa non può essere. Resta aperta la decidibilità."
+        },
+        {
+          "voce": "on-computable-numbers",
+          "traccia": "Turing chiude la questione inventando, per farlo, la macchina astratta: definire il calcolo per dimostrare cosa il calcolo non può fare."
+        },
+        {
+          "voce": "shannon",
+          "traccia": "La tesi del 1937: i circuiti a relè realizzano l’algebra di Boole. Il ponte fra la logica dell’Ottocento e l’elettronica del Novecento."
+        },
+        {
+          "voce": "architettura-di-von-neumann",
+          "traccia": "Il programma memorizzato trasforma la macchina universale di carta in un progetto d’ingegneria: una memoria, un controllo, un’aritmetica."
+        },
+        {
+          "voce": "transistor",
+          "traccia": "Bell Labs, 1947: l’interruttore a stato solido. La logica ha finalmente un supporto piccolo, veloce e affidabile quanto serve."
+        },
+        {
+          "voce": "microprocessore",
+          "traccia": "Un’intera CPU su un chip: la catena Boole-Shannon-von Neumann si chiude in pochi millimetri di silicio, prodotti a milioni."
+        }
+      ]
+    },
+    {
+      "slug": "il-primo-computer-conteso",
+      "titolo": "Il primo computer conteso",
+      "sottotitolo": "Perché la domanda «chi ha inventato il computer?» non ha una risposta sola",
+      "ordine": 2,
+      "tappe": [
+        {
+          "voce": "macchina-analitica",
+          "traccia": "Babbage progetta un computer completo nell’Ottocento e non lo costruisce: la priorità concettuale senza realizzazione."
+        },
+        {
+          "voce": "z3",
+          "traccia": "Zuse, isolato in Germania, fa funzionare nel 1941 un calcolatore programmabile elettromeccanico: primo, ma lento e sconosciuto."
+        },
+        {
+          "voce": "atanasoff-berry-computer",
+          "traccia": "L’ABC è elettronico e binario ma non programmabile: un pezzo della definizione, non tutta."
+        },
+        {
+          "voce": "colossus",
+          "traccia": "Elettronico e programmabile nel 1944, ma segreto di stato per trent’anni: il primo computer che non poté entrare nella storia."
+        },
+        {
+          "voce": "eniac",
+          "traccia": "Elettronico, general-purpose, celebrato dalla stampa nel 1946: «primo» per il pubblico, con clausole per gli storici."
+        },
+        {
+          "voce": "rapporto-sull-edvac",
+          "traccia": "Il First Draft fissa l’architettura a programma memorizzato e, circolando con un solo nome, fabbrica l’attribuzione più contesa del campo."
+        },
+        {
+          "voce": "baby-di-manchester",
+          "traccia": "21 giugno 1948: il primo programma eseguito da memoria elettronica. La data più difendibile, e la meno famosa."
+        },
+        {
+          "voce": "processo-honeywell-sperry",
+          "traccia": "Un tribunale decide nel 1973 chi ha «inventato» il computer ai fini brevettuali: la risposta legale non chiude la questione storiografica."
+        }
+      ]
+    },
+    {
+      "slug": "come-i-computer-si-parlarono",
+      "titolo": "Come i computer si parlarono",
+      "sottotitolo": "Dal memex al Web: la costruzione della rete come idea e come infrastruttura",
+      "ordine": 3,
+      "tappe": [
+        {
+          "voce": "as-we-may-think",
+          "traccia": "Bush immagina nel 1945 una scrivania che collega documenti per associazione: il problema non è calcolare, è ritrovare."
+        },
+        {
+          "voce": "licklider",
+          "traccia": "Licklider trasforma la visione in budget: dall’ARPA finanzia le persone giuste per la «rete galattica», senza specificarla."
+        },
+        {
+          "voce": "commutazione-di-pacchetto",
+          "traccia": "Baran e Davies, indipendenti, spezzano i messaggi in pacchetti: la rete robusta perché nessun nodo è indispensabile."
+        },
+        {
+          "voce": "arpanet",
+          "traccia": "Il primo collegamento del 1969 («LO», poi il crash): la commutazione di pacchetto dimostrata su scala continentale."
+        },
+        {
+          "voce": "tcp-ip",
+          "traccia": "Cerf e Kahn scrivono il contratto minimo fra reti diverse: non ottimizzare nulla, connettere tutto."
+        },
+        {
+          "voce": "internet",
+          "traccia": "Il 1983: ARPANET passa a TCP/IP e la rete delle reti comincia a crescere senza chiedere permesso a nessuno."
+        },
+        {
+          "voce": "berners-lee",
+          "traccia": "Al CERN il problema è documentale: far parlare gruppi, formati e macchine diverse. La soluzione è un ipertesto minimo."
+        },
+        {
+          "voce": "world-wide-web",
+          "traccia": "URL, HTTP, HTML — e la rinuncia al brevetto: il Web come bene comune è una scelta, non un destino."
+        }
+      ]
+    },
+    {
+      "slug": "l-intelligenza-contesa",
+      "titolo": "L’intelligenza contesa",
+      "sottotitolo": "Settant’anni di promesse, inverni e rinascite dell’IA",
+      "ordine": 4,
+      "tappe": [
+        {
+          "voce": "computing-machinery-and-intelligence",
+          "traccia": "Turing sposta la domanda: non «le macchine pensano?» ma «sapresti distinguerle?». Le obiezioni sono già tutte catalogate nel 1950."
+        },
+        {
+          "voce": "conferenza-di-dartmouth",
+          "traccia": "Il campo nasce con un nome nuovo e una promessa impossibile: progressi significativi «in un’estate»."
+        },
+        {
+          "voce": "percettrone",
+          "traccia": "Rosenblatt costruisce la prima macchina che impara dai dati; i giornali promettono coscienze elettroniche entro pochi anni."
+        },
+        {
+          "voce": "perceptrons",
+          "traccia": "Minsky e Papert dimostrano i limiti del percettrone a uno strato: il teorema è giusto, la lettura che ne fa il campo è una condanna sommaria."
+        },
+        {
+          "voce": "inverni-dell-ia",
+          "traccia": "Le promesse mancate presentano il conto: fondi tagliati, laboratori ridimensionati, la parola «IA» che diventa imbarazzante."
+        },
+        {
+          "voce": "rete-neurale",
+          "traccia": "Una minoranza — Hinton fra gli altri — continua: retropropagazione, reti profonde, pazienza. Serviranno dati e GPU."
+        },
+        {
+          "voce": "alexnet",
+          "traccia": "ImageNet 2012: la scuola minoritaria stravince, e in cinque anni il deep learning diventa l’ortodossia che era stata negata."
+        },
+        {
+          "voce": "attention-is-all-you-need",
+          "traccia": "Il trasformatore chiude il cerchio: modelli linguistici che riportano il gioco dell’imitazione — e le sue ambiguità — al centro della scena."
+        }
+      ]
+    }
+  ],
+  "diagrammi": [
+    {
+      "slug": "macchina-di-turing",
+      "titolo": "La macchina di Turing",
+      "descrizione": "Nastro, testina, tabella di stati: il modello minimo di calcolatore, con un esempio di esecuzione passo per passo."
+    },
+    {
+      "slug": "gerarchia-di-chomsky",
+      "titolo": "La gerarchia di Chomsky",
+      "descrizione": "Le quattro classi di grammatiche e i loro automi, come inclusioni concentriche con esempi per ciascun livello."
+    },
+    {
+      "slug": "scala-delle-astrazioni",
+      "titolo": "La scala delle astrazioni",
+      "descrizione": "Dal transistor alla porta logica, dall’ALU all’ISA, dal sistema operativo al linguaggio all’applicazione: ogni strato nasconde il precedente."
+    },
+    {
+      "slug": "mappa-della-complessita",
+      "titolo": "La mappa della complessità",
+      "descrizione": "P, NP, NP-completo, indecidibile: le classi come territori annidati, con i problemi celebri collocati sulla mappa."
+    }
+  ]
+}

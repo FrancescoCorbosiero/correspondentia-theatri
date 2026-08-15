@@ -76,3 +76,13 @@ GitHub Pages via Actions (`.github/workflows/deploy.yml`, attivo sul ramo `main`
 in **Settings → Pages** impostare *Source: GitHub Actions*. Il sito è configurato per
 `https://francescocorbosiero.github.io/correspondentia-theatri/` (base path in
 `astro.config.mjs`). La CI (`ci.yml`) esegue test unitari, build, budget bundle ed e2e.
+
+## Replica per altri argomenti
+
+Il sito è un'istanza di un motore riutilizzabile: il contenuto è separabile in un
+**seme** (JSON con tassonomia, parti, voci, archi, regole) da cui un progetto
+gemello su un altro argomento-nodo può essere generato e costruito. Il flusso in
+tre passi — genera il seme (con validazione dell'argomento), valida il seme,
+costruisci il sito con Claude Code — è documentato in **[`kit/LEGGIMI.md`](kit/LEGGIMI.md)**.
+Il seme di questo stesso sito, estratto dal contenuto reale e validato in CI, è in
+`kit/esempio/seme-esoterismo.json`.

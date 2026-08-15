@@ -1,0 +1,228 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "correspondentia-seme@1",
+  "title": "Seme di un progetto Correspondentia",
+  "description": "Il file unico da cui un atlante ipermediale a grafo (motore Correspondentia) può essere generato per un argomento-nodo. Contiene la mappa (struttura, tassonomia, inventario, relazioni, regole), non la prosa: i corpi delle voci, i capitoli del volume e gli articoli del blog vengono scritti in fase di costruzione. Il validatore di riferimento è kit/valida-seme.ts, che aggiunge i controlli referenziali e le soglie di qualità non esprimibili in JSON Schema.",
+  "type": "object",
+  "required": ["formato", "progetto", "valutazione", "tassonomia", "parti", "regole", "voci", "percorsi"],
+  "additionalProperties": false,
+  "properties": {
+    "formato": { "const": "correspondentia-seme@1" },
+    "progetto": {
+      "type": "object",
+      "required": ["nome", "argomento", "lingua", "descrizione"],
+      "additionalProperties": false,
+      "properties": {
+        "nome": { "type": "string", "minLength": 1, "description": "Nome proprio del sito (es. \"Correspondentia Theatri\")" },
+        "argomento": { "type": "string", "minLength": 1, "description": "L'argomento-nodo, in chiaro" },
+        "sottotitolo": { "type": "string" },
+        "lingua": { "type": "string", "minLength": 2, "description": "Codice lingua dei contenuti (es. \"it\")" },
+        "descrizione": { "type": "string", "minLength": 20, "description": "1-3 frasi: cosa mappa l'atlante e con quale tesi di lettura" }
+      }
+    },
+    "valutazione": {
+      "type": "object",
+      "description": "Esito della rubrica di validazione dell'argomento-nodo (kit/PROMPT-GENERA-SEME.md §1). Un seme con verdetto \"non-idoneo\" non va costruito.",
+      "required": ["verdetto", "criteri", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "verdetto": { "enum": ["idoneo", "idoneo-con-adattamenti", "non-idoneo"] },
+        "criteri": {
+          "type": "object",
+          "required": ["entita-enumerabili", "relazioni-tipizzabili", "profondita-temporale", "doppio-registro", "letteratura-di-riferimento", "granularita-sostenibile"],
+          "additionalProperties": { "type": "integer", "minimum": 1, "maximum": 5 }
+        },
+        "note": { "type": "string", "minLength": 1, "description": "Motivazione del verdetto e adattamenti decisi" }
+      }
+    },
+    "tassonomia": {
+      "type": "object",
+      "required": ["tipiNodo", "tipiArco", "doppioRegistro"],
+      "additionalProperties": false,
+      "properties": {
+        "tipiNodo": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "object",
+            "required": ["id", "etichetta"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "$ref": "#/definitions/idTassonomia" },
+              "etichetta": { "type": "string", "minLength": 1 },
+              "descrizione": { "type": "string" }
+            }
+          },
+          "description": "Tipi di voce del dominio, escluso \"parte\" (strutturale, sempre presente)"
+        },
+        "tipiArco": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "required": ["id", "etichetta"],
+            "additionalProperties": false,
+            "properties": {
+              "id": { "$ref": "#/definitions/idTassonomia" },
+              "etichetta": { "type": "string", "minLength": 1 },
+              "descrizione": { "type": "string" }
+            }
+          }
+        },
+        "archiDerivati": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/idTassonomia" },
+          "description": "Tipi di arco generati dalla pipeline (es. \"contiene\" dal campo parte): mai dichiarati nelle voci"
+        },
+        "doppioRegistro": {
+          "type": "object",
+          "description": "Il livello epistemico dell'atlante: relazioni documentate sempre visibili, relazioni dichiarate-ma-non-documentate spente di default e marcate. Se il dominio non ha un doppio registro, attivo=false.",
+          "required": ["attivo"],
+          "additionalProperties": false,
+          "properties": {
+            "attivo": { "type": "boolean" },
+            "tipiLeggendari": { "type": "array", "items": { "$ref": "#/definitions/idTassonomia" } },
+            "criterio": { "type": "string", "description": "Cosa distingue, in questo dominio, il documentato dal dichiarato" }
+          }
+        }
+      }
+    },
+    "parti": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["numero", "id", "titolo", "sommario"],
+        "additionalProperties": false,
+        "properties": {
+          "numero": { "type": "integer", "minimum": 1 },
+          "id": { "$ref": "#/definitions/kebab" },
+          "titolo": { "type": "string", "minLength": 1 },
+          "sommario": { "type": "string", "minLength": 20 }
+        }
+      },
+      "description": "Le parti del volume, numerate consecutivamente da 1. Diventano anche nodi del grafo e capitoli di /leggi."
+    },
+    "regole": {
+      "type": "object",
+      "required": ["guardrail", "lunghezze"],
+      "additionalProperties": false,
+      "properties": {
+        "guardrail": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "Regole epistemiche ed etiche specifiche del dominio, vincolanti per ogni corpo di voce"
+        },
+        "lunghezze": {
+          "type": "object",
+          "required": ["1", "2", "3", "4", "5"],
+          "additionalProperties": false,
+          "properties": {
+            "1": { "$ref": "#/definitions/fascia" },
+            "2": { "$ref": "#/definitions/fascia" },
+            "3": { "$ref": "#/definitions/fascia" },
+            "4": { "$ref": "#/definitions/fascia" },
+            "5": { "$ref": "#/definitions/fascia" }
+          },
+          "description": "Parole [min, max] del corpo per ciascun peso"
+        },
+        "fontiMinime": { "type": "integer", "minimum": 0, "default": 1 }
+      }
+    },
+    "voci": {
+      "type": "array",
+      "minItems": 60,
+      "items": {
+        "type": "object",
+        "required": ["id", "titolo", "tipo", "parte", "peso", "sommario", "archi", "fonti"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "$ref": "#/definitions/kebab" },
+          "titolo": { "type": "string", "minLength": 1, "maxLength": 120 },
+          "tipo": { "$ref": "#/definitions/idTassonomia", "description": "Uno dei tipiNodo della tassonomia" },
+          "parte": { "type": "integer", "minimum": 1 },
+          "peso": { "type": "integer", "minimum": 1, "maximum": 5, "description": "Centralità nel campo: guida lunghezza del corpo e resa visiva" },
+          "sommario": { "type": "string", "minLength": 20, "maxLength": 500 },
+          "periodo": {
+            "type": "object",
+            "required": ["da", "a"],
+            "additionalProperties": false,
+            "properties": { "da": { "type": "integer" }, "a": { "type": "integer" } },
+            "description": "Datazione reale (anni; a.C. negativi). La datazione dichiarata, se diverge, va negli archi leggendari e nel corpo."
+          },
+          "alias": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "luoghi": { "type": "array", "items": { "$ref": "#/definitions/kebab" }, "description": "Id di voci-luogo collegate: la pipeline ne deriva archi" },
+          "archi": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["verso", "tipo"],
+              "additionalProperties": false,
+              "properties": {
+                "verso": { "$ref": "#/definitions/kebab" },
+                "tipo": { "$ref": "#/definitions/idTassonomia" },
+                "nota": { "type": "string", "minLength": 1, "description": "Obbligatoria per gli archi leggendari: perché la relazione dichiarata non regge" }
+              }
+            }
+          },
+          "fonti": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "spunti": { "type": "array", "items": { "type": "string" }, "description": "Appunti facoltativi per chi scriverà il corpo" }
+        }
+      }
+    },
+    "percorsi": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "titolo", "sottotitolo", "ordine", "tappe"],
+        "additionalProperties": false,
+        "properties": {
+          "slug": { "$ref": "#/definitions/kebab" },
+          "titolo": { "type": "string", "minLength": 1 },
+          "sottotitolo": { "type": "string", "minLength": 1 },
+          "ordine": { "type": "integer", "minimum": 1 },
+          "tappe": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 12,
+            "items": {
+              "type": "object",
+              "required": ["voce", "traccia"],
+              "additionalProperties": false,
+              "properties": {
+                "voce": { "$ref": "#/definitions/kebab" },
+                "traccia": { "type": "string", "minLength": 40, "description": "La narrazione della tappa, o la traccia da cui svilupparla in fase di costruzione" }
+              }
+            }
+          }
+        }
+      },
+      "description": "Percorsi d'autore: sequenze narrate che il grafo evidenzia tappa per tappa"
+    },
+    "diagrammi": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "titolo"],
+        "additionalProperties": false,
+        "properties": {
+          "slug": { "$ref": "#/definitions/kebab" },
+          "titolo": { "type": "string", "minLength": 1 },
+          "descrizione": { "type": "string" }
+        }
+      },
+      "description": "Facoltativi: diagrammi su misura del dominio, da progettare e disegnare in fase di costruzione"
+    }
+  },
+  "definitions": {
+    "kebab": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "idTassonomia": { "type": "string", "pattern": "^[a-z0-9]+(?:[_-][a-z0-9]+)*$" },
+    "fascia": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "integer", "minimum": 1 }
+    }
+  }
+}

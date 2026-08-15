@@ -6,6 +6,8 @@ parte: 5
 sommario: "Il luogo alto e difficile della rivelazione: Sinai, Olimpo, la montagna dei filosofi. Implica ascesa, fatica, distacco; la sua cima è puntiforme — non ospita una folla."
 alias: ["Sinai", "montagna dei filosofi"]
 peso: 2
+archi:
+  - { verso: opera-alchemica, tipo: elabora, nota: "La montagna dei filosofi delle tavole alchemiche come figura dell'ascesa dell'opera" }
 ---
 
 La montagna è **il luogo alto e difficile dove si riceve la rivelazione**: il Sinai della Legge, l'Olimpo degli dèi, il Meru dell'India, il Carmelo degli eremiti, la «montagna dei filosofi» delle incisioni alchemiche — cava all'interno, con i pianeti-metalli che maturano nelle sue vene.

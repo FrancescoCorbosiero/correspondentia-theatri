@@ -5,6 +5,8 @@ tipo: concetto
 parte: 6
 sommario: "La componente contrassessuale della psiche junghiana, mediatrice fra io e inconscio. È la parte più datata del sistema, costruita su una tipizzazione dei generi propria del suo tempo e oggi largamente riformulata."
 peso: 2
+archi:
+  - { verso: individuazione, tipo: elabora, nota: "Le nozze interiori come tappa del processo, dopo il confronto con l'Ombra" }
 fonti:
   - "Jung, Psicologia e alchimia"
 ---
